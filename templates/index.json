@@ -1,0 +1,105 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Affordable Lab Equipment, Shipped Fast.",
+            "heading_size": "h0"
+          }
+        },
+        "text_y9BhfK": {
+          "type": "text",
+          "settings": {
+            "text": "Equip your lab with quality products at budget prices—most items ship within 24 hours.",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Now",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text_y9BhfK",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/female-lab-technician-working-in-laboratory-qor-labs.jpg",
+        "image_overlay_opacity": 40,
+        "image_height": "medium",
+        "image_behavior": "ambient",
+        "desktop_content_position": "bottom-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "collection_list_bUV78n": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_Ak3YhL": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mini-centrifuges"
+          }
+        },
+        "featured_collection_j7BCb9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "test-tube-centrifuges"
+          }
+        },
+        "featured_collection_JNpBFy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "slide-and-petri-dish-warmers"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_Ak3YhL",
+        "featured_collection_j7BCb9",
+        "featured_collection_JNpBFy"
+      ],
+      "settings": {
+        "title": "Featured Collections",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "collection_list_bUV78n"
+  ]
+}
