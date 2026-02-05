@@ -4,13 +4,12 @@
       "type": "section-hero-editorial",
       "settings": {
         "image": "shopify://shop_images/female-lab-technician-working-in-laboratory-qor-labs.jpg",
-        "hero_height": 70,
-        "heading": "PRECISION LAB EQUIPMENT",
+        "hero_height": 85,
+        "overline": "Laboratory Essentials",
+        "heading": "Precision Lab Equipment",
         "subheading": "Reliable instruments for clinical and research workflows.",
-        "button_label": "Shop Centrifuges",
-        "button_link": "shopify://collections/centrifuges",
-        "button_label_2": "Browse All",
-        "button_link_2": "shopify://collections"
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections/centrifuges"
       }
     },
     "trust_bar": {

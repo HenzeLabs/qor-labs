@@ -1,20 +1,20 @@
 {%- comment -%}
-  SECTION: Editorial Hero (Rapha Pattern)
-  Pure full-bleed image + separate white content section below.
-  NO text overlay on image - let imagery speak for itself.
+  SECTION: Editorial Hero
+  Full-bleed hero with text OVERLAID on image (bottom-left).
+  Dark gradient overlay for text legibility.
 {%- endcomment -%}
 
 {%- liquid
-  assign hero_height = section.settings.hero_height
+  assign hero_height = section.settings.hero_height | default: 85
 -%}
 
-{%- comment -%} PART 1: Pure Hero Image {%- endcomment -%}
 <section
   id="Hero-{{ section.id }}"
-  class="hero-rapha"
+  class="hero-editorial"
   style="--hero-height: {{ hero_height }}vh;"
 >
-  <div class="hero-rapha__media">
+  {%- comment -%} Background Image {%- endcomment -%}
+  <div class="hero-editorial__media">
     {%- if section.settings.image != blank -%}
       <img
         src="{{ section.settings.image | image_url: width: 1920 }}"
@@ -26,214 +26,178 @@
         "
         sizes="100vw"
         alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
-        loading="{% if section.index == 1 %}eager{% else %}lazy{% endif %}"
-        fetchpriority="{% if section.index == 1 %}high{% else %}auto{% endif %}"
+        loading="eager"
+        fetchpriority="high"
         width="{{ section.settings.image.width }}"
         height="{{ section.settings.image.height }}"
-        class="hero-rapha__image"
+        class="hero-editorial__image"
       >
     {%- else -%}
-      <div class="hero-rapha__placeholder">
-        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
-      </div>
+      <div class="hero-editorial__placeholder"></div>
     {%- endif -%}
   </div>
-</section>
 
-{%- comment -%} PART 2: Content Section Below Image {%- endcomment -%}
-<section class="hero-rapha__content-section">
-  <div class="hero-rapha__content-inner">
+  {%- comment -%} Dark Gradient Overlay {%- endcomment -%}
+  <div class="hero-editorial__overlay"></div>
+
+  {%- comment -%} Text Content - Positioned Bottom Left {%- endcomment -%}
+  <div class="hero-editorial__content">
+    {%- if section.settings.overline != blank -%}
+      <span class="hero-editorial__overline">
+        {{ section.settings.overline }}
+      </span>
+    {%- endif -%}
+
     {%- if section.settings.heading != blank -%}
-      <h1 class="hero-rapha__heading">
+      <h1 class="hero-editorial__heading">
         {{ section.settings.heading }}
       </h1>
     {%- endif -%}
 
     {%- if section.settings.subheading != blank -%}
-      <p class="hero-rapha__subheading">
+      <p class="hero-editorial__subheading">
         {{ section.settings.subheading }}
       </p>
     {%- endif -%}
 
     {%- if section.settings.button_label != blank -%}
-      <div class="hero-rapha__buttons">
+      <div class="hero-editorial__buttons">
         <a
           href="{{ section.settings.button_link | default: '#' }}"
-          class="hero-rapha__btn hero-rapha__btn--primary"
+          class="hero-editorial__btn"
         >
           {{ section.settings.button_label }}
         </a>
-
-        {%- if section.settings.button_label_2 != blank -%}
-          <a
-            href="{{ section.settings.button_link_2 | default: '#' }}"
-            class="hero-rapha__btn hero-rapha__btn--secondary"
-          >
-            {{ section.settings.button_label_2 }}
-          </a>
-        {%- endif -%}
       </div>
     {%- endif -%}
   </div>
 </section>
 
 <style>
-  /* ==========================================================================
-     HERO IMAGE SECTION - Pure full-bleed, no overlay
-     ========================================================================== */
-
-  .hero-rapha {
+  .hero-editorial {
     position: relative;
-    width: 100%;
-    height: var(--hero-height, 70vh);
+    width: 100vw;
+    min-height: var(--hero-height, 85vh);
     overflow: hidden;
   }
 
-  .hero-rapha__media {
+  .hero-editorial__media {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
   }
 
-  .hero-rapha__image {
+  .hero-editorial__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
   }
 
-  .hero-rapha__placeholder {
+  .hero-editorial__placeholder {
     width: 100%;
     height: 100%;
     background-color: #E8E6E1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
-  .hero-rapha__placeholder svg {
-    width: 30%;
-    height: auto;
-    opacity: 0.2;
+  /* Dark gradient overlay at bottom for text legibility */
+  .hero-editorial__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.2) 40%,
+      transparent 70%
+    );
+    pointer-events: none;
   }
 
-  /* ==========================================================================
-     CONTENT SECTION - White background below image (Rapha pattern)
-     ========================================================================== */
-
-  .hero-rapha__content-section {
-    background-color: #FFFFFF;
-    padding: 48px 24px;
-    text-align: center;
+  /* Text content - positioned bottom-left */
+  .hero-editorial__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    z-index: 10;
   }
 
-  .hero-rapha__content-inner {
-    max-width: 720px;
-    margin: 0 auto;
+  @media (min-width: 1024px) {
+    .hero-editorial__content {
+      padding: 4rem;
+    }
   }
 
-  .hero-rapha__heading {
-    font-family: var(--font-heading-family, 'Assistant', sans-serif);
-    font-size: clamp(1.75rem, 5vw, 2.5rem);
-    font-weight: 700;
+  .hero-editorial__overline {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    line-height: 1.1;
-    color: #0A0A0A;
-    margin: 0 0 16px;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.75rem;
   }
 
-  .hero-rapha__subheading {
-    font-family: var(--font-body-family, 'Assistant', sans-serif);
+  .hero-editorial__heading {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: #FFFFFF;
+    margin: 0 0 1rem;
+  }
+
+  .hero-editorial__subheading {
+    font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #4A4A4A;
-    margin: 0 0 28px;
-    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 1.5rem;
+    max-width: 400px;
   }
 
-  .hero-rapha__buttons {
+  .hero-editorial__buttons {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
+    gap: 1rem;
   }
 
-  .hero-rapha__btn {
+  .hero-editorial__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-body-family, 'Assistant', sans-serif);
-    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     text-decoration: none;
-    padding: 16px 48px;
-    min-width: 200px;
-    transition: all 0.2s ease;
-  }
-
-  .hero-rapha__btn--primary {
-    background-color: #0A0A0A;
-    color: #FFFFFF;
-    border: none;
-  }
-
-  .hero-rapha__btn--primary:hover {
-    background-color: #333333;
-  }
-
-  .hero-rapha__btn--secondary {
+    padding: 14px 28px;
     background-color: #FFFFFF;
     color: #0A0A0A;
-    border: 1px solid #0A0A0A;
+    border: none;
+    transition: opacity 0.2s ease;
   }
 
-  .hero-rapha__btn--secondary:hover {
-    background-color: #0A0A0A;
-    color: #FFFFFF;
-  }
-
-  /* Tablet and up */
-  @media (min-width: 768px) {
-    .hero-rapha__content-section {
-      padding: 56px 40px;
-    }
-
-    .hero-rapha__heading {
-      font-size: clamp(2rem, 4vw, 3rem);
-    }
-
-    .hero-rapha__subheading {
-      font-size: 1.125rem;
-    }
-
-    .hero-rapha__buttons {
-      flex-direction: row;
-      justify-content: center;
-    }
-  }
-
-  /* Desktop */
-  @media (min-width: 1024px) {
-    .hero-rapha__content-section {
-      padding: 64px 40px;
-    }
+  .hero-editorial__btn:hover {
+    opacity: 0.9;
   }
 </style>
 
 {% schema %}
 {
   "name": "Editorial Hero",
-  "tag": "div",
+  "tag": "section",
   "class": "section-hero-editorial",
   "settings": [
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Hero image",
-      "info": "Full-bleed, edge-to-edge. Recommended: 1920x1080px or larger."
+      "label": "Background image",
+      "info": "Recommended: 1920x1080px or larger"
     },
     {
       "type": "range",
@@ -242,28 +206,26 @@
       "max": 100,
       "step": 5,
       "unit": "vh",
-      "label": "Image height",
-      "default": 70
+      "label": "Hero height",
+      "default": 85
     },
     {
-      "type": "header",
-      "content": "Content (appears below image)"
+      "type": "text",
+      "id": "overline",
+      "label": "Overline",
+      "default": "Laboratory Essentials"
     },
     {
       "type": "textarea",
       "id": "heading",
       "label": "Heading",
-      "default": "PRECISION LAB EQUIPMENT"
+      "default": "Precision Lab Equipment"
     },
     {
       "type": "textarea",
       "id": "subheading",
       "label": "Subheading",
       "default": "Reliable instruments for clinical and research workflows."
-    },
-    {
-      "type": "header",
-      "content": "Primary button"
     },
     {
       "type": "text",
@@ -275,30 +237,11 @@
       "type": "url",
       "id": "button_link",
       "label": "Button link"
-    },
-    {
-      "type": "header",
-      "content": "Secondary button"
-    },
-    {
-      "type": "text",
-      "id": "button_label_2",
-      "label": "Button label"
-    },
-    {
-      "type": "url",
-      "id": "button_link_2",
-      "label": "Button link"
     }
   ],
   "presets": [
     {
-      "name": "Editorial Hero",
-      "settings": {
-        "heading": "PRECISION LAB EQUIPMENT",
-        "subheading": "Reliable instruments for clinical and research workflows.",
-        "button_label": "Shop Now"
-      }
+      "name": "Editorial Hero"
     }
   ]
 }
