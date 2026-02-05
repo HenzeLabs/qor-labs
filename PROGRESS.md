@@ -33,16 +33,16 @@ A clean, styled blank page that loads with correct fonts, colors, and base layou
 
 ---
 
-## Phase 2: Homepage ⬜ NOT STARTED
+## Phase 2: Homepage 🔄 IN PROGRESS
 
 ### Sections to Build
-- [ ] `section-hero-editorial.liquid` — Full-bleed hero with dynamic content
-- [ ] `section-trust-bar.liquid` — Shipping/warranty/support strip
-- [ ] `section-featured-collections.liquid` — Editorial collection grid
-- [ ] `section-product-spotlight.liquid` — Featured product storytelling block
-- [ ] `section-category-grid.liquid` — Shop by category
-- [ ] `section-brand-story.liquid` — About/story editorial block
-- [ ] `section-newsletter.liquid` — Email signup
+- [x] `section-hero-editorial.liquid` — Full-bleed hero with dynamic content
+- [x] `section-trust-bar.liquid` — Shipping/warranty/support strip
+- [x] `section-featured-collections.liquid` — Editorial collection grid
+- [x] `section-product-spotlight.liquid` — Featured product storytelling block
+- [x] `section-category-grid.liquid` — Shop by category
+- [x] `section-brand-story.liquid` — About/story editorial block
+- [x] `section-newsletter.liquid` — Email signup
 
 ### Templates
 - [ ] `templates/index.json` — Wire up all homepage sections in correct order
@@ -155,4 +155,5 @@ Live site, fully functional, zero regressions.
 |------|----------|--------|
 | 2026-02-05 | Keep Dawn's base.css alongside new theme.css | Gradual migration avoids breaking existing functionality while we build new Rapha-inspired sections |
 | 2026-02-05 | Use Google Fonts instead of Shopify font picker | Design system specifies exact fonts (Instrument Serif + DM Sans) that aren't in Shopify's font library |
+| 2026-02-05 | **STOPPED MID-TASK:** All 7 homepage sections created. Next step: wire up `templates/index.json` with section order, then test/push | User requested stop. Sections exist in /sections/ but index.json still references Dawn defaults |
 

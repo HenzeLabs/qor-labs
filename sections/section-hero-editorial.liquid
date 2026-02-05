@@ -1,0 +1,389 @@
+{%- comment -%}
+  SECTION: Editorial Hero
+  Rapha-inspired full-bleed hero with minimal text overlay.
+  Mobile-first, 70-85vh height, dark gradient for text legibility.
+{%- endcomment -%}
+
+{%- liquid
+  assign hero_height = section.settings.hero_height
+  assign text_alignment = section.settings.text_alignment
+  assign overlay_opacity = section.settings.overlay_opacity | divided_by: 100.0
+-%}
+
+<section
+  id="Hero-{{ section.id }}"
+  class="hero-editorial"
+  style="--hero-height: {{ hero_height }}vh; --overlay-opacity: {{ overlay_opacity }};"
+>
+  {%- comment -%} Background Image {%- endcomment -%}
+  <div class="hero-editorial__media">
+    {%- if section.settings.image != blank -%}
+      <img
+        src="{{ section.settings.image | image_url: width: 1920 }}"
+        srcset="
+          {{ section.settings.image | image_url: width: 750 }} 750w,
+          {{ section.settings.image | image_url: width: 1200 }} 1200w,
+          {{ section.settings.image | image_url: width: 1920 }} 1920w,
+          {{ section.settings.image | image_url: width: 2560 }} 2560w
+        "
+        sizes="100vw"
+        alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
+        loading="{% if section.index == 1 %}eager{% else %}lazy{% endif %}"
+        fetchpriority="{% if section.index == 1 %}high{% else %}auto{% endif %}"
+        width="{{ section.settings.image.width }}"
+        height="{{ section.settings.image.height }}"
+        class="hero-editorial__image"
+      >
+    {%- else -%}
+      {%- comment -%} Placeholder when no image is set {%- endcomment -%}
+      <div class="hero-editorial__placeholder">
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} Gradient Overlay {%- endcomment -%}
+  <div class="hero-editorial__overlay"></div>
+
+  {%- comment -%} Content {%- endcomment -%}
+  <div class="hero-editorial__content hero-editorial__content--{{ text_alignment }}">
+    <div class="hero-editorial__content-inner">
+      {%- if section.settings.overline != blank -%}
+        <span class="hero-editorial__overline">
+          {{ section.settings.overline }}
+        </span>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h1 class="hero-editorial__heading">
+          {{ section.settings.heading }}
+        </h1>
+      {%- endif -%}
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="hero-editorial__subheading">
+          {{ section.settings.subheading }}
+        </p>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <div class="hero-editorial__buttons">
+          <a
+            href="{{ section.settings.button_link | default: '#' }}"
+            class="hero-editorial__btn hero-editorial__btn--primary"
+          >
+            {{ section.settings.button_label }}
+          </a>
+
+          {%- if section.settings.button_label_2 != blank -%}
+            <a
+              href="{{ section.settings.button_link_2 | default: '#' }}"
+              class="hero-editorial__btn hero-editorial__btn--secondary"
+            >
+              {{ section.settings.button_label_2 }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-editorial {
+    position: relative;
+    width: 100%;
+    min-height: var(--hero-height, 75vh);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .hero-editorial__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-editorial__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-editorial__placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-warm-gray, #E8E6E1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-editorial__placeholder svg {
+    width: 50%;
+    height: auto;
+    opacity: 0.3;
+  }
+
+  .hero-editorial__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, var(--overlay-opacity, 0.6)) 0%,
+      rgba(0, 0, 0, calc(var(--overlay-opacity, 0.6) * 0.5)) 40%,
+      rgba(0, 0, 0, 0) 70%
+    );
+    pointer-events: none;
+  }
+
+  .hero-editorial__content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding: var(--space-2xl, 3rem) var(--space-md, 1rem);
+  }
+
+  .hero-editorial__content-inner {
+    max-width: var(--container-max, 80rem);
+    margin: 0 auto;
+  }
+
+  /* Mobile: centered text */
+  .hero-editorial__content--left .hero-editorial__content-inner,
+  .hero-editorial__content--center .hero-editorial__content-inner {
+    text-align: center;
+  }
+
+  .hero-editorial__overline {
+    display: block;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-sm, 0.5rem);
+  }
+
+  .hero-editorial__heading {
+    font-family: var(--font-display, 'Instrument Serif', serif);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--color-white, #FFFFFF);
+    margin: 0 0 var(--space-md, 1rem);
+  }
+
+  .hero-editorial__subheading {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 var(--space-lg, 1.5rem);
+    max-width: 40ch;
+  }
+
+  .hero-editorial__content--center .hero-editorial__subheading {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-editorial__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm, 0.5rem);
+  }
+
+  .hero-editorial__content--center .hero-editorial__buttons {
+    align-items: center;
+  }
+
+  .hero-editorial__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease;
+    min-width: 200px;
+  }
+
+  .hero-editorial__btn--primary {
+    background-color: var(--color-white, #FFFFFF);
+    color: var(--color-black, #0A0A0A);
+  }
+
+  .hero-editorial__btn--primary:hover {
+    background-color: var(--color-off-white, #F7F7F5);
+    opacity: 1;
+  }
+
+  .hero-editorial__btn--secondary {
+    background-color: transparent;
+    color: var(--color-white, #FFFFFF);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .hero-editorial__btn--secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-white, #FFFFFF);
+    opacity: 1;
+  }
+
+  /* Tablet and up */
+  @media (min-width: 768px) {
+    .hero-editorial__content {
+      padding: var(--space-3xl, 4rem) var(--space-xl, 2rem);
+    }
+
+    .hero-editorial__content--left .hero-editorial__content-inner {
+      text-align: left;
+    }
+
+    .hero-editorial__heading {
+      font-size: clamp(3rem, 6vw, 6rem);
+    }
+
+    .hero-editorial__subheading {
+      font-size: 1.125rem;
+    }
+
+    .hero-editorial__buttons {
+      flex-direction: row;
+    }
+
+    .hero-editorial__content--left .hero-editorial__subheading {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .hero-editorial__content--left .hero-editorial__buttons {
+      justify-content: flex-start;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    .hero-editorial__content {
+      padding: var(--space-4xl, 6rem) var(--space-xl, 2rem);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Editorial Hero",
+  "tag": "section",
+  "class": "section-hero-editorial",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image",
+      "info": "Recommended: 1920x1080px or larger. Use high-quality lab/equipment photography."
+    },
+    {
+      "type": "range",
+      "id": "hero_height",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Hero height",
+      "default": 75
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 50,
+      "info": "Darkens image for better text readability"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment (desktop)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "overline",
+      "label": "Overline",
+      "info": "Small text above headline (e.g., collection name)"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Precision Lab Equipment"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Reliable instruments for clinical and research workflows."
+    },
+    {
+      "type": "header",
+      "content": "Primary button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Secondary button"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial Hero",
+      "settings": {
+        "heading": "Precision Lab Equipment",
+        "subheading": "Reliable instruments for clinical and research workflows.",
+        "button_label": "Shop Now"
+      }
+    }
+  ]
+}
+{% endschema %}

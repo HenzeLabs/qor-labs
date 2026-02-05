@@ -1,0 +1,371 @@
+{%- comment -%}
+  SECTION: Brand Story
+  Rapha-inspired editorial block for brand storytelling.
+  Centered or split layout with generous whitespace.
+{%- endcomment -%}
+
+{%- liquid
+  assign layout = section.settings.layout
+  assign bg_color = section.settings.background_color
+-%}
+
+<section
+  id="BrandStory-{{ section.id }}"
+  class="brand-story brand-story--{{ layout }} brand-story--bg-{{ bg_color }} section-padding"
+>
+  <div class="brand-story__container">
+    {%- if layout == 'centered' -%}
+      {%- comment -%} Centered Layout {%- endcomment -%}
+      <div class="brand-story__centered">
+        {%- if section.settings.overline != blank -%}
+          <span class="brand-story__overline">{{ section.settings.overline }}</span>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="brand-story__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.content != blank -%}
+          <div class="brand-story__content">
+            {{ section.settings.content }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.button_label != blank -%}
+          <div class="brand-story__cta">
+            <a href="{{ section.settings.button_link | default: '#' }}" class="brand-story__btn">
+              {{ section.settings.button_label }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      {%- comment -%} Split Layout {%- endcomment -%}
+      <div class="brand-story__split">
+        <div class="brand-story__media">
+          {%- if section.settings.image != blank -%}
+            <img
+              src="{{ section.settings.image | image_url: width: 1000 }}"
+              srcset="
+                {{ section.settings.image | image_url: width: 500 }} 500w,
+                {{ section.settings.image | image_url: width: 750 }} 750w,
+                {{ section.settings.image | image_url: width: 1000 }} 1000w,
+                {{ section.settings.image | image_url: width: 1400 }} 1400w
+              "
+              sizes="(max-width: 1023px) 100vw, 50vw"
+              alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
+              loading="lazy"
+              width="{{ section.settings.image.width }}"
+              height="{{ section.settings.image.height }}"
+              class="brand-story__image"
+            >
+          {%- else -%}
+            <div class="brand-story__placeholder">
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class="brand-story__text">
+          <div class="brand-story__text-inner">
+            {%- if section.settings.overline != blank -%}
+              <span class="brand-story__overline">{{ section.settings.overline }}</span>
+            {%- endif -%}
+
+            {%- if section.settings.heading != blank -%}
+              <h2 class="brand-story__heading">{{ section.settings.heading }}</h2>
+            {%- endif -%}
+
+            {%- if section.settings.content != blank -%}
+              <div class="brand-story__content">
+                {{ section.settings.content }}
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.button_label != blank -%}
+              <div class="brand-story__cta">
+                <a href="{{ section.settings.button_link | default: '#' }}" class="brand-story__btn">
+                  {{ section.settings.button_label }}
+                </a>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .brand-story--bg-white {
+    background-color: var(--color-white, #FFFFFF);
+  }
+
+  .brand-story--bg-off-white {
+    background-color: var(--color-off-white, #F7F7F5);
+  }
+
+  .brand-story--bg-warm-gray {
+    background-color: var(--color-warm-gray, #E8E6E1);
+  }
+
+  .brand-story__container {
+    max-width: var(--container-max, 80rem);
+    margin: 0 auto;
+    padding: 0 var(--space-md, 1rem);
+  }
+
+  /* Centered Layout */
+  .brand-story__centered {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .brand-story__overline {
+    display: block;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-secondary, #6B6B6B);
+    margin-bottom: var(--space-sm, 0.5rem);
+  }
+
+  .brand-story__heading {
+    font-family: var(--font-display, 'Instrument Serif', serif);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-text-primary, #1A1A1A);
+    margin: 0 0 var(--space-lg, 1.5rem);
+  }
+
+  .brand-story__content {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary, #6B6B6B);
+  }
+
+  .brand-story__content p {
+    margin: 0 0 var(--space-md, 1rem);
+  }
+
+  .brand-story__content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .brand-story__cta {
+    margin-top: var(--space-xl, 2rem);
+  }
+
+  .brand-story__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    background-color: transparent;
+    color: var(--color-black, #0A0A0A);
+    border: 1px solid var(--color-black, #0A0A0A);
+    transition: all 0.3s ease;
+  }
+
+  .brand-story__btn:hover {
+    background-color: var(--color-black, #0A0A0A);
+    color: var(--color-white, #FFFFFF);
+    opacity: 1;
+  }
+
+  /* Split Layout */
+  .brand-story__split {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl, 3rem);
+  }
+
+  .brand-story__media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: var(--color-warm-gray, #E8E6E1);
+  }
+
+  .brand-story__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .brand-story__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brand-story__placeholder svg {
+    width: 30%;
+    height: auto;
+    opacity: 0.3;
+  }
+
+  .brand-story__text {
+    display: flex;
+    align-items: center;
+  }
+
+  .brand-story__text-inner {
+    text-align: center;
+  }
+
+  /* Tablet */
+  @media (min-width: 768px) {
+    .brand-story__container {
+      padding: 0 var(--space-lg, 1.5rem);
+    }
+
+    .brand-story__content {
+      font-size: 1.0625rem;
+    }
+  }
+
+  /* Desktop: Split layout side-by-side */
+  @media (min-width: 1024px) {
+    .brand-story__container {
+      padding: 0 var(--space-xl, 2rem);
+    }
+
+    .brand-story--split .brand-story__container {
+      padding: 0;
+      max-width: none;
+    }
+
+    .brand-story__split {
+      flex-direction: row;
+      gap: 0;
+    }
+
+    .brand-story--image-right .brand-story__split {
+      flex-direction: row-reverse;
+    }
+
+    .brand-story__media {
+      flex: 0 0 50%;
+      aspect-ratio: auto;
+      min-height: 500px;
+    }
+
+    .brand-story__text {
+      flex: 0 0 50%;
+      padding: var(--space-3xl, 4rem);
+    }
+
+    .brand-story__text-inner {
+      max-width: 480px;
+      text-align: left;
+    }
+
+    .brand-story__content {
+      font-size: 1.125rem;
+    }
+  }
+
+  /* Large desktop */
+  @media (min-width: 1280px) {
+    .brand-story__text {
+      padding: var(--space-4xl, 6rem);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Brand Story",
+  "tag": "section",
+  "class": "section-brand-story",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "centered", "label": "Centered text" },
+        { "value": "split", "label": "Split (image + text)" },
+        { "value": "image-right", "label": "Split (text + image)" }
+      ],
+      "default": "centered"
+    },
+    {
+      "type": "select",
+      "id": "background_color",
+      "label": "Background color",
+      "options": [
+        { "value": "white", "label": "White" },
+        { "value": "off-white", "label": "Off-white" },
+        { "value": "warm-gray", "label": "Warm gray" }
+      ],
+      "default": "off-white"
+    },
+    {
+      "type": "header",
+      "content": "Image (split layout only)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Recommended: 1000x800px or larger"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "overline",
+      "label": "Overline",
+      "default": "Our Story"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "About Qor Labs"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>We supply reliable lab instruments for clinical, academic, and research teams. Our focus is on straightforward, durable equipment that fits real-world budgets—backed by responsive support.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Story"
+    }
+  ]
+}
+{% endschema %}
