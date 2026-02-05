@@ -51,7 +51,7 @@
         >
       {%- else -%}
         <div class="product-spotlight__placeholder">
-          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          <span class="product-spotlight__placeholder-text">Image coming soon</span>
         </div>
       {%- endif -%}
     </div>
@@ -152,13 +152,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-warm-gray, #E8E6E1);
+    background-color: var(--color-off-white, #F7F7F5);
   }
 
-  .product-spotlight__placeholder svg {
-    width: 30%;
-    height: auto;
-    opacity: 0.3;
+  .product-spotlight__placeholder-text {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 1rem;
+    font-style: italic;
+    color: #9CA3AF;
+    text-align: center;
+    padding: 1rem;
   }
 
   .product-spotlight__content {
