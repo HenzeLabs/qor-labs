@@ -9,305 +9,180 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Affordable Lab Equipment. Ships Fast.",
-            "heading_size": "h0"
-          }
-        },
-        "text_y9BhfK": {
-          "type": "text",
-          "settings": {
-            "text": "Reliable instruments for clinical and research workflows. Most orders ship within 24 hours.",
-            "text_style": "body"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop Centrifuges",
-            "button_link_1": "shopify://collections/centrifuges",
-            "button_style_secondary_1": false,
-            "button_label_2": "Browse All Categories",
-            "button_link_2": "shopify://collections",
-            "button_style_secondary_2": true
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text_y9BhfK",
-        "button"
-      ],
+    "hero_editorial": {
+      "type": "section-hero-editorial",
       "settings": {
         "image": "shopify://shop_images/female-lab-technician-working-in-laboratory-qor-labs.jpg",
-        "image_overlay_opacity": 40,
-        "image_height": "medium",
-        "image_behavior": "ambient",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": true
+        "hero_height": 80,
+        "overlay_opacity": 50,
+        "text_alignment": "left",
+        "overline": "Laboratory Essentials",
+        "heading": "Precision Lab Equipment",
+        "subheading": "Reliable instruments for clinical and research workflows. Most orders ship within 24 hours.",
+        "button_label": "Shop Centrifuges",
+        "button_link": "shopify://collections/centrifuges",
+        "button_label_2": "Browse All",
+        "button_link_2": "shopify://collections"
       }
     },
-    "trust_points": {
-      "type": "multicolumn",
+    "trust_bar": {
+      "type": "section-trust-bar",
       "blocks": {
-        "col1": {
-          "type": "column",
+        "trust_1": {
+          "type": "trust_item",
           "settings": {
-            "title": "24-hour shipping on most orders",
-            "text": "<p>Get your lab back on schedule with fast fulfillment.</p>",
-            "link_label": "",
-            "link": ""
+            "icon": "shipping",
+            "label": "Free Shipping",
+            "description": "On orders over $300"
           }
         },
-        "col2": {
-          "type": "column",
+        "trust_2": {
+          "type": "trust_item",
           "settings": {
-            "title": "Warranty-backed support",
-            "text": "<p>Register your product for quick assistance when you need it.</p>",
-            "link_label": "",
-            "link": ""
+            "icon": "warranty",
+            "label": "2-Year Warranty",
+            "description": "On all instruments"
           }
         },
-        "col3": {
-          "type": "column",
+        "trust_3": {
+          "type": "trust_item",
           "settings": {
-            "title": "Budget-friendly pricing",
-            "text": "<p>Dependable instruments without premium-brand overhead.</p>",
-            "link_label": "",
-            "link": ""
+            "icon": "clock",
+            "label": "Ships in 24hrs",
+            "description": "Most items in stock"
+          }
+        },
+        "trust_4": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "support",
+            "label": "Expert Support",
+            "description": "Lab specialists on call"
           }
         }
       },
-      "block_order": [
-        "col1",
-        "col2",
-        "col3"
-      ],
-      "settings": {
-        "title": "Why labs choose Qor Labs",
-        "heading_size": "h2",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "column_alignment": "left",
-        "background_style": "primary",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "scheme-1",
-        "columns_desktop": 3,
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+      "block_order": ["trust_1", "trust_2", "trust_3", "trust_4"],
+      "settings": {}
     },
-    "collection_list_bUV78n": {
-      "type": "collection-list",
+    "featured_collections": {
+      "type": "section-featured-collections",
       "blocks": {
-        "featured_collection_Ak3YhL": {
-          "type": "featured_collection",
+        "collection_1": {
+          "type": "collection",
           "settings": {
-            "collection": "mini-centrifuges"
+            "collection": "centrifuges",
+            "show_product_count": false
           }
         },
-        "featured_collection_j7BCb9": {
-          "type": "featured_collection",
+        "collection_2": {
+          "type": "collection",
           "settings": {
-            "collection": "test-tube-centrifuges"
+            "collection": "microscopes",
+            "show_product_count": false
           }
         },
-        "featured_collection_JNpBFy": {
-          "type": "featured_collection",
+        "collection_3": {
+          "type": "collection",
           "settings": {
-            "collection": "slide-and-petri-dish-warmers"
-          }
-        },
-        "featured_collection_microscopes": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "microscopes"
+            "collection": "slide-and-petri-dish-warmers",
+            "show_product_count": false
           }
         }
       },
-      "block_order": [
-        "featured_collection_Ak3YhL",
-        "featured_collection_j7BCb9",
-        "featured_collection_JNpBFy",
-        "featured_collection_microscopes"
-      ],
+      "block_order": ["collection_1", "collection_2", "collection_3"],
       "settings": {
-        "title": "Shop by Category",
-        "heading_size": "h2",
-        "image_ratio": "square",
-        "columns_desktop": 4,
-        "color_scheme": "",
+        "overline": "Shop by Category",
+        "heading": "Featured Collections",
+        "columns": "3",
         "show_view_all": true,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "view_all_label": "View All Collections",
+        "view_all_link": "shopify://collections"
       }
     },
-    "about_teaser": {
-      "type": "rich-text",
+    "product_spotlight": {
+      "type": "section-product-spotlight",
+      "settings": {
+        "layout": "image_left",
+        "background_color": "off-white",
+        "overline": "Best Seller",
+        "heading": "Compact Centrifuges for Any Lab",
+        "description": "<p>Our mini centrifuges deliver reliable performance in a compact footprint. Perfect for quick spin-downs, cell separations, and routine sample prep.</p>",
+        "button_label": "Shop Centrifuges",
+        "button_link": "shopify://collections/centrifuges"
+      }
+    },
+    "category_grid": {
+      "type": "section-category-grid",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "cat_1": {
+          "type": "category",
           "settings": {
-            "heading": "About Qor Labs",
-            "heading_size": "h2"
+            "collection": "mini-centrifuges",
+            "subtitle": "Compact & portable"
           }
         },
-        "text": {
-          "type": "text",
+        "cat_2": {
+          "type": "category",
           "settings": {
-            "text": "<p>Qor Labs supplies reliable lab instruments for clinical, academic, and research teams. We focus on straightforward, durable equipment that fits real-world budgets\u2014backed by responsive support.</p>",
-            "text_style": "body"
+            "collection": "test-tube-centrifuges",
+            "subtitle": "High-capacity spinning"
           }
         },
-        "button": {
-          "type": "button",
+        "cat_3": {
+          "type": "category",
           "settings": {
-            "button_label": "Learn more",
-            "button_link": "shopify://pages/about-qor-labs",
-            "button_style_secondary": true
+            "collection": "differential-counters",
+            "subtitle": "Cell counting made easy"
+          }
+        },
+        "cat_4": {
+          "type": "category",
+          "settings": {
+            "collection": "pipette-pumps",
+            "subtitle": "Precision liquid handling"
           }
         }
       },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
+      "block_order": ["cat_1", "cat_2", "cat_3", "cat_4"],
       "settings": {
-        "color_scheme": "scheme-2",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "full_width": false,
-        "padding_top": 36,
-        "padding_bottom": 48
+        "overline": "Explore",
+        "heading": "Shop by Product Type",
+        "columns": "4"
       }
     },
-    "featured_collection_best_sellers": {
-      "type": "featured-collection",
+    "brand_story": {
+      "type": "section-brand-story",
       "settings": {
-        "collection": "centrifuges",
-        "products_to_show": 4,
-        "title": "Best-selling centrifuges",
-        "heading_size": "h2",
-        "show_description": false,
-        "description": "",
-        "description_style": "body",
-        "columns_desktop": 4,
-        "columns_mobile": "2",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "layout": "centered",
+        "background_color": "off-white",
+        "overline": "About Qor Labs",
+        "heading": "Built for Real-World Labs",
+        "content": "<p>Qor Labs supplies reliable lab instruments for clinical, academic, and research teams. We focus on straightforward, durable equipment that fits real-world budgets\u2014backed by responsive support when you need it.</p>",
+        "button_label": "Learn More",
+        "button_link": "shopify://pages/about-qor-labs"
       }
     },
-    "support_callout": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Need help choosing equipment?",
-            "heading_size": "h2"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Tell us your sample volume, RPM needs, and workflow. We\u2019ll point you to the right model.</p>",
-            "text_style": "body"
-          }
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "button_label": "Get a recommendation",
-            "button_link": "shopify://pages/contact-us",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
+    "newsletter": {
+      "type": "section-newsletter",
       "settings": {
-        "color_scheme": "scheme-2",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "full_width": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "social_proof_bar": {
-      "type": "social-proof-bar",
-      "blocks": {
-        "item_1": {
-          "type": "item",
-          "settings": {
-            "title": "24-hour shipping",
-            "text": "Most orders ship next business day."
-          }
-        },
-        "item_2": {
-          "type": "item",
-          "settings": {
-            "title": "Warranty-backed support",
-            "text": "Register your product for coverage."
-          }
-        },
-        "item_3": {
-          "type": "item",
-          "settings": {
-            "title": "Lab-ready value",
-            "text": "Straightforward pricing for busy labs."
-          }
-        }
-      },
-      "block_order": [
-        "item_1",
-        "item_2",
-        "item_3"
-      ],
-      "settings": {
-        "heading": "Trusted by busy labs",
-        "color_scheme": "scheme-1",
-        "padding_top": 24,
-        "padding_bottom": 24
+        "background_style": "dark",
+        "overline": "Stay Updated",
+        "heading": "Lab News & Exclusive Offers",
+        "description": "Get product updates, application tips, and special offers delivered to your inbox.",
+        "placeholder": "Enter your email",
+        "button_label": "Subscribe",
+        "success_message": "Thank you for subscribing.",
+        "disclaimer": "We respect your privacy. Unsubscribe anytime."
       }
     }
   },
   "order": [
-    "image_banner",
-    "trust_points",
-    "social_proof_bar",
-    "collection_list_bUV78n",
-    "featured_collection_best_sellers",
-    "support_callout",
-    "about_teaser"
+    "hero_editorial",
+    "trust_bar",
+    "featured_collections",
+    "product_spotlight",
+    "category_grid",
+    "brand_story",
+    "newsletter"
   ]
 }
