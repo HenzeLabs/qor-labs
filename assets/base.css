@@ -3595,3 +3595,50 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+@media screen and (max-width: 989px) {
+  .header-collections {
+    display: none;
+  }
+}
+
+.cart__reassurance {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.cart__reassurance-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.cart__reassurance-list li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.cart__reassurance-list li::before {
+  content: "-";
+  line-height: 1.4;
+}
+
+.product__help {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.product__help p {
+  margin: 0;
+}
+
+.product__help a {
+  text-decoration: underline;
+}

@@ -127,6 +127,19 @@
           {%- endcase -%}
         {% endfor %}
 
+        {%- if cart != empty -%}
+          <div class="cart__reassurance">
+            <ul class="cart__reassurance-list">
+              <li>Most orders ship within 24 hours.</li>
+              <li>Warranty-backed support on eligible products.</li>
+              <li>
+                Need help choosing?
+                <a href="/pages/contact-us">Contact us</a>.
+              </li>
+            </ul>
+          </div>
+        {%- endif -%}
+
         <div id="cart-errors"></div>
       </div>
     </div>

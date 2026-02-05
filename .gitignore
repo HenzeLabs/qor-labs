@@ -12,3 +12,6 @@ node_modules/
 
 # Shopify CLI
 .shopify/
+
+# Local Shopify app secrets
+.env.shopify
