@@ -17,14 +17,20 @@
    ========================================================================== */
 
 .announcement-bar-section {
-  background-color: #1a1a1a !important; /* Dark but not pure black */
+  background-color: #1a1a1a !important;
 }
 
 .utility-bar,
 .announcement-bar {
   background-color: #1a1a1a !important;
-  padding: 8px 0 !important;
-  min-height: auto !important;
+  padding: 10px 0 !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+}
+
+/* Make the announcement bar wrapper thinner */
+.shopify-section-group-header-group .shopify-section:first-child {
+  max-height: 36px !important;
 }
 
 .announcement-bar__message {
@@ -98,7 +104,10 @@
 
 .header__menu-item,
 .list-menu__item--link,
-.header__inline-menu .list-menu__item--link {
+.header__inline-menu .list-menu__item--link,
+.header .link,
+.header .link--text,
+.header a {
   font-family: var(--font-body, 'DM Sans', sans-serif) !important;
   font-size: 12px !important;
   font-weight: 500 !important;
@@ -108,30 +117,42 @@
   text-decoration: none !important;
   padding: 8px 0 !important;
   border: none !important;
+  background-image: none !important;
 }
 
-/* REMOVE UNDERLINES from nav items */
+/* REMOVE UNDERLINES from ALL header nav items */
 .header__menu-item::after,
 .list-menu__item--link::after,
 .header__inline-menu .list-menu__item--link::after,
-.header__menu-item span::after {
+.header__menu-item span::after,
+.header .link::after,
+.header .link--text::after,
+.header__inline-menu a::after {
   display: none !important;
   content: none !important;
   border: none !important;
   text-decoration: none !important;
 }
 
-/* Remove underline styling */
-.list-menu__item--link {
+/* Remove underline styling - aggressive targeting */
+.list-menu__item--link,
+.header .link--text,
+.header__inline-menu .link,
+.header__inline-menu a {
   background-image: none !important;
   background-size: 0 !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
 }
 
 .header__menu-item:hover,
-.list-menu__item--link:hover {
+.list-menu__item--link:hover,
+.header .link:hover,
+.header .link--text:hover {
   color: var(--color-text-secondary, #6B6B6B) !important;
   opacity: 1 !important;
   text-decoration: none !important;
+  background-image: none !important;
 }
 
 /* Dropdown arrows - make subtle */
