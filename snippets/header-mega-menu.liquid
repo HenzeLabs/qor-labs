@@ -34,6 +34,16 @@
                   class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
                   role="list"
                 >
+                  {%- if link.title == 'Support' -%}
+                    <li>
+                      <a
+                        href="/pages/support-center"
+                        class="mega-menu__link mega-menu__link--level-2 link"
+                      >
+                        Support Center
+                      </a>
+                    </li>
+                  {%- endif -%}
                   {%- for childlink in link.links -%}
                     <li>
                       <a
