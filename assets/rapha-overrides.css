@@ -58,48 +58,62 @@
 /* ==========================================================================
    HEADER — Rapha Style (middle-center layout)
    Nav on LEFT, Logo CENTER, Icons RIGHT — all on ONE row
-   Very tight padding, clean minimal feel
+   Ultra-compact like Rapha (~50px total height)
    ========================================================================== */
 
-/* Reduce header padding dramatically */
+/* Remove header border */
 .header-wrapper {
   border-bottom: none !important;
 }
 
+/* Make header ultra-compact */
 .header {
-  padding: 12px 24px !important;
-  gap: 16px !important;
+  padding: 8px 16px !important;
+  gap: 12px !important;
+  min-height: 50px !important;
 }
 
 @media screen and (min-width: 990px) {
   .header {
-    padding: 14px 32px !important;
+    padding: 10px 24px !important;
+    min-height: 54px !important;
   }
 }
 
-/* Logo sizing */
+/* Hide dropdown caret arrows on nav items */
+.header__menu-item .icon-caret,
+.header__menu-item svg.icon-caret,
+.list-menu__item .icon-caret,
+summary.header__menu-item svg,
+.header__inline-menu .icon-caret,
+details[id^="Details-HeaderMenu"] summary svg,
+.header .disclosure__button svg {
+  display: none !important;
+}
+
+/* Logo sizing - keep it small and elegant */
 .header__heading-logo-wrapper {
-  max-width: 100px !important;
+  max-width: 90px !important;
 }
 
 .header__heading-logo {
-  max-height: 28px !important;
+  max-height: 24px !important;
   width: auto !important;
 }
 
 @media screen and (min-width: 990px) {
   .header__heading-logo-wrapper {
-    max-width: 120px !important;
+    max-width: 110px !important;
   }
 
   .header__heading-logo {
-    max-height: 32px !important;
+    max-height: 28px !important;
   }
 }
 
-/* Navigation — uppercase, tracked, NO UNDERLINES */
+/* Navigation — uppercase, tracked, NO UNDERLINES, generous spacing like Rapha */
 .header__inline-menu .list-menu--inline {
-  gap: 32px !important;
+  gap: 40px !important;
 }
 
 .header__menu-item,
@@ -109,13 +123,13 @@
 .header .link--text,
 .header a {
   font-family: var(--font-body, 'DM Sans', sans-serif) !important;
-  font-size: 12px !important;
+  font-size: 13px !important;
   font-weight: 500 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  color: var(--color-text-primary, #1A1A1A) !important;
+  letter-spacing: 0.08em !important;
+  color: var(--color-text-primary, #0A0A0A) !important;
   text-decoration: none !important;
-  padding: 8px 0 !important;
+  padding: 4px 0 !important;
   border: none !important;
   background-image: none !important;
 }
@@ -163,16 +177,17 @@ summary.list-menu__item svg {
   margin-left: 4px !important;
 }
 
-/* Icons — smaller, cleaner */
+/* Icons — smaller, cleaner, Rapha-minimal */
 .header__icon {
-  width: 36px !important;
-  height: 36px !important;
-  padding: 8px !important;
+  width: 32px !important;
+  height: 32px !important;
+  padding: 6px !important;
 }
 
 .header__icon svg {
   width: 18px !important;
   height: 18px !important;
+  stroke-width: 1.5 !important;
 }
 
 /* Cart count bubble — smaller */

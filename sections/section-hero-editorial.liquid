@@ -1,22 +1,20 @@
 {%- comment -%}
-  SECTION: Editorial Hero
-  Rapha-inspired full-bleed hero with minimal text overlay.
-  Mobile-first, 70-85vh height, dark gradient for text legibility.
+  SECTION: Editorial Hero (Rapha Pattern)
+  Pure full-bleed image + separate white content section below.
+  NO text overlay on image - let imagery speak for itself.
 {%- endcomment -%}
 
 {%- liquid
   assign hero_height = section.settings.hero_height
-  assign text_alignment = section.settings.text_alignment
-  assign overlay_opacity = section.settings.overlay_opacity | divided_by: 100.0
 -%}
 
+{%- comment -%} PART 1: Pure Hero Image {%- endcomment -%}
 <section
   id="Hero-{{ section.id }}"
-  class="hero-editorial"
-  style="--hero-height: {{ hero_height }}vh; --overlay-opacity: {{ overlay_opacity }};"
+  class="hero-rapha"
+  style="--hero-height: {{ hero_height }}vh;"
 >
-  {%- comment -%} Background Image {%- endcomment -%}
-  <div class="hero-editorial__media">
+  <div class="hero-rapha__media">
     {%- if section.settings.image != blank -%}
       <img
         src="{{ section.settings.image | image_url: width: 1920 }}"
@@ -32,250 +30,195 @@
         fetchpriority="{% if section.index == 1 %}high{% else %}auto{% endif %}"
         width="{{ section.settings.image.width }}"
         height="{{ section.settings.image.height }}"
-        class="hero-editorial__image"
+        class="hero-rapha__image"
       >
     {%- else -%}
-      {%- comment -%} Placeholder when no image is set {%- endcomment -%}
-      <div class="hero-editorial__placeholder">
+      <div class="hero-rapha__placeholder">
         {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
       </div>
     {%- endif -%}
   </div>
+</section>
 
-  {%- comment -%} Gradient Overlay {%- endcomment -%}
-  <div class="hero-editorial__overlay"></div>
+{%- comment -%} PART 2: Content Section Below Image {%- endcomment -%}
+<section class="hero-rapha__content-section">
+  <div class="hero-rapha__content-inner">
+    {%- if section.settings.heading != blank -%}
+      <h1 class="hero-rapha__heading">
+        {{ section.settings.heading }}
+      </h1>
+    {%- endif -%}
 
-  {%- comment -%} Content {%- endcomment -%}
-  <div class="hero-editorial__content hero-editorial__content--{{ text_alignment }}">
-    <div class="hero-editorial__content-inner">
-      {%- if section.settings.overline != blank -%}
-        <span class="hero-editorial__overline">
-          {{ section.settings.overline }}
-        </span>
-      {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <p class="hero-rapha__subheading">
+        {{ section.settings.subheading }}
+      </p>
+    {%- endif -%}
 
-      {%- if section.settings.heading != blank -%}
-        <h1 class="hero-editorial__heading">
-          {{ section.settings.heading }}
-        </h1>
-      {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <div class="hero-rapha__buttons">
+        <a
+          href="{{ section.settings.button_link | default: '#' }}"
+          class="hero-rapha__btn hero-rapha__btn--primary"
+        >
+          {{ section.settings.button_label }}
+        </a>
 
-      {%- if section.settings.subheading != blank -%}
-        <p class="hero-editorial__subheading">
-          {{ section.settings.subheading }}
-        </p>
-      {%- endif -%}
-
-      {%- if section.settings.button_label != blank -%}
-        <div class="hero-editorial__buttons">
+        {%- if section.settings.button_label_2 != blank -%}
           <a
-            href="{{ section.settings.button_link | default: '#' }}"
-            class="hero-editorial__btn hero-editorial__btn--primary"
+            href="{{ section.settings.button_link_2 | default: '#' }}"
+            class="hero-rapha__btn hero-rapha__btn--secondary"
           >
-            {{ section.settings.button_label }}
+            {{ section.settings.button_label_2 }}
           </a>
-
-          {%- if section.settings.button_label_2 != blank -%}
-            <a
-              href="{{ section.settings.button_link_2 | default: '#' }}"
-              class="hero-editorial__btn hero-editorial__btn--secondary"
-            >
-              {{ section.settings.button_label_2 }}
-            </a>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
-    </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
   </div>
 </section>
 
 <style>
-  .hero-editorial {
+  /* ==========================================================================
+     HERO IMAGE SECTION - Pure full-bleed, no overlay
+     ========================================================================== */
+
+  .hero-rapha {
     position: relative;
     width: 100%;
-    min-height: var(--hero-height, 75vh);
-    display: flex;
-    align-items: flex-end;
+    height: var(--hero-height, 70vh);
     overflow: hidden;
   }
 
-  .hero-editorial__media {
-    position: absolute;
-    inset: 0;
+  .hero-rapha__media {
     width: 100%;
     height: 100%;
   }
 
-  .hero-editorial__image {
+  .hero-rapha__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
   }
 
-  .hero-editorial__placeholder {
+  .hero-rapha__placeholder {
     width: 100%;
     height: 100%;
-    background-color: var(--color-warm-gray, #E8E6E1);
+    background-color: #E8E6E1;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .hero-editorial__placeholder svg {
-    width: 50%;
+  .hero-rapha__placeholder svg {
+    width: 30%;
     height: auto;
-    opacity: 0.3;
+    opacity: 0.2;
   }
 
-  .hero-editorial__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, var(--overlay-opacity, 0.6)) 0%,
-      rgba(0, 0, 0, calc(var(--overlay-opacity, 0.6) * 0.5)) 40%,
-      rgba(0, 0, 0, 0) 70%
-    );
-    pointer-events: none;
-  }
+  /* ==========================================================================
+     CONTENT SECTION - White background below image (Rapha pattern)
+     ========================================================================== */
 
-  .hero-editorial__content {
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    padding: var(--space-2xl, 3rem) var(--space-md, 1rem);
-  }
-
-  .hero-editorial__content-inner {
-    max-width: var(--container-max, 80rem);
-    margin: 0 auto;
-  }
-
-  /* Mobile: centered text */
-  .hero-editorial__content--left .hero-editorial__content-inner,
-  .hero-editorial__content--center .hero-editorial__content-inner {
+  .hero-rapha__content-section {
+    background-color: #FFFFFF;
+    padding: 48px 24px;
     text-align: center;
   }
 
-  .hero-editorial__overline {
-    display: block;
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.6875rem;
-    font-weight: 500;
+  .hero-rapha__content-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero-rapha__heading {
+    font-family: var(--font-heading-family, 'Assistant', sans-serif);
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: var(--space-sm, 0.5rem);
-  }
-
-  .hero-editorial__heading {
-    font-family: var(--font-display, 'Instrument Serif', serif);
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    font-weight: 400;
+    letter-spacing: 0.05em;
     line-height: 1.1;
-    color: var(--color-white, #FFFFFF);
-    margin: 0 0 var(--space-md, 1rem);
+    color: #0A0A0A;
+    margin: 0 0 16px;
   }
 
-  .hero-editorial__subheading {
-    font-family: var(--font-body, 'DM Sans', sans-serif);
+  .hero-rapha__subheading {
+    font-family: var(--font-body-family, 'Assistant', sans-serif);
     font-size: 1rem;
     font-weight: 400;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
-    margin: 0 0 var(--space-lg, 1.5rem);
-    max-width: 40ch;
+    line-height: 1.5;
+    color: #4A4A4A;
+    margin: 0 0 28px;
+    font-style: italic;
   }
 
-  .hero-editorial__content--center .hero-editorial__subheading {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-editorial__buttons {
+  .hero-rapha__buttons {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm, 0.5rem);
-  }
-
-  .hero-editorial__content--center .hero-editorial__buttons {
+    gap: 12px;
     align-items: center;
   }
 
-  .hero-editorial__btn {
+  .hero-rapha__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.8125rem;
+    font-family: var(--font-body-family, 'Assistant', sans-serif);
+    font-size: 13px;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     text-decoration: none;
-    padding: 1rem 2rem;
-    transition: all 0.3s ease;
+    padding: 16px 48px;
     min-width: 200px;
+    transition: all 0.2s ease;
   }
 
-  .hero-editorial__btn--primary {
-    background-color: var(--color-white, #FFFFFF);
-    color: var(--color-black, #0A0A0A);
+  .hero-rapha__btn--primary {
+    background-color: #0A0A0A;
+    color: #FFFFFF;
+    border: none;
   }
 
-  .hero-editorial__btn--primary:hover {
-    background-color: var(--color-off-white, #F7F7F5);
-    opacity: 1;
+  .hero-rapha__btn--primary:hover {
+    background-color: #333333;
   }
 
-  .hero-editorial__btn--secondary {
-    background-color: transparent;
-    color: var(--color-white, #FFFFFF);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+  .hero-rapha__btn--secondary {
+    background-color: #FFFFFF;
+    color: #0A0A0A;
+    border: 1px solid #0A0A0A;
   }
 
-  .hero-editorial__btn--secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: var(--color-white, #FFFFFF);
-    opacity: 1;
+  .hero-rapha__btn--secondary:hover {
+    background-color: #0A0A0A;
+    color: #FFFFFF;
   }
 
   /* Tablet and up */
   @media (min-width: 768px) {
-    .hero-editorial__content {
-      padding: var(--space-3xl, 4rem) var(--space-xl, 2rem);
+    .hero-rapha__content-section {
+      padding: 56px 40px;
     }
 
-    .hero-editorial__content--left .hero-editorial__content-inner {
-      text-align: left;
+    .hero-rapha__heading {
+      font-size: clamp(2rem, 4vw, 3rem);
     }
 
-    .hero-editorial__heading {
-      font-size: clamp(3rem, 6vw, 6rem);
-    }
-
-    .hero-editorial__subheading {
+    .hero-rapha__subheading {
       font-size: 1.125rem;
     }
 
-    .hero-editorial__buttons {
+    .hero-rapha__buttons {
       flex-direction: row;
-    }
-
-    .hero-editorial__content--left .hero-editorial__subheading {
-      margin-left: 0;
-      margin-right: 0;
-    }
-
-    .hero-editorial__content--left .hero-editorial__buttons {
-      justify-content: flex-start;
+      justify-content: center;
     }
   }
 
   /* Desktop */
   @media (min-width: 1024px) {
-    .hero-editorial__content {
-      padding: var(--space-4xl, 6rem) var(--space-xl, 2rem);
+    .hero-rapha__content-section {
+      padding: 64px 40px;
     }
   }
 </style>
@@ -283,14 +226,14 @@
 {% schema %}
 {
   "name": "Editorial Hero",
-  "tag": "section",
+  "tag": "div",
   "class": "section-hero-editorial",
   "settings": [
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Background image",
-      "info": "Recommended: 1920x1080px or larger. Use high-quality lab/equipment photography."
+      "label": "Hero image",
+      "info": "Full-bleed, edge-to-edge. Recommended: 1920x1080px or larger."
     },
     {
       "type": "range",
@@ -299,45 +242,18 @@
       "max": 100,
       "step": 5,
       "unit": "vh",
-      "label": "Hero height",
-      "default": 75
-    },
-    {
-      "type": "range",
-      "id": "overlay_opacity",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "label": "Overlay opacity",
-      "default": 50,
-      "info": "Darkens image for better text readability"
-    },
-    {
-      "type": "select",
-      "id": "text_alignment",
-      "label": "Text alignment (desktop)",
-      "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" }
-      ],
-      "default": "left"
+      "label": "Image height",
+      "default": 70
     },
     {
       "type": "header",
-      "content": "Content"
-    },
-    {
-      "type": "text",
-      "id": "overline",
-      "label": "Overline",
-      "info": "Small text above headline (e.g., collection name)"
+      "content": "Content (appears below image)"
     },
     {
       "type": "textarea",
       "id": "heading",
       "label": "Heading",
-      "default": "Precision Lab Equipment"
+      "default": "PRECISION LAB EQUIPMENT"
     },
     {
       "type": "textarea",
@@ -379,7 +295,7 @@
     {
       "name": "Editorial Hero",
       "settings": {
-        "heading": "Precision Lab Equipment",
+        "heading": "PRECISION LAB EQUIPMENT",
         "subheading": "Reliable instruments for clinical and research workflows.",
         "button_label": "Shop Now"
       }
