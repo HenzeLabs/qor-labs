@@ -3602,6 +3602,15 @@ details-disclosure > details {
   }
 }
 
+/* Hide third-party review widgets that display zero reviews. */
+.trustoo,
+[class*="trustoo"],
+[id*="trustoo"],
+[class*="tt-o-review"],
+[id*="ali-review"] {
+  display: none !important;
+}
+
 .cart__reassurance {
   margin-top: 1rem;
   padding: 1rem;

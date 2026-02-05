@@ -1,0 +1,153 @@
+{%- style -%}
+  .collection-compare-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .collection-compare-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .collection-compare-{{ section.id }} table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  .collection-compare-{{ section.id }} th,
+  .collection-compare-{{ section.id }} td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 0.75rem 0.5rem;
+    text-align: left;
+  }
+  .collection-compare-{{ section.id }} th {
+    font-weight: 600;
+  }
+{%- endstyle -%}
+
+<section class="collection-compare-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="{{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <p class="collection-compare__subheading">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="collection-compare__table">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>What to look for</th>
+              <th>Best fit</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for block in section.blocks -%}
+              <tr {{ block.shopify_attributes }}>
+                <td>{{ block.settings.feature }}</td>
+                <td>{{ block.settings.guidance }}</td>
+                <td>{{ block.settings.best_for }}</td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection comparison",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Compare models at a glance"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Use these criteria to choose the right model for your workflow."
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h2",
+      "options": [
+        { "value": "h2", "label": "Medium" },
+        { "value": "h1", "label": "Large" },
+        { "value": "h3", "label": "Small" }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature",
+          "label": "Feature",
+          "default": "Max speed"
+        },
+        {
+          "type": "text",
+          "id": "guidance",
+          "label": "Guidance",
+          "default": "Match RPM/RCF to your protocol."
+        },
+        {
+          "type": "text",
+          "id": "best_for",
+          "label": "Best fit",
+          "default": "High throughput sample prep"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection comparison",
+      "blocks": [
+        { "type": "row" },
+        { "type": "row" },
+        { "type": "row" }
+      ]
+    }
+  ]
+}
+{% endschema %}

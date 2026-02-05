@@ -132,6 +132,48 @@
         "padding_top": 32,
         "padding_bottom": 48
       }
+    },
+    "collection_compare": {
+      "type": "collection-compare",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "feature": "Cell type",
+            "guidance": "Confirm compatibility with WBC differential counts.",
+            "best_for": "Hematology labs"
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "feature": "Display",
+            "guidance": "Clear LCD reduces reading errors.",
+            "best_for": "Busy benches"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "feature": "Accessories",
+            "guidance": "Check for compatible counting keys.",
+            "best_for": "Higher accuracy needs"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3"
+      ],
+      "settings": {
+        "heading": "Compare models at a glance",
+        "subheading": "Use these criteria to choose the right model for your workflow.",
+        "heading_size": "h2",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
     }
   },
   "order": [
@@ -139,6 +181,7 @@
     "collection_intro",
     "product-grid",
     "collection_faq",
-    "collection_links"
+    "collection_links",
+    "collection_compare"
   ]
 }

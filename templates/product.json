@@ -160,10 +160,48 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "social_proof_bar_product": {
+      "type": "social-proof-bar",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "title": "Ships in 24 hours",
+            "text": "Most orders ship next business day."
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "title": "Warranty support",
+            "text": "Register for coverage and assistance."
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "title": "Fast answers",
+            "text": "We help you choose the right model."
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3"
+      ],
+      "settings": {
+        "heading": "Why labs choose Qor Labs",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
     }
   },
   "order": [
     "main",
+    "social_proof_bar_product",
     "related-products"
   ]
 }
