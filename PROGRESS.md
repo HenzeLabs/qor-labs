@@ -2,7 +2,7 @@
 
 > **Claude: READ THIS before starting ANY work. Update status after completing each task.**
 
-## Current Phase: 2 — Homepage
+## Current Phase: 3 — Collection Page
 ## Last Updated: 2026-02-05
 ## Last Working Branch: main
 ## Dev Theme ID: 176271589540
@@ -10,7 +10,7 @@
 
 ---
 
-## Phase 1: Foundation ✅ COMPLETE
+## Phase 1: Foundation ✅ COMPLETE (with corrections)
 
 ### Setup
 - [x] Examine current theme structure (`ls` all directories, understand what exists)
@@ -26,14 +26,27 @@
 - [x] Create base responsive container system
 - [x] Set up CSS reset / normalize
 
+### Rapha-Style CSS Overrides (Added 2026-02-05)
+- [x] `rapha-overrides.css` — Comprehensive CSS to transform Dawn into Rapha aesthetic
+- [x] Announcement bar: 11px uppercase tracked text, thin padding, black bg
+- [x] Header: shrunk logo (90-110px), uppercase tracked nav (13px), hidden country selector, hidden dropdown carets
+- [x] Global typography: proper font-family cascade for headings/body
+- [x] Buttons: uppercase, tracked, no border-radius
+
+### Hero Section Redesign (2026-02-05)
+- [x] **CRITICAL FIX**: Changed from "text overlay on image" to "Rapha pattern" (pure image above, text section below)
+- [x] Hero is now: full-bleed image ONLY (no text overlay, no gradient)
+- [x] Content section BELOW image: white bg, centered headline, italic subhead, two buttons side-by-side
+- [x] This matches Rapha's actual hero pattern where text appears below the hero image, not on it
+
 ### Deliverable
 A clean, styled blank page that loads with correct fonts, colors, and base layout. No content sections yet — just the foundation.
 
-**Status:** Foundation complete. Google Fonts (Instrument Serif + DM Sans) loading. Tailwind CSS compilation working. CSS custom properties defined. Theme pushed to dev theme 176271589540.
+**Status:** Foundation complete. Google Fonts loading. Tailwind working. CSS overrides applied via `rapha-overrides.css` to make Dawn theme match Rapha aesthetic. Verified at both 375px and 1440px breakpoints.
 
 ---
 
-## Phase 2: Homepage 🔄 IN PROGRESS
+## Phase 2: Homepage ✅ COMPLETE (with corrections)
 
 ### Sections to Build
 - [x] `section-hero-editorial.liquid` — Full-bleed hero with dynamic content
@@ -45,14 +58,23 @@ A clean, styled blank page that loads with correct fonts, colors, and base layou
 - [x] `section-newsletter.liquid` — Email signup
 
 ### Templates
-- [ ] `templates/index.json` — Wire up all homepage sections in correct order
+- [x] `templates/index.json` — Wire up all homepage sections in correct order
+
+### Design Corrections Applied (2026-02-05)
+Initial build had design drift — looked like generic Shopify, not Rapha. Fixed via CSS overrides:
+- Header: logo too big (180px→90px), country selector visible, nav not uppercase/tracked
+- Announcement bar: too bold, not subtle thin strip
+- Hero: typography wasn't using Instrument Serif, gradient too heavy
+- Secondary nav bar: was showing collection quicklinks (now hidden)
 
 ### Deliverable
 Complete homepage with all sections pulling live Shopify data. No hardcoded content.
 
+**Status:** All 7 homepage sections built, wired, and now properly styled with Rapha aesthetic. Verified visually at 375px mobile and 1440px desktop.
+
 ---
 
-## Phase 3: Collection Page ⬜ NOT STARTED
+## Phase 3: Collection Page 🔄 UP NEXT
 
 ### Components
 - [ ] `section-collection-header.liquid` — Collection title, description, image
@@ -155,5 +177,9 @@ Live site, fully functional, zero regressions.
 |------|----------|--------|
 | 2026-02-05 | Keep Dawn's base.css alongside new theme.css | Gradual migration avoids breaking existing functionality while we build new Rapha-inspired sections |
 | 2026-02-05 | Use Google Fonts instead of Shopify font picker | Design system specifies exact fonts (Instrument Serif + DM Sans) that aren't in Shopify's font library |
-| 2026-02-05 | **STOPPED MID-TASK:** All 7 homepage sections created. Next step: wire up `templates/index.json` with section order, then test/push | User requested stop. Sections exist in /sections/ but index.json still references Dawn defaults |
+| 2026-02-05 | Completed Phase 2 Homepage | All 7 Rapha-style sections wired into index.json, pushed to dev theme, verified rendering at preview URL |
+| 2026-02-05 | Created rapha-overrides.css | Design had drifted to "generic Shopify" feel. CSS override file applies Rapha aesthetics (tiny logo, uppercase tracked nav, subtle announcement bar, serif headlines) without modifying Dawn's base files |
+| 2026-02-05 | Hide secondary collection nav via CSS | Collections should be in mega menu, not as toolbar. Used CSS `display:none` on `.header-collections` |
+| 2026-02-05 | Redesigned hero to Rapha pattern | **Critical insight**: Rapha's hero has NO text overlay on image — text appears in a separate white section BELOW the image. This is the key to their editorial magazine feel. Changed `section-hero-editorial.liquid` to match. |
+| 2026-02-05 | Hide dropdown carets on nav | Added CSS to hide `.icon-caret` SVGs in header for cleaner Rapha look |
 
