@@ -9,6 +9,73 @@
  */
 {
   "sections": {
+    "blog_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lab Equipment Guides",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Straightforward buying advice and workflow tips for busy labs.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "full_width": false,
+        "padding_top": 28,
+        "padding_bottom": 12
+      }
+    },
+    "top_guides": {
+      "type": "blog-top-guides",
+      "blocks": {
+        "guide_1": {
+          "type": "guide",
+          "settings": {
+            "article": "news/choosing-the-right-lab-centrifuge-an-essential-buyers-guide"
+          }
+        },
+        "guide_2": {
+          "type": "guide",
+          "settings": {
+            "article": "news/digital-differential-counters-101-how-they-improve-accuracy-in-hematology-labs"
+          }
+        },
+        "guide_3": {
+          "type": "guide",
+          "settings": {
+            "article": "news/what-is-a-slide-warmer-and-why-does-your-lab-need-one"
+          }
+        }
+      },
+      "block_order": [
+        "guide_1",
+        "guide_2",
+        "guide_3"
+      ],
+      "settings": {
+        "heading": "Start here",
+        "subheading": "Buyer guides and practical workflows for clinical and research labs.",
+        "heading_size": "h2",
+        "color_scheme": "scheme-1",
+        "padding_top": 20,
+        "padding_bottom": 28
+      }
+    },
     "main": {
       "type": "main-blog",
       "settings": {
@@ -17,12 +84,16 @@
         "image_height": "small",
         "show_date": true,
         "show_author": false,
-        "padding_top": 36,
+        "show_tag_filter": true,
+        "tag_filter_heading": "Filter by topic",
+        "padding_top": 20,
         "padding_bottom": 36
       }
     }
   },
   "order": [
+    "blog_intro",
+    "top_guides",
     "main"
   ]
 }

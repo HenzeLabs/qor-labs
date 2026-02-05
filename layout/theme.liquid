@@ -16,15 +16,49 @@
     {%- endunless -%}
 
     <title>
-      {{ page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- if request.page_type == 'index' -%}
+        Qor Labs | Affordable Lab Equipment, Shipped Fast
+      {%- elsif request.page_type == 'product' -%}
+        {%- liquid
+          assign max_title_length = 48
+          assign product_title = product.title
+          if product_title.size > max_title_length
+            assign truncated = product_title | truncatewords: 6, '' | strip
+            if truncated.size > max_title_length
+              assign truncated = product_title | truncate: max_title_length, '...'
+            endif
+            assign product_title = truncated
+          endif
+        -%}
+        {{ product_title }} &ndash; {{ shop.name }}
+      {%- else -%}
+        {{ page_title }}
+        {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+        {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- endif -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
+    {%- liquid
+      assign meta_description = page_description
+      if meta_description == blank
+        case request.page_type
+          when 'product'
+            assign meta_description = product.description | strip_html | strip | truncate: 160
+          when 'collection'
+            assign meta_description = collection.description | strip_html | strip | truncate: 160
+          when 'blog'
+            assign meta_description = blog.description | strip_html | strip | truncate: 160
+          when 'article'
+            assign meta_description = article.excerpt_or_content | strip_html | strip | truncate: 160
+        endcase
+      endif
+    -%}
+    {%- if request.page_type == 'index' -%}
+      <meta name="description" content="Shop affordable lab equipment from Qor Labs. Centrifuges, microscopes, slide warmers & more — quality instruments at budget prices. Most orders ship within 24 hours.">
+    {%- elsif meta_description != blank -%}
+      <meta name="description" content="{{ meta_description | escape }}">
+    {%- endif -%}
 
     {% render 'meta-tags' %}
 

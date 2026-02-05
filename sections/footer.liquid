@@ -25,6 +25,21 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .footer__info-links {
+    margin: 1rem 0 0;
+  }
+  .footer__info-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+  }
+  .footer__info-links a {
+    text-decoration: none;
+  }
 {%- endstyle -%}
 
 <footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
@@ -250,6 +265,22 @@
     {%- endunless -%}
   {%- endif -%}
 
+  {%- if section.settings.show_info_links -%}
+    {%- assign info_links = section.settings.info_links | newline_to_br | split: '<br />' -%}
+    <div class="footer__info-links page-width">
+      <ul>
+        {%- for item in info_links -%}
+          {%- assign parts = item | split: '|' -%}
+          {%- assign label = parts[0] | strip -%}
+          {%- assign url = parts[1] | strip -%}
+          {%- if label != blank and url != blank -%}
+            <li><a class="link link--text" href="{{ url }}">{{ label }}</a></li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
+
   <div
     class="footer__content-bottom{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     {% if settings.animations_reveal_on_scroll %}
@@ -464,6 +495,18 @@
       "default": true,
       "label": "t:sections.footer.settings.show_social.label",
       "info": "t:sections.footer.settings.show_social.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_info_links",
+      "default": true,
+      "label": "Show info links row"
+    },
+    {
+      "type": "textarea",
+      "id": "info_links",
+      "label": "Info links (Label|URL per line)",
+      "default": "About Qor Labs|/pages/about-qor-labs\nShipping & Returns|/pages/shipping-returns\nWarranty Registration|/pages/online-warranty-registration\nContact|/pages/contact-us\nUser Manuals|/pages/user-manuals\nAll Collections|/collections"
     },
     {
       "type": "checkbox",

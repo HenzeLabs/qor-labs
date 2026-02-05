@@ -32,6 +32,9 @@
 -%}
 
 <div class="card-wrapper animate-arrow {% if wrapper_class and wrapper_class != 'none' %}{{ wrapper_class }}{% else %}collection-card-wrapper{% endif %}">
+  {%- if card_collection != blank -%}
+    <a href="{{ card_collection.url }}" class="full-unstyled-link">
+  {%- endif -%}
   <div
     class="
       card
@@ -84,14 +87,7 @@
         <div class="card__content">
           <div class="card__information">
             <h3 class="card__heading">
-              <a
-                {% if card_collection == blank %}
-                  role="link" aria-disabled="true"
-                {% else %}
-                  href="{{ card_collection.url }}"
-                {% endif %}
-                class="full-unstyled-link"
-              >
+              <span class="full-unstyled-link">
                 {%- if card_collection.title != blank -%}
                   {{- card_collection.title | escape -}}
                 {%- else -%}
@@ -102,7 +98,7 @@
                     {{- 'icon-arrow.svg' | inline_asset_content -}}
                   </span>
                 {%- endif %}
-              </a>
+              </span>
             </h3>
             {%- if card_collection.description != blank -%}
               <p class="card__caption">
@@ -120,14 +116,7 @@
       <div class="card__content">
         <div class="card__information">
           <h3 class="card__heading">
-            <a
-              {% if card_collection == blank %}
-                role="link" aria-disabled="true"
-              {% else %}
-                href="{{ card_collection.url }}"
-              {% endif %}
-              class="full-unstyled-link"
-            >
+            <span class="full-unstyled-link">
               {%- if card_collection.title != blank -%}
                 {{- card_collection.title | escape -}}
               {%- else -%}
@@ -138,7 +127,7 @@
                   {{- 'icon-arrow.svg' | inline_asset_content -}}
                 </span>
               {%- endif %}
-            </a>
+            </span>
           </h3>
           {%- if card_collection.featured_image == null and card_collection.description != blank -%}
             <p class="card__caption">
@@ -166,4 +155,7 @@
       </div>
     {%- endif -%}
   </div>
+  {%- if card_collection != blank -%}
+    </a>
+  {%- endif -%}
 </div>

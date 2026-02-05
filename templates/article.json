@@ -43,9 +43,53 @@
         "content"
       ],
       "settings": {}
+    },
+    "article_related": {
+      "type": "article-related",
+      "blocks": {
+        "product_1": {
+          "type": "product",
+          "settings": {
+            "product": "at-digital-8-place-fixed-angle-centrifuge"
+          }
+        },
+        "product_2": {
+          "type": "product",
+          "settings": {
+            "product": "slide-warmer"
+          }
+        },
+        "article_1": {
+          "type": "article",
+          "settings": {
+            "article": "news/choosing-the-right-lab-centrifuge-an-essential-buyers-guide"
+          }
+        },
+        "article_2": {
+          "type": "article",
+          "settings": {
+            "article": "news/what-is-a-slide-warmer-and-why-does-your-lab-need-one"
+          }
+        }
+      },
+      "block_order": [
+        "product_1",
+        "product_2",
+        "article_1",
+        "article_2"
+      ],
+      "settings": {
+        "products_heading": "Related products",
+        "guides_heading": "Related guides",
+        "heading_size": "h3",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 48
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "article_related"
   ]
 }

@@ -49,6 +49,51 @@
           "type": "description",
           "settings": {}
         },
+        "quick_specs": {
+          "type": "quick_specs",
+          "settings": {
+            "heading": "At-a-glance specs",
+            "specs": "Max speed: 10,000 RPM\nCapacity: 6 x 1.5/2.0 mL\nRotor type: Fixed angle"
+          }
+        },
+        "best_for": {
+          "type": "best_for",
+          "settings": {
+            "heading": "Best for",
+            "content": "<p>Ideal for PCR prep, quick spins, and routine sample processing.</p>"
+          }
+        },
+        "whats_included": {
+          "type": "whats_included",
+          "settings": {
+            "heading": "What's included",
+            "content": "<p>Instrument, power adapter, user manual, and warranty card.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "What tube sizes does this support?",
+            "answer": "<p>Compatible tube sizes are listed in the specifications on this page.</p>",
+            "icon": "ruler"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Is calibration required?",
+            "answer": "<p>No routine calibration is required for typical lab use. Reach out if you need validation support.</p>",
+            "icon": "chat_bubble"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the warranty coverage?",
+            "answer": "<p>Standard warranty applies. Register your product to activate coverage.</p>",
+            "icon": "box"
+          }
+        },
         "share": {
           "type": "share",
           "settings": {
@@ -64,6 +109,12 @@
         "quantity_selector",
         "buy_buttons",
         "description",
+        "quick_specs",
+        "best_for",
+        "whats_included",
+        "faq_1",
+        "faq_2",
+        "faq_3",
         "share"
       ],
       "settings": {

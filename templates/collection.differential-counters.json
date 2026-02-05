@@ -21,12 +21,12 @@
       "type": "collection-intro",
       "settings": {
         "kicker": "Built for busy labs",
-        "heading": "Find the right model",
+        "heading": "",
         "heading_size": "h2",
-        "intro": "<p>Compare capacity, speed, and workflow fit to choose the best instrument for your lab.</p>",
-        "highlights": "Fast shipping on most orders\nStraightforward specs and setup\nSupport when you need it",
+        "intro": "<p>Accurate, easy-to-use counters that reduce manual error and speed up hematology workflows.</p>",
+        "highlights": "Improves accuracy in manual differentials\nEasy-to-read displays\nDurable for daily use",
         "cta_label": "Compare models",
-        "cta_link": "shopify://collections/all",
+        "cta_link": "shopify://collections/differential-counters",
         "color_scheme": "scheme-1",
         "padding_top": 32,
         "padding_bottom": 32
@@ -58,22 +58,22 @@
         "faq_1": {
           "type": "faq",
           "settings": {
-            "question": "How do I choose the right model?",
-            "answer": "<p>Match tube size, target RPM/RCF, and daily throughput to your workflow.</p>"
+            "question": "How many keys do I need?",
+            "answer": "<p>Choose the key count that matches your lab\u2019s differential protocols and staff preference.</p>"
           }
         },
         "faq_2": {
           "type": "faq",
           "settings": {
-            "question": "Do you offer support if I’m not sure which unit I need?",
-            "answer": "<p>Yes. Tell us your sample type and volume, and we’ll recommend the best fit.</p>"
+            "question": "Is training required?",
+            "answer": "<p>Most techs can use these immediately with minimal instruction.</p>"
           }
         },
         "faq_3": {
           "type": "faq",
           "settings": {
-            "question": "How fast do orders ship?",
-            "answer": "<p>Most orders ship within 24 hours.</p>"
+            "question": "Do you offer replacement parts?",
+            "answer": "<p>Yes. Contact us for accessories and support.</p>"
           }
         }
       },
@@ -96,25 +96,25 @@
         "product_1": {
           "type": "product",
           "settings": {
-            "product": ""
+            "product": "5-key-differential-counter"
           }
         },
         "product_2": {
           "type": "product",
           "settings": {
-            "product": ""
+            "product": "hemacytometer"
           }
         },
         "article_1": {
           "type": "article",
           "settings": {
-            "article": ""
+            "article": "news/digital-differential-counters-101-how-they-improve-accuracy-in-hematology-labs"
           }
         },
         "article_2": {
           "type": "article",
           "settings": {
-            "article": ""
+            "article": "news/common-mistakes-when-using-digital-differential-counters-and-how-to-avoid-them"
           }
         }
       },

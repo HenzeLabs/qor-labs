@@ -15,26 +15,26 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Affordable Lab Equipment, Shipped Fast.",
+            "heading": "Affordable Lab Equipment. Ships Fast.",
             "heading_size": "h0"
           }
         },
         "text_y9BhfK": {
           "type": "text",
           "settings": {
-            "text": "Equip your lab with quality products at budget prices—most items ship within 24 hours.",
+            "text": "Reliable instruments for clinical and research workflows. Most orders ship within 24 hours.",
             "text_style": "body"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop Now",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_label_1": "Shop Centrifuges",
+            "button_link_1": "shopify://collections/centrifuges",
+            "button_style_secondary_1": false,
+            "button_label_2": "Browse All Categories",
+            "button_link_2": "shopify://collections",
+            "button_style_secondary_2": true
           }
         }
       },
@@ -57,6 +57,59 @@
         "show_text_below": true
       }
     },
+    "trust_points": {
+      "type": "multicolumn",
+      "blocks": {
+        "col1": {
+          "type": "column",
+          "settings": {
+            "title": "24-hour shipping on most orders",
+            "text": "<p>Get your lab back on schedule with fast fulfillment.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col2": {
+          "type": "column",
+          "settings": {
+            "title": "Warranty-backed support",
+            "text": "<p>Register your product for quick assistance when you need it.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col3": {
+          "type": "column",
+          "settings": {
+            "title": "Budget-friendly pricing",
+            "text": "<p>Dependable instruments without premium-brand overhead.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "col1",
+        "col2",
+        "col3"
+      ],
+      "settings": {
+        "title": "Why labs choose Qor Labs",
+        "heading_size": "h2",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "collection_list_bUV78n": {
       "type": "collection-list",
       "blocks": {
@@ -77,29 +130,78 @@
           "settings": {
             "collection": "slide-and-petri-dish-warmers"
           }
+        },
+        "featured_collection_microscopes": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "microscopes"
+          }
         }
       },
       "block_order": [
         "featured_collection_Ak3YhL",
         "featured_collection_j7BCb9",
-        "featured_collection_JNpBFy"
+        "featured_collection_JNpBFy",
+        "featured_collection_microscopes"
       ],
       "settings": {
-        "title": "Featured Collections",
-        "heading_size": "h1",
+        "title": "Shop by Category",
+        "heading_size": "h2",
         "image_ratio": "square",
-        "columns_desktop": 3,
+        "columns_desktop": 4,
         "color_scheme": "",
-        "show_view_all": false,
+        "show_view_all": true,
         "columns_mobile": "1",
-        "swipe_on_mobile": false,
+        "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "about_teaser": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Qor Labs",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Qor Labs supplies reliable lab instruments for clinical, academic, and research teams. We focus on straightforward, durable equipment that fits real-world budgets—backed by responsive support.</p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn more",
+            "button_link": "shopify://pages/about-qor-labs",
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "full_width": false,
+        "padding_top": 36,
+        "padding_bottom": 48
       }
     }
   },
   "order": [
     "image_banner",
-    "collection_list_bUV78n"
+    "trust_points",
+    "collection_list_bUV78n",
+    "about_teaser"
   ]
 }

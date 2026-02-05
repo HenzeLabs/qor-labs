@@ -21,12 +21,12 @@
       "type": "collection-intro",
       "settings": {
         "kicker": "Built for busy labs",
-        "heading": "Find the right model",
+        "heading": "",
         "heading_size": "h2",
-        "intro": "<p>Compare capacity, speed, and workflow fit to choose the best instrument for your lab.</p>",
-        "highlights": "Fast shipping on most orders\nStraightforward specs and setup\nSupport when you need it",
+        "intro": "<p>Designed for blood and clinical sample preparation with reliable balance, clear controls, and consistent separation.</p>",
+        "highlights": "Built for clinical sample prep\nBalanced rotors for steady spins\nStraightforward operation",
         "cta_label": "Compare models",
-        "cta_link": "shopify://collections/all",
+        "cta_link": "shopify://collections/test-tube-centrifuges",
         "color_scheme": "scheme-1",
         "padding_top": 32,
         "padding_bottom": 32
@@ -58,22 +58,22 @@
         "faq_1": {
           "type": "faq",
           "settings": {
-            "question": "How do I choose the right model?",
-            "answer": "<p>Match tube size, target RPM/RCF, and daily throughput to your workflow.</p>"
+            "question": "What clinical tubes are supported?",
+            "answer": "<p>Check each model for supported tube sizes and rotor configurations.</p>"
           }
         },
         "faq_2": {
           "type": "faq",
           "settings": {
-            "question": "Do you offer support if I’m not sure which unit I need?",
-            "answer": "<p>Yes. Tell us your sample type and volume, and we’ll recommend the best fit.</p>"
+            "question": "Is this suitable for hematology labs?",
+            "answer": "<p>Yes. These models are designed for routine clinical workflows.</p>"
           }
         },
         "faq_3": {
           "type": "faq",
           "settings": {
-            "question": "How fast do orders ship?",
-            "answer": "<p>Most orders ship within 24 hours.</p>"
+            "question": "Do you provide setup guidance?",
+            "answer": "<p>Yes. Reach out for recommendations and setup tips.</p>"
           }
         }
       },
@@ -96,25 +96,25 @@
         "product_1": {
           "type": "product",
           "settings": {
-            "product": ""
+            "product": "speedspin-6-place-centrifuge"
           }
         },
         "product_2": {
           "type": "product",
           "settings": {
-            "product": ""
+            "product": "spincrit-microhematocrit-centrifuge"
           }
         },
         "article_1": {
           "type": "article",
           "settings": {
-            "article": ""
+            "article": "news/choosing-the-right-lab-centrifuge-an-essential-buyers-guide"
           }
         },
         "article_2": {
           "type": "article",
           "settings": {
-            "article": ""
+            "article": "news/digital-differential-counters-101-how-they-improve-accuracy-in-hematology-labs"
           }
         }
       },

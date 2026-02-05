@@ -47,7 +47,16 @@
         {%- if item.selling_plan_allocation != null -%}
           <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
         {%- endif -%}
+        <p class="cart-notification-product__price">
+          {%- if item.original_line_price != item.final_line_price -%}
+            <s>{{ item.original_line_price | money }}</s>
+          {%- endif -%}
+          {{ item.final_line_price | money }}
+        </p>
       </div>
     </div>
   {%- endfor -%}
+  <p class="cart-notification__subtotal">
+    <strong>{{ 'sections.cart.subtotal' | t }}:</strong> {{ cart.items_subtotal_price | money }}
+  </p>
 {%- endif -%}

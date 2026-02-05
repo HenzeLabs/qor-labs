@@ -115,20 +115,27 @@ product-info {
 }
 
 .shopify-payment-button__button--unbranded {
-  background-color: rgba(var(--color-button), var(--alpha-button-background));
-  color: rgb(var(--color-button-text));
+  background-color: rgba(var(--color-secondary-button), var(--alpha-button-background));
+  color: rgb(var(--color-secondary-button-text));
   font-size: 1.4rem;
   line-height: calc(1 + 0.2 / var(--font-body-scale));
   letter-spacing: 0.07rem;
 }
 
 .shopify-payment-button__button--unbranded::selection {
-  background-color: rgba(var(--color-button-text), 0.3);
+  background-color: rgba(var(--color-secondary-button-text), 0.3);
 }
 
 .shopify-payment-button__button--unbranded:hover,
 .shopify-payment-button__button--unbranded:hover:not([disabled]) {
-  background-color: rgba(var(--color-button), var(--alpha-button-background));
+  background-color: rgba(var(--color-secondary-button), var(--alpha-button-background));
+}
+
+.shopify-payment-button__button--unbranded:after {
+  --border-opacity: var(--buttons-border-opacity);
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+      rgba(var(--color-secondary-button-text), var(--border-opacity)),
+    0 0 0 var(--buttons-border-width) rgba(var(--color-secondary-button), var(--alpha-button-background));
 }
 
 .shopify-payment-button__more-options {
@@ -303,6 +310,64 @@ a.product__text {
 
 .product__description-title {
   font-weight: 600;
+}
+
+.product-specs {
+  margin: 0;
+  padding: 0;
+}
+
+.product-specs dt {
+  font-weight: 600;
+  margin-top: 0.8em;
+}
+
+.product-specs dt:first-child {
+  margin-top: 0;
+}
+
+.product-specs dd {
+  margin-left: 0;
+}
+
+.trust-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+  text-align: center;
+}
+
+.trust-row__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  color: rgb(var(--color-foreground));
+  opacity: 0.85;
+}
+
+.trust-row__item .svg-wrapper {
+  width: 2rem;
+  height: 2rem;
+}
+
+.trust-row__item .svg-wrapper svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .trust-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+  }
+
+  .trust-row__item {
+    font-size: 1rem;
+  }
 }
 
 .product--no-media .product__title,

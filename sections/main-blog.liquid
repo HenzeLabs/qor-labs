@@ -8,6 +8,15 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
+  .section-{{ section.id }}-padding .blog-tag-filter {
+    margin: 1.5rem 0 2rem;
+  }
+  .section-{{ section.id }}-padding .blog-tag-filter__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+  }
+
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
@@ -21,6 +30,21 @@
     <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       {{ blog.title | escape }}
     </h1>
+    {%- if section.settings.show_tag_filter and blog.all_tags.size > 0 -%}
+      <div class="blog-tag-filter">
+        {%- if section.settings.tag_filter_heading != blank -%}
+          <p class="caption-with-letter-spacing">{{ section.settings.tag_filter_heading }}</p>
+        {%- endif -%}
+        <div class="blog-tag-filter__links">
+          <a class="link{% if current_tags == blank %} link--text{% endif %}" href="{{ blog.url }}">All</a>
+          {%- for tag in blog.all_tags -%}
+            <a class="link{% if current_tags contains tag %} link--text{% endif %}" href="{{ blog.url }}/tagged/{{ tag | handle }}">
+              {{ tag }}
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
 
     <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
       {%- for article in blog.articles -%}
@@ -113,6 +137,18 @@
       "id": "show_author",
       "default": false,
       "label": "t:sections.main-blog.settings.show_author.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tag_filter",
+      "default": true,
+      "label": "Show tag filters"
+    },
+    {
+      "type": "text",
+      "id": "tag_filter_heading",
+      "default": "Filter by topic",
+      "label": "Tag filter heading"
     },
     {
       "type": "header",

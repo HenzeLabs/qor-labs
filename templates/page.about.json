@@ -1,0 +1,101 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "about_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Qor Labs",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Qor Labs provides reliable lab equipment for clinical, academic, and research teams. We focus on straightforward, durable instruments—priced to fit real-world budgets and shipped quickly so your lab stays on schedule.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "full_width": false,
+        "padding_top": 36,
+        "padding_bottom": 20
+      }
+    },
+    "about_values": {
+      "type": "multicolumn",
+      "blocks": {
+        "value_1": {
+          "type": "column",
+          "settings": {
+            "title": "Reliable every day",
+            "text": "<p>Built for busy labs with equipment that’s easy to use and maintain.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "value_2": {
+          "type": "column",
+          "settings": {
+            "title": "Fast fulfillment",
+            "text": "<p>Most orders ship within 24 hours so you can keep workflows moving.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "value_3": {
+          "type": "column",
+          "settings": {
+            "title": "Real-world pricing",
+            "text": "<p>Quality instruments without premium-brand overhead.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "value_1",
+        "value_2",
+        "value_3"
+      ],
+      "settings": {
+        "title": "What to expect",
+        "heading_size": "h2",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "about_intro",
+    "about_values"
+  ]
+}

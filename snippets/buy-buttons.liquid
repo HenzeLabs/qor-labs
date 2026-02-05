@@ -74,7 +74,7 @@
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
             name="add"
-            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            class="product-form__submit button button--full-width button--primary"
             {% if product.selected_or_first_available_variant.available == false
               or quantity_rule_soldout
               or product.selected_or_first_available_variant == null
@@ -93,6 +93,20 @@
             </span>
             {%- render 'loading-spinner' -%}
           </button>
+          <div class="trust-row" role="group" aria-label="Purchase benefits">
+            <div class="trust-row__item">
+              <span class="svg-wrapper" aria-hidden="true">{{- 'icon-truck.svg' | inline_asset_content -}}</span>
+              <span>Ships in 24 Hours</span>
+            </div>
+            <div class="trust-row__item">
+              <span class="svg-wrapper" aria-hidden="true">{{- 'icon-box.svg' | inline_asset_content -}}</span>
+              <span>Free Shipping $300+</span>
+            </div>
+            <div class="trust-row__item">
+              <span class="svg-wrapper" aria-hidden="true">{{- 'icon-return.svg' | inline_asset_content -}}</span>
+              <span>30-Day Returns</span>
+            </div>
+          </div>
           {%- if show_dynamic_checkout -%}
             {{ form | payment_button }}
           {%- endif -%}

@@ -21,12 +21,12 @@
       "type": "collection-intro",
       "settings": {
         "kicker": "Built for busy labs",
-        "heading": "Find the right model",
+        "heading": "",
         "heading_size": "h2",
-        "intro": "<p>Compare capacity, speed, and workflow fit to choose the best instrument for your lab.</p>",
-        "highlights": "Fast shipping on most orders\nStraightforward specs and setup\nSupport when you need it",
+        "intro": "<p>Keep slides and plates at stable temperatures for reliable staining, prep, and analysis.</p>",
+        "highlights": "Consistent temperature control\nImproves staining and adhesion\nSimple, cleanable surfaces",
         "cta_label": "Compare models",
-        "cta_link": "shopify://collections/all",
+        "cta_link": "shopify://collections/slide-and-petri-dish-warmers",
         "color_scheme": "scheme-1",
         "padding_top": 32,
         "padding_bottom": 32
@@ -58,22 +58,22 @@
         "faq_1": {
           "type": "faq",
           "settings": {
-            "question": "How do I choose the right model?",
-            "answer": "<p>Match tube size, target RPM/RCF, and daily throughput to your workflow.</p>"
+            "question": "What temperature range should I look for?",
+            "answer": "<p>Select a unit that covers your staining and drying protocols.</p>"
           }
         },
         "faq_2": {
           "type": "faq",
           "settings": {
-            "question": "Do you offer support if I’m not sure which unit I need?",
-            "answer": "<p>Yes. Tell us your sample type and volume, and we’ll recommend the best fit.</p>"
+            "question": "How many slides can it hold?",
+            "answer": "<p>Capacity depends on the surface size. Check product specs for slide count.</p>"
           }
         },
         "faq_3": {
           "type": "faq",
           "settings": {
-            "question": "How fast do orders ship?",
-            "answer": "<p>Most orders ship within 24 hours.</p>"
+            "question": "Are warmers easy to clean?",
+            "answer": "<p>Yes. Smooth surfaces make routine cleaning straightforward.</p>"
           }
         }
       },
@@ -96,25 +96,25 @@
         "product_1": {
           "type": "product",
           "settings": {
-            "product": ""
+            "product": "slide-warmer"
           }
         },
         "product_2": {
           "type": "product",
           "settings": {
-            "product": ""
+            "product": "power-adapter-cord-8-amp"
           }
         },
         "article_1": {
           "type": "article",
           "settings": {
-            "article": ""
+            "article": "news/what-is-a-slide-warmer-and-why-does-your-lab-need-one"
           }
         },
         "article_2": {
           "type": "article",
           "settings": {
-            "article": ""
+            "article": "news/lab-safety-essentials-must-have-protective-gear-and-best-practices"
           }
         }
       },

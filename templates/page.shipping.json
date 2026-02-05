@@ -1,0 +1,93 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shipping_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Shipping & Returns",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Most orders ship within 24 hours. Returns are accepted within 30 days for unused products in original packaging.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "full_width": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "shipping_faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "row_1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "When will my order ship?",
+            "icon": "check_mark",
+            "row_content": "<p>Most orders ship within 24 hours. Business day cutoffs apply.</p>",
+            "page": ""
+          }
+        },
+        "row_2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is your return policy?",
+            "icon": "box",
+            "row_content": "<p>Returns are accepted within 30 days for unused products in original packaging. Contact us for an RMA.</p>",
+            "page": ""
+          }
+        },
+        "row_3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I get help with shipping issues?",
+            "icon": "chat_bubble",
+            "row_content": "<p>Contact us and we’ll resolve shipping questions quickly.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3"
+      ],
+      "settings": {
+        "heading": "Shipping & Returns FAQs",
+        "heading_size": "h2",
+        "layout": "none",
+        "color_scheme": "scheme-1",
+        "padding_top": 12,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "shipping_intro",
+    "shipping_faq"
+  ]
+}

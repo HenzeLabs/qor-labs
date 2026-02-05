@@ -21,12 +21,12 @@
       "type": "collection-intro",
       "settings": {
         "kicker": "Built for busy labs",
-        "heading": "Find the right model",
+        "heading": "",
         "heading_size": "h2",
-        "intro": "<p>Compare capacity, speed, and workflow fit to choose the best instrument for your lab.</p>",
-        "highlights": "Fast shipping on most orders\nStraightforward specs and setup\nSupport when you need it",
+        "intro": "<p>Compact, high-speed centrifuges for PCR tubes and quick spins\u2014ideal for benchtop workflows where space and speed matter.</p>",
+        "highlights": "Ideal for PCR prep and quick spins\nCompact footprint for crowded benches\nSimple setup and fast shipping",
         "cta_label": "Compare models",
-        "cta_link": "shopify://collections/all",
+        "cta_link": "shopify://collections/mini-centrifuges",
         "color_scheme": "scheme-1",
         "padding_top": 32,
         "padding_bottom": 32
@@ -58,21 +58,21 @@
         "faq_1": {
           "type": "faq",
           "settings": {
-            "question": "How do I choose the right model?",
-            "answer": "<p>Match tube size, target RPM/RCF, and daily throughput to your workflow.</p>"
+            "question": "What tube sizes work with mini centrifuges?",
+            "answer": "<p>Most models support standard 1.5/2.0 mL tubes and PCR tubes. Check each model\u2019s rotor spec.</p>"
           }
         },
         "faq_2": {
           "type": "faq",
           "settings": {
-            "question": "Do you offer support if I’m not sure which unit I need?",
-            "answer": "<p>Yes. Tell us your sample type and volume, and we’ll recommend the best fit.</p>"
+            "question": "Are mini centrifuges suitable for daily use?",
+            "answer": "<p>Yes. They\u2019re built for routine bench workflows like quick spins and PCR prep.</p>"
           }
         },
         "faq_3": {
           "type": "faq",
           "settings": {
-            "question": "How fast do orders ship?",
+            "question": "How fast can I get one shipped?",
             "answer": "<p>Most orders ship within 24 hours.</p>"
           }
         }
@@ -96,25 +96,25 @@
         "product_1": {
           "type": "product",
           "settings": {
-            "product": ""
+            "product": "10-000-rpm-mini-centrifuge"
           }
         },
         "product_2": {
           "type": "product",
           "settings": {
-            "product": ""
+            "product": "mini-centrifuge-10-000-rpm"
           }
         },
         "article_1": {
           "type": "article",
           "settings": {
-            "article": ""
+            "article": "news/choosing-the-right-lab-centrifuge-an-essential-buyers-guide"
           }
         },
         "article_2": {
           "type": "article",
           "settings": {
-            "article": ""
+            "article": "news/lab-safety-essentials-must-have-protective-gear-and-best-practices"
           }
         }
       },

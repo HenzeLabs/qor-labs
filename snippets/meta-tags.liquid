@@ -4,7 +4,16 @@
   assign og_type = 'website'
   assign og_description = page_description | default: shop.description | default: shop.name
 
-  if request.page_type == 'product'
+  if request.page_type == 'index'
+    assign og_title = 'Qor Labs | Affordable Lab Equipment, Shipped Fast'
+    assign og_description = 'Shop affordable lab equipment from Qor Labs. Centrifuges, microscopes, slide warmers & more — quality instruments at budget prices. Most orders ship within 24 hours.'
+  elsif og_description == blank and request.page_type == 'product'
+    assign og_description = product.description | strip_html | strip | truncate: 200
+  elsif og_description == blank and request.page_type == 'collection'
+    assign og_description = collection.description | strip_html | strip | truncate: 200
+  elsif og_description == blank and request.page_type == 'article'
+    assign og_description = article.excerpt_or_content | strip_html | strip | truncate: 200
+  elsif request.page_type == 'product'
     assign og_type = 'product'
   elsif request.page_type == 'article'
     assign og_type = 'article'
@@ -26,6 +35,61 @@
   <meta property="og:image:height" content="{{ page_image.height }}">
 {%- endif -%}
 
+{%- if request.page_type == 'product' or request.page_type == 'collection' or request.page_type == 'article' or request.page_type == 'page' -%}
+  {%- assign breadcrumb_items = '' -%}
+  {%- assign breadcrumb_position = 1 -%}
+  {%- capture home_item -%}
+{"@type":"ListItem","position":{{ breadcrumb_position }},"name":"Home","item":"{{ request.origin | append: routes.root_url }}"}
+  {%- endcapture -%}
+  {%- assign breadcrumb_items = breadcrumb_items | append: home_item -%}
+  {%- assign breadcrumb_position = breadcrumb_position | plus: 1 -%}
+
+  {%- if request.page_type == 'collection' -%}
+    {%- capture collection_item -%}
+,{"@type":"ListItem","position":{{ breadcrumb_position }},"name":{{ collection.title | json }},"item":"{{ request.origin | append: collection.url }}"}
+    {%- endcapture -%}
+    {%- assign breadcrumb_items = breadcrumb_items | append: collection_item -%}
+  {%- elsif request.page_type == 'product' -%}
+    {%- assign breadcrumb_collection = collection | default: product.collections.first -%}
+    {%- if breadcrumb_collection -%}
+      {%- capture collection_item -%}
+,{"@type":"ListItem","position":{{ breadcrumb_position }},"name":{{ breadcrumb_collection.title | json }},"item":"{{ request.origin | append: breadcrumb_collection.url }}"}
+      {%- endcapture -%}
+      {%- assign breadcrumb_items = breadcrumb_items | append: collection_item -%}
+      {%- assign breadcrumb_position = breadcrumb_position | plus: 1 -%}
+    {%- endif -%}
+    {%- capture product_item -%}
+,{"@type":"ListItem","position":{{ breadcrumb_position }},"name":{{ product.title | json }},"item":"{{ canonical_url }}"}
+    {%- endcapture -%}
+    {%- assign breadcrumb_items = breadcrumb_items | append: product_item -%}
+  {%- elsif request.page_type == 'article' -%}
+    {%- capture blog_item -%}
+,{"@type":"ListItem","position":{{ breadcrumb_position }},"name":{{ blog.title | json }},"item":"{{ request.origin | append: blog.url }}"}
+    {%- endcapture -%}
+    {%- assign breadcrumb_items = breadcrumb_items | append: blog_item -%}
+    {%- assign breadcrumb_position = breadcrumb_position | plus: 1 -%}
+    {%- capture article_item -%}
+,{"@type":"ListItem","position":{{ breadcrumb_position }},"name":{{ article.title | json }},"item":"{{ canonical_url }}"}
+    {%- endcapture -%}
+    {%- assign breadcrumb_items = breadcrumb_items | append: article_item -%}
+  {%- elsif request.page_type == 'page' -%}
+    {%- capture page_item -%}
+,{"@type":"ListItem","position":{{ breadcrumb_position }},"name":{{ page_title | json }},"item":"{{ canonical_url }}"}
+    {%- endcapture -%}
+    {%- assign breadcrumb_items = breadcrumb_items | append: page_item -%}
+  {%- endif -%}
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {{ breadcrumb_items | strip }}
+      ]
+    }
+  </script>
+{%- endif -%}
+
 {%- if request.page_type == 'product' -%}
   <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html }}">
   <meta property="og:price:currency" content="{{ cart.currency.iso_code }}">
@@ -37,3 +101,83 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ og_title | escape }}">
 <meta name="twitter:description" content="{{ og_description | escape }}">
+
+{%- if request.page_type == 'product' -%}
+  {%- liquid
+    assign variant = product.selected_or_first_available_variant
+    assign product_description = product.description | strip_html | strip
+    if product_description != blank
+      assign product_description = product_description | truncate: 320
+    endif
+    assign currency_code = cart.currency.iso_code | default: shop.currency
+    assign availability = 'https://schema.org/OutOfStock'
+    if variant.available
+      assign availability = 'https://schema.org/InStock'
+    endif
+  -%}
+  {%- assign has_additional_property = false -%}
+  {%- capture additional_properties -%}
+    {%- if product.metafields.custom.voltage != blank -%}
+      {%- if has_additional_property -%},{%- endif -%}
+      {%- assign has_additional_property = true -%}
+      {"@type":"PropertyValue","name":"Voltage","value":{{ product.metafields.custom.voltage | json }}}
+    {%- endif -%}
+    {%- if product.metafields.custom.dimensions != blank -%}
+      {%- if has_additional_property -%},{%- endif -%}
+      {%- assign has_additional_property = true -%}
+      {"@type":"PropertyValue","name":"Dimensions","value":{{ product.metafields.custom.dimensions | json }}}
+    {%- endif -%}
+    {%- if product.metafields.custom.weight != blank -%}
+      {%- if has_additional_property -%},{%- endif -%}
+      {%- assign has_additional_property = true -%}
+      {"@type":"PropertyValue","name":"Weight","value":{{ product.metafields.custom.weight | json }}}
+    {%- endif -%}
+    {%- if product.metafields.custom.wattage != blank -%}
+      {%- if has_additional_property -%},{%- endif -%}
+      {%- assign has_additional_property = true -%}
+      {"@type":"PropertyValue","name":"Wattage","value":{{ product.metafields.custom.wattage | json }}}
+    {%- endif -%}
+    {%- if product.metafields.custom.certifications != blank -%}
+      {%- if has_additional_property -%},{%- endif -%}
+      {%- assign has_additional_property = true -%}
+      {"@type":"PropertyValue","name":"Certifications","value":{{ product.metafields.custom.certifications | json }}}
+    {%- endif -%}
+  {%- endcapture -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": {{ product.title | json }},
+      {%- if product_description != blank -%}
+      "description": {{ product_description | json }},
+      {%- endif -%}
+      {%- if product.images.size > 0 -%}
+      "image": [
+        {%- for image in product.images -%}
+          {{ image | image_url: width: 1200 | prepend: "https:" | json }}{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ],
+      {%- endif -%}
+      "brand": {
+        "@type": "Brand",
+        "name": {{ shop.name | json }}
+      },
+      {%- if variant.sku != blank -%}
+      "sku": {{ variant.sku | json }},
+      {%- endif -%}
+      "offers": {
+        "@type": "Offer",
+        "url": {{ canonical_url | json }},
+        "priceCurrency": {{ currency_code | json }},
+        "price": {{ variant.price | divided_by: 100.0 | json }},
+        "availability": {{ availability | json }},
+        "itemCondition": "https://schema.org/NewCondition"
+      }{%- if has_additional_property -%},{%- endif -%}
+      {%- if has_additional_property -%}
+      "additionalProperty": [
+        {{ additional_properties | strip }}
+      ]
+      {%- endif -%}
+    }
+  </script>
+{%- endif -%}
