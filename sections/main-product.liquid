@@ -884,11 +884,21 @@
         });
       }
 
+      function hideZeroReviewsText() {
+        var container = document.querySelector('.product__info-container') || document;
+        container.querySelectorAll('*').forEach(function(el) {
+          if (el.children.length === 0 && /\b0\s*reviews?\b/i.test(el.textContent)) {
+            el.style.display = 'none';
+          }
+        });
+      }
+
       document.addEventListener('DOMContentLoaded', function() {
         convertSpecLists();
         processTrustoo();
+        hideZeroReviewsText();
         /* MutationObserver for Trustoo widgets injected after DOMContentLoaded */
-        var obs = new MutationObserver(function() { processTrustoo(); });
+        var obs = new MutationObserver(function() { processTrustoo(); hideZeroReviewsText(); });
         var target = document.querySelector('.product__info-container') || document.body;
         obs.observe(target, { childList: true, subtree: true });
         setTimeout(function() { obs.disconnect(); }, 10000);
