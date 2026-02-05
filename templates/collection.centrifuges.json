@@ -179,9 +179,9 @@
   "order": [
     "banner",
     "collection_intro",
+    "collection_compare",
     "product-grid",
     "collection_faq",
-    "collection_links",
-    "collection_compare"
+    "collection_links"
   ]
 }
