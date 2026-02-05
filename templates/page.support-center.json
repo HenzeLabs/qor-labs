@@ -1,0 +1,155 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "support_hero": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Support Center",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Get help fast with shipping, warranty, manuals, and product selection. Our team replies quickly during business hours.</p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Contact support",
+            "button_link": "shopify://pages/contact-us",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "full_width": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "support_links": {
+      "type": "multicolumn",
+      "blocks": {
+        "col_shipping": {
+          "type": "column",
+          "settings": {
+            "title": "Shipping & Returns",
+            "text": "<p>Delivery timelines, return eligibility, and order changes.</p>",
+            "link_label": "View shipping details",
+            "link": "shopify://pages/shipping-returns"
+          }
+        },
+        "col_warranty": {
+          "type": "column",
+          "settings": {
+            "title": "Warranty Registration",
+            "text": "<p>Register your product to activate warranty coverage.</p>",
+            "link_label": "Register warranty",
+            "link": "shopify://pages/online-warranty-registration"
+          }
+        },
+        "col_manuals": {
+          "type": "column",
+          "settings": {
+            "title": "User Manuals",
+            "text": "<p>Download manuals, guides, and setup instructions.</p>",
+            "link_label": "Browse manuals",
+            "link": "shopify://pages/user-manuals"
+          }
+        }
+      },
+      "block_order": [
+        "col_shipping",
+        "col_warranty",
+        "col_manuals"
+      ],
+      "settings": {
+        "title": "Popular support topics",
+        "heading_size": "h2",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "support_faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "faq_1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How fast do orders ship?",
+            "row_content": "<p>Most orders ship within 24 hours on business days. Tracking details are emailed once your order ships.</p>",
+            "icon": "clipboard"
+          }
+        },
+        "faq_2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I get help choosing the right model?",
+            "row_content": "<p>Tell us your sample volume, RPM needs, and workflow. We will recommend a fit quickly.</p>",
+            "icon": "chat_bubble"
+          }
+        },
+        "faq_3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What does the warranty cover?",
+            "row_content": "<p>Warranty terms vary by product. Register your product after purchase to activate coverage and support.</p>",
+            "icon": "box"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3"
+      ],
+      "settings": {
+        "caption": "Support FAQs",
+        "heading": "Quick answers",
+        "heading_size": "h2",
+        "layout": "section",
+        "open_first_row": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "support_hero",
+    "support_links",
+    "support_faq"
+  ]
+}

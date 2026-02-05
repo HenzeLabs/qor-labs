@@ -832,7 +832,7 @@
 
   <script>
     (function() {
-      /* #11 — Convert spec-like <ul> in product description to <dl> */
+      /* #11 -- Convert spec-like <ul> in product description to <dl> */
       function convertSpecLists() {
         var desc = document.querySelector('.product__description');
         if (!desc) return;
@@ -862,17 +862,17 @@
         });
       }
 
-      /* #9 + #10 — Hide Trustoo "0 Reviews" widget; add ARIA to Trustoo stars */
+      /* #9 + #10 -- Hide Trustoo "0 Reviews" widget; add ARIA to Trustoo stars */
       function processTrustoo() {
         var selectors = '[class*="trustoo"], [id*="trustoo"], [class*="tt-o-review"], [id*="ali-review"]';
         document.querySelectorAll(selectors).forEach(function(el) {
-          /* #9 — Extract review count as integer; hide only when exactly 0 */
+          /* #9 -- Extract review count as integer; hide only when exactly 0 */
           var match = el.textContent.match(/(\d+)\s*reviews?/i);
           if (match && parseInt(match[1], 10) === 0) {
             el.style.display = 'none';
             return;
           }
-          /* #10 — ARIA scoped to star-rating elements only */
+          /* #10 -- ARIA scoped to star-rating elements only */
           var starEl = el.querySelector('[class*="star"], [class*="rating"], [class*="stars"], [class*="review-star"]');
           if (starEl) {
             starEl.querySelectorAll('svg').forEach(function(svg) { svg.setAttribute('aria-hidden', 'true'); });

@@ -82,7 +82,11 @@
         {%- else -%}
           <a
             id="HeaderMenu-{{ link.handle }}"
-            href="{{ link.url | replace: 'https://qor-labs.myshopify.com', '' | replace: 'http://qor-labs.myshopify.com', '' }}"
+            {%- assign nav_link_url = link.url | replace: 'https://qor-labs.myshopify.com', '' | replace: 'http://qor-labs.myshopify.com', '' -%}
+            {%- if link.title == 'Support' -%}
+              {%- assign nav_link_url = '/pages/support-center' -%}
+            {%- endif -%}
+            href="{{ nav_link_url }}"
             class="header__menu-item list-menu__item link link--text focus-inset"
             {% if link.current %}
               aria-current="page"
