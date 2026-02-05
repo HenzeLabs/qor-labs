@@ -1,0 +1,385 @@
+/**
+ * RAPHA-STYLE OVERRIDES
+ * Transforms Dawn theme into Rapha-inspired premium editorial design
+ *
+ * Rapha key traits:
+ * - Single-row header: Nav LEFT | Logo CENTER | Icons RIGHT
+ * - Thin announcement bar with subtle background
+ * - No underlines on nav links
+ * - Uppercase, tracked, light-weight navigation
+ * - Full-bleed hero imagery
+ * - Extreme restraint and whitespace
+ */
+
+/* ==========================================================================
+   ANNOUNCEMENT BAR — Rapha Style
+   Very thin, subtle background (not black), small uppercase text
+   ========================================================================== */
+
+.announcement-bar-section {
+  background-color: #1a1a1a !important; /* Dark but not pure black */
+}
+
+.utility-bar,
+.announcement-bar {
+  background-color: #1a1a1a !important;
+  padding: 8px 0 !important;
+  min-height: auto !important;
+}
+
+.announcement-bar__message {
+  font-family: var(--font-body, 'DM Sans', sans-serif) !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Remove any arrows/icons from announcement */
+.announcement-bar__message svg,
+.announcement-bar__link svg,
+.announcement-bar .icon-arrow {
+  display: none !important;
+}
+
+.announcement-bar__link {
+  text-decoration: none !important;
+}
+
+/* ==========================================================================
+   HEADER — Rapha Style (middle-center layout)
+   Nav on LEFT, Logo CENTER, Icons RIGHT — all on ONE row
+   Very tight padding, clean minimal feel
+   ========================================================================== */
+
+/* Reduce header padding dramatically */
+.header-wrapper {
+  border-bottom: none !important;
+}
+
+.header {
+  padding: 12px 24px !important;
+  gap: 16px !important;
+}
+
+@media screen and (min-width: 990px) {
+  .header {
+    padding: 14px 32px !important;
+  }
+}
+
+/* Logo sizing */
+.header__heading-logo-wrapper {
+  max-width: 100px !important;
+}
+
+.header__heading-logo {
+  max-height: 28px !important;
+  width: auto !important;
+}
+
+@media screen and (min-width: 990px) {
+  .header__heading-logo-wrapper {
+    max-width: 120px !important;
+  }
+
+  .header__heading-logo {
+    max-height: 32px !important;
+  }
+}
+
+/* Navigation — uppercase, tracked, NO UNDERLINES */
+.header__inline-menu .list-menu--inline {
+  gap: 32px !important;
+}
+
+.header__menu-item,
+.list-menu__item--link,
+.header__inline-menu .list-menu__item--link {
+  font-family: var(--font-body, 'DM Sans', sans-serif) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: var(--color-text-primary, #1A1A1A) !important;
+  text-decoration: none !important;
+  padding: 8px 0 !important;
+  border: none !important;
+}
+
+/* REMOVE UNDERLINES from nav items */
+.header__menu-item::after,
+.list-menu__item--link::after,
+.header__inline-menu .list-menu__item--link::after,
+.header__menu-item span::after {
+  display: none !important;
+  content: none !important;
+  border: none !important;
+  text-decoration: none !important;
+}
+
+/* Remove underline styling */
+.list-menu__item--link {
+  background-image: none !important;
+  background-size: 0 !important;
+}
+
+.header__menu-item:hover,
+.list-menu__item--link:hover {
+  color: var(--color-text-secondary, #6B6B6B) !important;
+  opacity: 1 !important;
+  text-decoration: none !important;
+}
+
+/* Dropdown arrows - make subtle */
+.header__menu-item .icon-caret,
+summary.list-menu__item svg {
+  width: 8px !important;
+  height: 8px !important;
+  margin-left: 4px !important;
+}
+
+/* Icons — smaller, cleaner */
+.header__icon {
+  width: 36px !important;
+  height: 36px !important;
+  padding: 8px !important;
+}
+
+.header__icon svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* Cart count bubble — smaller */
+.cart-count-bubble {
+  width: 16px !important;
+  height: 16px !important;
+  font-size: 10px !important;
+  top: 4px !important;
+  right: 4px !important;
+  background-color: #1a1a1a !important;
+}
+
+/* Hide search icon text labels */
+.header__icon .visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
+}
+
+/* Hide country/currency selector */
+.desktop-localization-wrapper,
+.header-localization,
+.localization-form {
+  display: none !important;
+}
+
+/* Hide the secondary collection nav bar completely */
+.header-collections {
+  display: none !important;
+}
+
+/* ==========================================================================
+   MEGA MENU — Clean styling
+   ========================================================================== */
+
+.mega-menu__content,
+.header__submenu {
+  font-size: 13px !important;
+  text-transform: none !important;
+}
+
+.mega-menu__link {
+  text-decoration: none !important;
+  font-size: 13px !important;
+}
+
+/* ==========================================================================
+   HERO — Rapha Style
+   Proper typography: Instrument Serif for headlines, DM Sans for body
+   More subtle gradient (or none for pure image)
+   ========================================================================== */
+
+/* Hero overline — DM Sans, small, uppercase, tracked */
+.hero-editorial__overline,
+.banner__box .subtitle {
+  font-family: var(--font-body, 'DM Sans', sans-serif) !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  margin-bottom: 12px !important;
+}
+
+/* Hero heading — Instrument Serif, elegant */
+.hero-editorial__heading,
+.banner__heading,
+h1.banner__heading {
+  font-family: var(--font-display, 'Instrument Serif', Georgia, serif) !important;
+  font-size: clamp(2.5rem, 6vw, 4rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--color-white, #FFFFFF) !important;
+  margin: 0 0 16px !important;
+}
+
+@media screen and (min-width: 990px) {
+  .hero-editorial__heading,
+  .banner__heading,
+  h1.banner__heading {
+    font-size: clamp(3rem, 5vw, 4.5rem) !important;
+  }
+}
+
+/* Hero subheading — DM Sans, restrained */
+.hero-editorial__subheading,
+.banner__text {
+  font-family: var(--font-body, 'DM Sans', sans-serif) !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  max-width: 420px !important;
+  margin: 0 0 24px !important;
+}
+
+/* Hero gradient — very subtle */
+.hero-editorial__overlay,
+.banner__media::after {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.25) 30%,
+    rgba(0, 0, 0, 0.05) 60%,
+    transparent 100%
+  ) !important;
+}
+
+/* Hero buttons — Rapha style */
+.hero-editorial__btn,
+.banner__buttons .button {
+  font-family: var(--font-body, 'DM Sans', sans-serif) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  padding: 14px 28px !important;
+  min-width: auto !important;
+  border-radius: 0 !important;
+  transition: all 0.2s ease !important;
+}
+
+.hero-editorial__btn--primary,
+.banner__buttons .button--primary {
+  background-color: #FFFFFF !important;
+  color: #0A0A0A !important;
+  border: none !important;
+}
+
+.hero-editorial__btn--primary:hover,
+.banner__buttons .button--primary:hover {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.hero-editorial__btn--secondary,
+.banner__buttons .button--secondary {
+  background-color: transparent !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+.hero-editorial__btn--secondary:hover,
+.banner__buttons .button--secondary:hover {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ==========================================================================
+   GLOBAL TYPOGRAPHY
+   ========================================================================== */
+
+/* Headings — Instrument Serif */
+h1, h2, h3, .h1, .h2, .h3 {
+  font-family: var(--font-display, 'Instrument Serif', Georgia, serif);
+  font-weight: 400;
+}
+
+/* Body text — DM Sans */
+body,
+p,
+.rte {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+}
+
+/* ==========================================================================
+   BUTTON REFINEMENTS
+   ========================================================================== */
+
+.button,
+.btn,
+.shopify-payment-button button,
+button[type="submit"] {
+  font-family: var(--font-body, 'DM Sans', sans-serif) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  border-radius: 0 !important;
+}
+
+/* ==========================================================================
+   TRUST BAR
+   ========================================================================== */
+
+.trust-bar-section {
+  background-color: var(--color-surface, #FAFAF8) !important;
+  border-top: 1px solid var(--color-border, #E0DED9) !important;
+  border-bottom: 1px solid var(--color-border, #E0DED9) !important;
+}
+
+.trust-bar-section__label {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+}
+
+.trust-bar-section__description {
+  font-size: 11px !important;
+  color: var(--color-text-secondary, #6B6B6B) !important;
+}
+
+/* ==========================================================================
+   LINK STYLES
+   ========================================================================== */
+
+.link--text {
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  text-decoration-thickness: 1px !important;
+}
+
+.link--text:hover {
+  opacity: 0.7 !important;
+}
+
+/* ==========================================================================
+   MOBILE MENU DRAWER
+   ========================================================================== */
+
+.menu-drawer__navigation .menu-drawer__menu-item {
+  font-size: 14px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
