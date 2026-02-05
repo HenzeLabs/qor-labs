@@ -321,7 +321,11 @@
             {%- assign handle = parts[0] | strip -%}
             {%- assign label = parts[1] | default: handle | strip -%}
             {%- if handle != blank -%}
-              {%- assign link_url = collections[handle].url | default: routes.collections_url | append: '/' | append: handle -%}
+              {%- if collections[handle] and collections[handle].url != blank -%}
+                {%- assign link_url = collections[handle].url -%}
+              {%- else -%}
+                {%- assign link_url = routes.collections_url | append: '/' | append: handle -%}
+              {%- endif -%}
               <li><a class="link link--text" href="{{ link_url }}">{{ label }}</a></li>
             {%- endif -%}
           {%- endfor -%}
