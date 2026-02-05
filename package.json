@@ -1,0 +1,14 @@
+{
+  "name": "qor-labs-theme",
+  "version": "1.0.0",
+  "description": "Qor Labs Shopify theme - Rapha-inspired design",
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./src/styles/main.css -o ./assets/theme.css --minify",
+    "watch:css": "npx tailwindcss -i ./src/styles/main.css -o ./assets/theme.css --watch",
+    "dev": "concurrently \"npm run watch:css\" \"shopify theme dev --store qor-labs.myshopify.com --theme 176271589540\""
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1",
+    "concurrently": "^8.2.2"
+  }
+}
