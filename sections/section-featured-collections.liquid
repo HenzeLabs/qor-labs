@@ -71,7 +71,7 @@
               >
             {%- else -%}
               <div class="featured-collections__placeholder">
-                {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                <span class="featured-collections__placeholder-text">{{ title }}</span>
               </div>
             {%- endif -%}
           </div>
@@ -178,12 +178,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #F3F4F6;
   }
 
-  .featured-collections__placeholder svg {
-    width: 40%;
-    height: auto;
-    opacity: 0.3;
+  .featured-collections__placeholder-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #9CA3AF;
+    text-align: center;
+    padding: 1rem;
   }
 
   .featured-collections__info {
