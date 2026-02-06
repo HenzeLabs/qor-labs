@@ -422,14 +422,26 @@ h3, .h3 {
   color: #000000 !important;
 }
 
-/* Small Body Text (trust bar, footer): 12px/21px */
+/* Small Body Text (trust bar, footer disclaimers): 12px/21px */
+/* NOTE: Do NOT apply to all p/.rte - that breaks body text readability */
 .body-small,
+.trust-item-description,
+.footer-column a,
+.copyright__content,
+.newsletter__disclaimer {
+  font-family: var(--rapha-sans) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 21px !important;
+}
+
+/* Standard body text: 16px for readability */
 p,
 .rte {
   font-family: var(--rapha-sans) !important;
-  font-size: 12px !important;         /* RAPHA EXACT */
-  font-weight: 400 !important;        /* RAPHA EXACT */
-  line-height: 21px !important;       /* RAPHA EXACT - 1.75 ratio */
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.65 !important;
 }
 
 /* ==========================================================================
@@ -540,7 +552,7 @@ h1.banner__heading {
 
 .trust-bar {
   display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
+  /* grid-template-columns handled by section CSS for responsive breakpoints */
   gap: 24px !important;                 /* RAPHA EXACT */
   padding: 32px 0 !important;           /* RAPHA EXACT */
   border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;  /* RAPHA EXACT */
@@ -907,17 +919,11 @@ section,
   }
 }
 
-/* Container margins - RAPHA EXACT */
+/* Main container - full width, no margins (sections handle their own padding) */
 main {
-  max-width: none !important;           /* RAPHA EXACT - full width */
+  max-width: none !important;
   padding: 0 !important;
-  margin: 0 16px !important;            /* RAPHA mobile */
-}
-
-@media screen and (min-width: 992px) {
-  main {
-    margin: 0 32px !important;          /* RAPHA desktop */
-  }
+  margin: 0 !important;                 /* No margin - allows full-bleed sections */
 }
 
 /* ==========================================================================

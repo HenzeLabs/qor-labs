@@ -177,6 +177,10 @@
     grid-template-columns: 1fr;
   }
 
+  .category-grid__grid--4 {
+    grid-template-columns: 1fr;
+  }
+
   @media (min-width: 768px) {
     .category-grid__grid--2 {
       grid-template-columns: repeat(2, 1fr);
@@ -185,11 +189,19 @@
     .category-grid__grid--3 {
       grid-template-columns: repeat(2, 1fr);
     }
+
+    .category-grid__grid--4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media (min-width: 992px) {
     .category-grid__grid--3 {
       grid-template-columns: repeat(3, 1fr);
+    }
+
+    .category-grid__grid--4 {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -329,7 +341,8 @@
       "label": "Columns (desktop)",
       "options": [
         { "value": "2", "label": "2 columns" },
-        { "value": "3", "label": "3 columns" }
+        { "value": "3", "label": "3 columns" },
+        { "value": "4", "label": "4 columns" }
       ],
       "default": "3"
     }
