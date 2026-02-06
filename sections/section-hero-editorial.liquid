@@ -1,7 +1,7 @@
 {%- comment -%}
   SECTION: Editorial Hero
   Full-bleed hero with text OVERLAID on image (bottom-left).
-  Dark gradient overlay for text legibility.
+  RAPHA-EXACT values from RAPHA-SOURCE-ANALYSIS.md
 {%- endcomment -%}
 
 {%- liquid
@@ -33,11 +33,14 @@
         class="hero-editorial__image"
       >
     {%- else -%}
-      <div class="hero-editorial__placeholder"></div>
+      {%- comment -%} Clean placeholder - bg gray with centered text {%- endcomment -%}
+      <div class="hero-editorial__placeholder">
+        <span class="hero-editorial__placeholder-text">Hero Image</span>
+      </div>
     {%- endif -%}
   </div>
 
-  {%- comment -%} Dark Gradient Overlay {%- endcomment -%}
+  {%- comment -%} RAPHA EXACT: gradient overlay 0.3 max {%- endcomment -%}
   <div class="hero-editorial__overlay"></div>
 
   {%- comment -%} Text Content - Positioned Bottom Left {%- endcomment -%}
@@ -74,10 +77,10 @@
 </section>
 
 <style>
-  /* ===================================
-     HERO EDITORIAL - Rapha-exact values
+  /* =====================================
+     HERO EDITORIAL - RAPHA EXACT VALUES
      Source: RAPHA-SOURCE-ANALYSIS.md
-     =================================== */
+     ===================================== */
 
   .hero-editorial {
     position: relative;
@@ -98,18 +101,30 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    /* Rapha: GPU acceleration */
+    /* RAPHA: GPU acceleration */
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
   }
 
+  /* RAPHA EXACT: placeholder #F5F5F5 */
   .hero-editorial__placeholder {
     width: 100%;
     height: 100%;
-    background-color: #F5F5F5; /* Rapha placeholder gray */
+    background-color: #F5F5F5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* Rapha: minimal overlay - 0.3 max, not 0.6 */
+  .hero-editorial__placeholder-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #949494;
+    text-align: center;
+  }
+
+  /* RAPHA EXACT: gradient overlay 0.3 max, to top */
   .hero-editorial__overlay {
     position: absolute;
     inset: 0;
@@ -121,7 +136,7 @@
     pointer-events: none;
   }
 
-  /* Rapha content padding: 32px 16px mobile */
+  /* RAPHA: content padding 16px mobile, 32px desktop */
   .hero-editorial__content {
     position: absolute;
     bottom: 0;
@@ -131,93 +146,104 @@
     z-index: 10;
   }
 
-  /* Rapha desktop: 40px 32px */
   @media (min-width: 768px) {
     .hero-editorial__content {
       padding: 40px 32px;
     }
   }
 
-  /* Overline - Rapha style */
+  /* Overline - RAPHA: 14px/600/0.3px uppercase (same as button) */
   .hero-editorial__overline {
     display: block;
     font-family: 'DM Sans', sans-serif;
-    font-size: 12px; /* Rapha body small */
+    font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.3px; /* Rapha exact */
+    letter-spacing: 0.3px;
     color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 16px; /* Rapha spacing */
+    margin-bottom: 16px;
   }
 
-  /* Heading - Qor Labs uses Instrument Serif (design decision) */
+  /* Heading - RAPHA EXACT: 64px/700/uppercase/0.3px/line-height 62px */
   .hero-editorial__heading {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 400;
-    line-height: 1.1;
-    color: #FFFFFF;
-    margin: 0 0 16px; /* Rapha spacing */
-  }
-
-  /* Subheading - Rapha serif text style */
-  .hero-editorial__subheading {
     font-family: 'DM Sans', sans-serif;
-    font-size: 12px; /* Rapha: 12px body */
-    font-weight: 400;
-    line-height: 21px; /* Rapha: 21px line-height */
-    color: rgba(255, 255, 255, 0.85);
-    margin: 0 0 24px; /* Rapha spacing */
-    max-width: 400px;
+    font-size: 48px;              /* Mobile */
+    font-weight: 700;             /* RAPHA EXACT */
+    line-height: 48px;
+    letter-spacing: 0.3px;        /* RAPHA EXACT */
+    text-transform: uppercase;    /* RAPHA EXACT */
+    color: #FFFFFF;
+    margin: 0 0 16px;
   }
 
-  /* Rapha buttons: gap 16px */
+  @media (min-width: 992px) {
+    .hero-editorial__heading {
+      font-size: 64px;            /* RAPHA EXACT desktop */
+      line-height: 62px;          /* RAPHA EXACT */
+    }
+  }
+
+  /* Subheading - RAPHA EXACT: 24px/400 serif, line-height 36px */
+  .hero-editorial__subheading {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 18px;              /* Mobile */
+    font-weight: 400;             /* RAPHA EXACT */
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 24px;
+    max-width: 500px;
+  }
+
+  @media (min-width: 992px) {
+    .hero-editorial__subheading {
+      font-size: 24px;            /* RAPHA EXACT desktop */
+      line-height: 36px;          /* RAPHA EXACT */
+    }
+  }
+
+  /* RAPHA: button gap 16px */
   .hero-editorial__buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
   }
 
-  /* Button - Rapha exact values */
+  /* Button - RAPHA EXACT: 14px/600, 12px padding, 40px min-height */
   .hero-editorial__btn {
     box-sizing: border-box;
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    /* Rapha typography */
+    /* RAPHA typography */
     font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 14px;              /* RAPHA EXACT */
+    font-weight: 600;             /* RAPHA EXACT */
     line-height: 14px;
-    letter-spacing: 0.3px;
+    letter-spacing: normal;       /* RAPHA EXACT - NOT 0.3px */
     text-transform: uppercase;
     text-decoration: none;
     text-align: center;
-    white-space: normal;
 
-    /* Rapha sizing */
-    padding: 8px 20px;
-    min-height: 44px;
-    min-width: 120px;
+    /* RAPHA sizing */
+    padding: 12px;                /* RAPHA EXACT */
+    min-height: 40px;             /* RAPHA EXACT */
+    min-width: 0;                 /* RAPHA EXACT - no minimum */
 
-    /* Rapha colors - inverted for hero (white bg) */
+    /* Hero inverted colors (white bg on dark image) */
     background-color: #FFFFFF;
     color: #000000;
-    border: 1px solid #FFFFFF;
-    border-radius: 0;
+    border: none;                 /* RAPHA EXACT */
+    border-radius: 0;             /* RAPHA EXACT */
     cursor: pointer;
 
-    /* Rapha transition */
-    transition: background-color 250ms ease-in-out,
-                border-color 250ms ease-in-out,
-                color 250ms ease-in-out;
+    /* RAPHA transition */
+    transition: background-color 250ms ease-in-out;
   }
 
-  /* Rapha hover - accent color */
+  /* Hover - Qor green accent (Rapha uses pink) */
   .hero-editorial__btn:hover {
-    background-color: var(--color-accent, #2D5A3D);
-    border-color: var(--color-accent, #2D5A3D);
+    background-color: #2D5A3D;
     color: #FFFFFF;
   }
 </style>
