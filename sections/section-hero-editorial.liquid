@@ -74,6 +74,11 @@
 </section>
 
 <style>
+  /* ===================================
+     HERO EDITORIAL - Rapha-exact values
+     Source: RAPHA-SOURCE-ANALYSIS.md
+     =================================== */
+
   .hero-editorial {
     position: relative;
     width: 100vw;
@@ -93,97 +98,127 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    /* Rapha: GPU acceleration */
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
   }
 
   .hero-editorial__placeholder {
     width: 100%;
     height: 100%;
-    background-color: #E8E6E1;
+    background-color: #F5F5F5; /* Rapha placeholder gray */
   }
 
-  /* Dark gradient overlay at bottom for text legibility */
+  /* Rapha: minimal overlay - 0.3 max, not 0.6 */
   .hero-editorial__overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(0, 0, 0, 0.2) 40%,
-      transparent 70%
+      rgba(0, 0, 0, 0.3) 0%,
+      transparent 50%
     );
     pointer-events: none;
   }
 
-  /* Text content - positioned bottom-left */
+  /* Rapha content padding: 32px 16px mobile */
   .hero-editorial__content {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 2rem;
+    padding: 32px 16px;
     z-index: 10;
   }
 
-  @media (min-width: 1024px) {
+  /* Rapha desktop: 40px 32px */
+  @media (min-width: 768px) {
     .hero-editorial__content {
-      padding: 4rem;
+      padding: 40px 32px;
     }
   }
 
+  /* Overline - Rapha style */
   .hero-editorial__overline {
     display: block;
     font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
+    font-size: 12px; /* Rapha body small */
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 0.75rem;
+    letter-spacing: 0.3px; /* Rapha exact */
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 16px; /* Rapha spacing */
   }
 
+  /* Heading - Qor Labs uses Instrument Serif (design decision) */
   .hero-editorial__heading {
     font-family: 'Instrument Serif', Georgia, serif;
     font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 400;
     line-height: 1.1;
     color: #FFFFFF;
-    margin: 0 0 1rem;
+    margin: 0 0 16px; /* Rapha spacing */
   }
 
+  /* Subheading - Rapha serif text style */
   .hero-editorial__subheading {
     font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
+    font-size: 12px; /* Rapha: 12px body */
     font-weight: 400;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0 0 1.5rem;
+    line-height: 21px; /* Rapha: 21px line-height */
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 24px; /* Rapha spacing */
     max-width: 400px;
   }
 
+  /* Rapha buttons: gap 16px */
   .hero-editorial__buttons {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 16px;
   }
 
+  /* Button - Rapha exact values */
   .hero-editorial__btn {
+    box-sizing: border-box;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
+    /* Rapha typography */
     font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0.3px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
     text-decoration: none;
-    padding: 14px 28px;
+    text-align: center;
+    white-space: normal;
+
+    /* Rapha sizing */
+    padding: 8px 20px;
+    min-height: 44px;
+    min-width: 120px;
+
+    /* Rapha colors - inverted for hero (white bg) */
     background-color: #FFFFFF;
-    color: #0A0A0A;
-    border: none;
-    transition: opacity 0.2s ease;
+    color: #000000;
+    border: 1px solid #FFFFFF;
+    border-radius: 0;
+    cursor: pointer;
+
+    /* Rapha transition */
+    transition: background-color 250ms ease-in-out,
+                border-color 250ms ease-in-out,
+                color 250ms ease-in-out;
   }
 
+  /* Rapha hover - accent color */
   .hero-editorial__btn:hover {
-    opacity: 0.9;
+    background-color: var(--color-accent, #2D5A3D);
+    border-color: var(--color-accent, #2D5A3D);
+    color: #FFFFFF;
   }
 </style>
 

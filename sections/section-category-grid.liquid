@@ -91,43 +91,56 @@
 </section>
 
 <style>
+  /* =====================================
+     CATEGORY GRID - Rapha-exact values
+     Source: RAPHA-SOURCE-ANALYSIS.md
+     ===================================== */
+
   .category-grid {
-    background-color: var(--color-white, #FFFFFF);
+    background-color: #FFFFFF;
   }
 
+  /* Rapha: padding 0 16px mobile */
   .category-grid__container {
     max-width: var(--container-max, 80rem);
     margin: 0 auto;
-    padding: 0 var(--space-md, 1rem);
+    padding: 0 16px;
   }
 
+  /* Rapha: margin-bottom 32px for section headers */
   .category-grid__header {
     text-align: center;
-    margin-bottom: var(--space-2xl, 3rem);
+    margin-bottom: 32px;
   }
 
+  /* Rapha: overline 12px/600/0.3px uppercase */
   .category-grid__overline {
     display: block;
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.6875rem;
-    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--color-text-secondary, #6B6B6B);
-    margin-bottom: var(--space-sm, 0.5rem);
+    letter-spacing: 0.3px;
+    color: #6B6B6B;
+    margin-bottom: 8px;
   }
 
+  /* Section heading - Rapha uses 24px/32px uppercase sans for section titles */
   .category-grid__heading {
-    font-family: var(--font-display, 'Instrument Serif', serif);
-    font-size: clamp(1.75rem, 4vw, 2.25rem);
-    font-weight: 400;
-    color: var(--color-text-primary, #1A1A1A);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: #000000;
     margin: 0;
   }
 
+  /* Rapha: gap 16px mobile */
   .category-grid__grid {
     display: grid;
-    gap: var(--space-sm, 0.5rem);
+    gap: 16px;
   }
 
   .category-grid__grid--2 {
@@ -145,22 +158,28 @@
     overflow: hidden;
   }
 
+  /* Rapha: placeholder #F5F5F5 */
   .category-grid__image-wrapper {
     position: relative;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-    background-color: var(--color-off-white, #F7F7F5);
+    background-color: #F5F5F5;
   }
 
+  /* Rapha: image transition filter 0.5s ease-out */
   .category-grid__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: filter 0.5s ease-out;
+    /* Rapha: GPU acceleration */
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
   }
 
+  /* Rapha: hover brightness(0.95) */
   .category-grid__card:hover .category-grid__image {
-    transform: scale(1.05);
+    filter: brightness(0.95);
   }
 
   .category-grid__placeholder {
@@ -169,77 +188,82 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-off-white, #F7F7F5);
+    background-color: #F5F5F5;
   }
 
+  /* Rapha: 16px/600/0.3px uppercase */
   .category-grid__placeholder-text {
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.875rem;
-    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #9CA3AF;
+    letter-spacing: 0.3px;
+    color: #949494;
     text-align: center;
-    padding: 1rem;
+    padding: 16px;
   }
 
+  /* Rapha: subtle gradient overlay (0.3 max) */
   .category-grid__overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(0, 0, 0, 0.2) 50%,
-      rgba(0, 0, 0, 0) 100%
+      rgba(0, 0, 0, 0.3) 0%,
+      transparent 50%
     );
-    transition: background 0.3s ease;
+    transition: background 0.25s ease-in-out;
   }
 
   .category-grid__card:hover .category-grid__overlay {
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.7) 0%,
-      rgba(0, 0, 0, 0.3) 50%,
-      rgba(0, 0, 0, 0.1) 100%
+      rgba(0, 0, 0, 0.4) 0%,
+      transparent 60%
     );
   }
 
+  /* Rapha: padding 24px */
   .category-grid__content {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    padding: var(--space-lg, 1.5rem);
+    padding: 24px;
     text-align: center;
   }
 
+  /* Rapha: 16px/600/0.3px uppercase */
   .category-grid__title {
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.875rem;
-    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--color-white, #FFFFFF);
+    letter-spacing: 0.3px;
+    color: #FFFFFF;
     margin: 0;
   }
 
+  /* Rapha: 12px/21px body text */
   .category-grid__subtitle {
     display: block;
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.75rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.8);
-    margin-top: var(--space-xs, 0.25rem);
+    line-height: 21px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 8px;
   }
 
-  /* Tablet */
+  /* Tablet - Rapha: padding 0 32px, gap 32px */
   @media (min-width: 768px) {
     .category-grid__container {
-      padding: 0 var(--space-lg, 1.5rem);
+      padding: 0 32px;
     }
 
     .category-grid__grid {
-      gap: var(--space-md, 1rem);
+      gap: 32px;
     }
 
     .category-grid__grid--2 {
@@ -253,20 +277,13 @@
     .category-grid__image-wrapper {
       aspect-ratio: 16 / 9;
     }
-
-    .category-grid__title {
-      font-size: 1rem;
-    }
   }
 
-  /* Desktop */
-  @media (min-width: 1024px) {
-    .category-grid__container {
-      padding: 0 var(--space-xl, 2rem);
-    }
-
-    .category-grid__grid {
-      gap: var(--space-lg, 1.5rem);
+  /* Desktop - Rapha: 32px section heading */
+  @media (min-width: 992px) {
+    .category-grid__heading {
+      font-size: 32px;
+      line-height: 32px;
     }
 
     .category-grid__grid--3 {
@@ -274,7 +291,7 @@
     }
 
     .category-grid__content {
-      padding: var(--space-xl, 2rem);
+      padding: 32px;
     }
   }
 </style>
