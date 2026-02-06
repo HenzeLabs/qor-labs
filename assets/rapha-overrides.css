@@ -1,17 +1,12 @@
 /**
- * RAPHA-STYLE OVERRIDES — Exact Values from rapha.cc
- * Source: https://www.rapha.cc/us/en (extracted 2026-02-05)
- * Reference: /RAPHA-SOURCE-ANALYSIS.md
+ * RAPHA-STYLE OVERRIDES — Pixel-Exact from RAPHA-SOURCE-ANALYSIS.md
+ * Source: Live rapha.cc computed styles extracted 2026-02-05
  *
- * KEY RAPHA VALUES:
- * - Font: 'Rapha Sans Condensed' → 'DM Sans'
- * - Font-size: 14px (buttons/nav), 12px (body)
- * - Font-weight: 600 → 500 (our equivalent)
- * - Letter-spacing: 0.3px
- * - Accent color: #FA3C6E → #2D5A3D (lab green)
- * - Header height: 64px
- * - Announcement: 40px
- * - Buttons: min-height 44px, min-width 120px, padding 8px 20px
+ * KEY CORRECTIONS FROM ANALYSIS:
+ * - Nav: 16px/400/serif/normal-case (NOT 12px/500/uppercase/sans!)
+ * - Announcement: 14px/600/uppercase, normal letter-spacing
+ * - Buttons: 14px/600, 12px padding, 40px min-height
+ * - Body text: 24px serif hero, 12px/21px small
  */
 
 /* ==========================================================================
@@ -23,14 +18,14 @@
   --rapha-white: #FFFFFF;
   --rapha-accent: #2D5A3D;  /* Lab green (Rapha uses #FA3C6E pink) */
   --rapha-accent-hover: #1E4530;
-  --rapha-disabled: #949494;
-  --rapha-border: #E0E0E0;
+  --rapha-gray-light: #F5F5F5;
+  --rapha-border: rgba(0, 0, 0, 0.1);
 
   /* Rapha typography */
-  --rapha-sans: 'DM Sans', sans-serif;  /* Rapha uses 'Rapha Sans Condensed' */
-  --rapha-serif: 'Instrument Serif', Georgia, serif;  /* Rapha uses 'Rapha Serif Head' */
+  --rapha-sans: 'DM Sans', sans-serif;  /* Rapha Sans Condensed equiv */
+  --rapha-serif: 'Instrument Serif', Georgia, serif;  /* Rapha Serif Head equiv */
 
-  /* Rapha spacing */
+  /* Rapha spacing (from analysis) */
   --rapha-container-mobile: 16px;
   --rapha-container-desktop: 32px;
   --rapha-gap-mobile: 16px;
@@ -38,8 +33,8 @@
 }
 
 /* ==========================================================================
-   ANNOUNCEMENT BAR — Exact Rapha: 40px, black bg, 14px uppercase
-   Source: .announcement-bar from Rapha CSS
+   ANNOUNCEMENT BAR — RAPHA EXACT: 40px, 14px/600, uppercase, normal spacing
+   Source: RAPHA-SOURCE-ANALYSIS.md Section 2
    ========================================================================== */
 
 .announcement-bar-section,
@@ -57,19 +52,21 @@
 .announcement-bar {
   background: #000000 !important;
   background-color: #000000 !important;
-  min-height: 40px !important;  /* Rapha exact */
-  padding: 12px !important;  /* Rapha exact */
+  height: 40px !important;        /* RAPHA EXACT */
+  min-height: 40px !important;    /* RAPHA EXACT */
+  padding: 12px !important;       /* RAPHA EXACT */
   text-align: center !important;
+  z-index: 6 !important;
 }
 
 .announcement-bar__message,
 .announcement-bar__message span,
 .announcement-bar__link {
   font-family: var(--rapha-sans) !important;
-  font-size: 14px !important;  /* Rapha exact */
-  font-weight: 600 !important;  /* Rapha exact */
-  line-height: 14px !important;  /* Rapha exact */
-  letter-spacing: 0.3px !important;  /* Rapha exact */
+  font-size: 14px !important;         /* RAPHA EXACT */
+  font-weight: 600 !important;        /* RAPHA EXACT */
+  line-height: 14px !important;       /* RAPHA EXACT */
+  letter-spacing: normal !important;  /* RAPHA EXACT - NOT 0.3px! */
   text-transform: uppercase !important;
   color: #FFFFFF !important;
   text-decoration: none !important;
@@ -83,65 +80,53 @@
 }
 
 /* ==========================================================================
-   HEADER — Exact Rapha: 64px height, nav styling
-   Source: Mobile header height 64px, hamburger 17x17px
+   HEADER — RAPHA EXACT: 64px height (without announcement = 104px total)
+   Source: RAPHA-SOURCE-ANALYSIS.md Section 3
    ========================================================================== */
 
 .header-wrapper {
   border-bottom: none !important;
 }
 
-/* Header container - Rapha exact 64px */
+/* Header container - RAPHA EXACT 64px */
 .header {
-  height: 64px !important;  /* Rapha exact */
+  height: 64px !important;        /* RAPHA EXACT */
   min-height: 64px !important;
-  padding: 0 16px !important;  /* Rapha mobile */
+  padding: 0 16px !important;     /* RAPHA mobile */
   display: flex !important;
   align-items: center !important;
+  background-color: transparent !important;
 }
 
 @media screen and (min-width: 990px) {
   .header {
-    padding: 0 32px !important;  /* Rapha desktop */
+    padding: 0 32px !important;   /* RAPHA desktop */
   }
 }
 
-/* Logo - small and elegant */
+/* Logo - RAPHA: roughly 100-120px wide, 30-40px tall */
 .header__heading-logo-wrapper {
-  max-width: 100px !important;
+  max-width: 120px !important;
 }
 
 .header__heading-logo {
-  max-height: 28px !important;
+  max-height: 32px !important;    /* RAPHA EXACT */
   width: auto !important;
 }
 
-@media screen and (min-width: 990px) {
-  .header__heading-logo-wrapper {
-    max-width: 120px !important;
-  }
-  .header__heading-logo {
-    max-height: 32px !important;
-  }
-}
+/* ==========================================================================
+   NAVIGATION — RAPHA EXACT: 16px/400/serif/NORMAL CASE
+   Source: RAPHA-SOURCE-ANALYSIS.md Section 3 - Navigation Links
 
-/* ==============================================
-   NAVIGATION — IDENTICAL STYLING FOR ALL NAV ITEMS
-
-   Target specification:
-   - Font: DM Sans
-   - Size: 12px (text-xs)
-   - Weight: 500 (font-medium)
-   - Transform: uppercase
-   - Letter-spacing: 0.15em (~1.8px)
-   - Color: #1A1A1A
-   ============================================== */
+   CRITICAL: Rapha nav is SERIF at 16px, NOT uppercase!
+   This was the key discovery from the analysis.
+   ========================================================================== */
 
 .header__inline-menu .list-menu--inline {
-  gap: 28px !important;
+  gap: 32px !important;           /* Generous spacing */
 }
 
-/* Master rule: ALL nav items — summary, a, span, everything */
+/* Master rule: ALL nav items use SERIF, normal case */
 .header__inline-menu .header__menu-item,
 .header__inline-menu summary.header__menu-item,
 .header__inline-menu a.header__menu-item,
@@ -152,13 +137,13 @@
 .header__inline-menu .link--text,
 .header__inline-menu summary,
 .header__inline-menu a {
-  font-family: 'DM Sans', sans-serif !important;
-  font-size: 12px !important;
-  font-weight: 500 !important;
-  line-height: 1.2 !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  color: #1A1A1A !important;
+  font-family: 'Instrument Serif', Georgia, serif !important;  /* RAPHA EXACT - SERIF! */
+  font-size: 16px !important;       /* RAPHA EXACT */
+  font-weight: 400 !important;      /* RAPHA EXACT */
+  line-height: normal !important;   /* RAPHA EXACT */
+  letter-spacing: normal !important;/* RAPHA EXACT */
+  text-transform: none !important;  /* RAPHA EXACT - NOT uppercase! */
+  color: #000000 !important;        /* RAPHA EXACT */
   text-decoration: none !important;
   background-image: none !important;
   background: transparent !important;
@@ -167,19 +152,19 @@
   cursor: pointer !important;
 }
 
-/* Inner spans (for active state spans) */
+/* Inner spans */
 .header__inline-menu .header__menu-item span,
 .header__inline-menu summary span,
 .header__inline-menu a span {
-  font-family: 'DM Sans', sans-serif !important;
-  font-size: 12px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
+  font-family: 'Instrument Serif', Georgia, serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
   color: inherit !important;
 }
 
-/* Hover state — all nav items */
+/* Hover state — color change only */
 .header__inline-menu .header__menu-item:hover,
 .header__inline-menu summary:hover,
 .header__inline-menu a:hover,
@@ -206,7 +191,7 @@
   background: none !important;
 }
 
-/* Reset any Dawn .link background-image underline trick */
+/* Reset Dawn's background-image underline trick */
 .header__inline-menu .link,
 .header__inline-menu .link--text,
 .header__inline-menu a {
@@ -227,7 +212,7 @@ details[id^="Details-HeaderMenu"] summary svg,
   display: none !important;
 }
 
-/* Header icons — Rapha minimal style */
+/* Header icons */
 .header__icon {
   width: 40px !important;
   height: 40px !important;
@@ -269,14 +254,13 @@ details[id^="Details-HeaderMenu"] summary svg,
 
 /* ==========================================================================
    MOBILE MENU — Rapha style
-   Source: Hamburger 17x17px, transitions
    ========================================================================== */
 
 header-drawer {
   margin-left: 0 !important;
 }
 
-/* Hamburger icon - Rapha exact 17x17 */
+/* Hamburger icon */
 .header__icon--menu svg {
   width: 17px !important;
   height: 17px !important;
@@ -312,8 +296,8 @@ header-drawer {
 }
 
 /* ==========================================================================
-   BUTTONS — Exact Rapha Values
-   Source: min-height 44px, min-width 120px, padding 8px 20px
+   BUTTONS — RAPHA EXACT: 14px/600, 12px padding, 40px min-height
+   Source: RAPHA-SOURCE-ANALYSIS.md Section 5
    ========================================================================== */
 
 .button,
@@ -322,10 +306,10 @@ header-drawer {
 button[type="submit"] {
   box-sizing: border-box !important;
   font-family: var(--rapha-sans) !important;
-  font-size: 14px !important;  /* Rapha exact */
-  font-weight: 600 !important;  /* Rapha exact */
-  line-height: 14px !important;  /* Rapha exact */
-  letter-spacing: 0.3px !important;  /* Rapha exact */
+  font-size: 14px !important;           /* RAPHA EXACT */
+  font-weight: 600 !important;          /* RAPHA EXACT */
+  line-height: 14px !important;
+  letter-spacing: normal !important;    /* RAPHA EXACT - NOT 0.3px */
   text-transform: uppercase !important;
   text-decoration: none !important;
   text-align: center !important;
@@ -334,31 +318,26 @@ button[type="submit"] {
   align-items: center !important;
   justify-content: center !important;
 
-  padding: 8px 20px !important;  /* Rapha exact */
-  min-height: 44px !important;  /* Rapha exact */
-  min-width: 120px !important;  /* Rapha exact */
+  padding: 12px !important;             /* RAPHA EXACT */
+  min-height: 40px !important;          /* RAPHA EXACT */
+  min-width: 0 !important;              /* RAPHA EXACT - no minimum */
 
-  border: 1px solid #000000 !important;
-  border-radius: 0 !important;  /* Rapha exact - no radius */
+  border: none !important;              /* RAPHA EXACT */
+  border-radius: 0 !important;          /* RAPHA EXACT */
 
   cursor: pointer !important;
-  transition: background-color 250ms ease-in-out,
-              border-color 250ms ease-in-out,
-              color 250ms ease-in-out !important;  /* Rapha exact */
+  transition: background-color 250ms ease-in-out !important;  /* RAPHA EXACT */
 }
 
 /* Primary button (filled) */
 .button--primary,
 .button.button--primary {
-  background-color: #000000 !important;
-  color: #FFFFFF !important;
-  border-color: #000000 !important;
+  background-color: #000000 !important;  /* RAPHA EXACT */
+  color: #FFFFFF !important;             /* RAPHA EXACT */
 }
 
 .button--primary:hover {
-  background-color: var(--rapha-accent) !important;
-  border-color: var(--rapha-accent) !important;
-  color: #FFFFFF !important;
+  background-color: var(--rapha-accent) !important;  /* Qor green (Rapha uses pink) */
 }
 
 /* Secondary button (outline) */
@@ -366,7 +345,7 @@ button[type="submit"] {
 .button.button--secondary {
   background-color: transparent !important;
   color: #000000 !important;
-  border-color: #000000 !important;
+  border: 1px solid #000000 !important;
 }
 
 .button--secondary:hover {
@@ -375,7 +354,7 @@ button[type="submit"] {
   color: var(--rapha-accent) !important;
 }
 
-/* Disabled state - Rapha exact */
+/* Disabled state */
 .button:disabled {
   cursor: not-allowed !important;
   background-color: transparent !important;
@@ -384,8 +363,77 @@ button[type="submit"] {
 }
 
 /* ==========================================================================
-   HERO SECTION — Rapha Style
-   Source: Section heading 24px→32px, content below or overlaid
+   TYPOGRAPHY — RAPHA EXACT VALUES
+   Source: RAPHA-SOURCE-ANALYSIS.md Section 4
+   ========================================================================== */
+
+/* H1 - Hero Heading: 64px/700, uppercase, 0.3px spacing */
+h1, .h1 {
+  font-family: var(--rapha-sans) !important;
+  font-size: 64px !important;         /* RAPHA EXACT */
+  font-weight: 700 !important;        /* RAPHA EXACT */
+  letter-spacing: 0.3px !important;   /* RAPHA EXACT */
+  text-transform: uppercase !important;
+  line-height: 62px !important;       /* RAPHA EXACT */
+  color: #000000 !important;
+}
+
+/* H2 - Section Heading: 32px/600, uppercase */
+h2, .h2,
+.section-header__title,
+.title {
+  font-family: var(--rapha-sans) !important;
+  font-size: 24px !important;         /* RAPHA mobile */
+  font-weight: 600 !important;        /* RAPHA EXACT */
+  letter-spacing: 0.3px !important;   /* RAPHA EXACT */
+  text-transform: uppercase !important;
+  line-height: 24px !important;
+  color: #000000 !important;
+}
+
+@media screen and (min-width: 992px) {
+  h2, .h2,
+  .section-header__title,
+  .title {
+    font-size: 32px !important;       /* RAPHA desktop */
+    line-height: 32px !important;     /* RAPHA EXACT */
+  }
+}
+
+/* H3 - Category/Card Heading: 24px/600, uppercase */
+h3, .h3 {
+  font-family: var(--rapha-sans) !important;
+  font-size: 24px !important;         /* RAPHA EXACT */
+  font-weight: 600 !important;        /* RAPHA EXACT */
+  text-transform: uppercase !important;
+  letter-spacing: 0.3px !important;   /* RAPHA EXACT */
+  line-height: 24px !important;       /* RAPHA EXACT */
+}
+
+/* Body Text (hero subtitle, descriptions): 24px serif */
+.body-text,
+.hero-editorial__subheading,
+.banner__text {
+  font-family: var(--rapha-serif) !important;
+  font-size: 24px !important;         /* RAPHA EXACT */
+  font-weight: 400 !important;        /* RAPHA EXACT */
+  letter-spacing: normal !important;
+  line-height: 36px !important;       /* RAPHA EXACT - 1.5 ratio */
+  color: #000000 !important;
+}
+
+/* Small Body Text (trust bar, footer): 12px/21px */
+.body-small,
+p,
+.rte {
+  font-family: var(--rapha-sans) !important;
+  font-size: 12px !important;         /* RAPHA EXACT */
+  font-weight: 400 !important;        /* RAPHA EXACT */
+  line-height: 21px !important;       /* RAPHA EXACT - 1.75 ratio */
+}
+
+/* ==========================================================================
+   HERO SECTION — Rapha values
    ========================================================================== */
 
 .hero-editorial__overline,
@@ -402,10 +450,10 @@ button[type="submit"] {
 .hero-editorial__heading,
 .banner__heading,
 h1.banner__heading {
-  font-family: var(--rapha-sans) !important;  /* Rapha uses condensed sans for headlines */
-  font-size: 24px !important;  /* Rapha mobile */
-  font-weight: 600 !important;
-  line-height: 24px !important;
+  font-family: var(--rapha-sans) !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  line-height: 48px !important;
   letter-spacing: 0.3px !important;
   text-transform: uppercase !important;
   color: #FFFFFF !important;
@@ -416,22 +464,12 @@ h1.banner__heading {
   .hero-editorial__heading,
   .banner__heading,
   h1.banner__heading {
-    font-size: 32px !important;  /* Rapha desktop */
-    line-height: 32px !important;
+    font-size: 64px !important;       /* RAPHA desktop */
+    line-height: 62px !important;
   }
 }
 
-.hero-editorial__subheading,
-.banner__text {
-  font-family: 'Instrument Serif', Georgia, serif !important;  /* Rapha Serif Text equiv */
-  font-size: 12px !important;
-  font-weight: 400 !important;
-  line-height: 21px !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-  margin: 0 0 24px !important;
-}
-
-/* Hero overlay - Rapha uses minimal or no overlay */
+/* Hero overlay - RAPHA EXACT: 0.3 max, gradient to top */
 .hero-editorial__overlay,
 .banner__media::after {
   background: linear-gradient(
@@ -441,191 +479,130 @@ h1.banner__heading {
   ) !important;
 }
 
-/* Hero buttons */
-.hero-editorial__btn,
-.banner__buttons .button {
-  font-family: var(--rapha-sans) !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.3px !important;
-  text-transform: uppercase !important;
-  padding: 8px 20px !important;
-  min-height: 44px !important;
-  min-width: 120px !important;
-  border-radius: 0 !important;
-}
-
 /* ==========================================================================
-   GLOBAL TYPOGRAPHY — Rapha Scale
-   ========================================================================== */
-
-/* Headings - Rapha Sans Condensed equivalent */
-h1, h2, h3, .h1, .h2, .h3 {
-  font-family: var(--rapha-sans);
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-
-/* Section headings */
-.section-header__title,
-.title {
-  font-family: var(--rapha-sans) !important;
-  font-size: 24px !important;
-  font-weight: 600 !important;
-  line-height: 24px !important;
-  letter-spacing: 0.3px !important;
-  text-transform: uppercase !important;
-}
-
-@media screen and (min-width: 992px) {
-  .section-header__title,
-  .title {
-    font-size: 32px !important;
-    line-height: 32px !important;
-  }
-}
-
-/* Body text - Rapha Serif Text equivalent */
-body,
-p,
-.rte {
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-size: 12px;
-  line-height: 21px;
-  font-weight: 400;
-}
-
-/* Small text / captions */
-.caption,
-.product__text,
-.price {
-  font-family: var(--rapha-sans);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-
-/* ==========================================================================
-   TEXT LINKS — Rapha Style
-   Source: Serif, 12px, weight 600, underlined
-   ========================================================================== */
-
-.link--text {
-  font-family: 'Instrument Serif', Georgia, serif !important;
-  font-size: 12px !important;
-  font-weight: 600 !important;
-  line-height: 21px !important;
-  text-decoration: underline !important;
-  color: #000000 !important;
-}
-
-.link--text:hover {
-  color: var(--rapha-accent) !important;
-}
-
-/* ==========================================================================
-   PRODUCT CARDS — Rapha Style
-   Source: 1:1 aspect, 24px margin-bottom for image, centered text
+   PRODUCT CARDS — RAPHA EXACT VALUES
+   Source: RAPHA-SOURCE-ANALYSIS.md Section 10
    ========================================================================== */
 
 .card__media,
 .product-card__image {
-  aspect-ratio: 1 / 1 !important;  /* Rapha exact */
-  background-color: #F5F5F5 !important;
-  margin-bottom: 24px !important;  /* Rapha exact */
+  aspect-ratio: 1 / 1 !important;       /* RAPHA EXACT - square */
+  background-color: #F5F5F5 !important; /* RAPHA EXACT */
+  margin-bottom: 24px !important;       /* RAPHA EXACT */
 }
 
 .card__media img,
 .product-card__image img {
-  transition: filter 0.5s ease-out !important;  /* Rapha exact */
+  transition: filter 0.5s ease-out !important;  /* RAPHA EXACT */
 }
 
 .card:hover .card__media img,
 .product-card:hover .product-card__image img {
-  filter: brightness(0.95) !important;  /* Rapha exact - subtle darken */
+  filter: brightness(0.95) !important;  /* RAPHA EXACT */
 }
 
 .card__information,
 .product-card__info {
-  padding: 0 24px !important;  /* Rapha exact */
+  padding: 0 24px !important;           /* RAPHA EXACT */
   text-align: center !important;
 }
 
 .card__heading,
 .product-card__title {
   font-family: var(--rapha-sans) !important;
-  font-size: 16px !important;  /* Rapha exact */
-  font-weight: 600 !important;
-  line-height: 16px !important;
-  letter-spacing: 0.3px !important;
+  font-size: 16px !important;           /* RAPHA EXACT */
+  font-weight: 600 !important;          /* RAPHA EXACT */
+  line-height: 16px !important;         /* RAPHA EXACT */
+  letter-spacing: 0.3px !important;     /* RAPHA EXACT */
   text-transform: uppercase !important;
-  margin: 0 0 12px !important;
+  margin: 0 0 12px !important;          /* RAPHA EXACT */
 }
 
-/* Color swatches - Rapha exact */
-.card__colors,
-.product-card__colors {
-  display: inline-flex !important;
-  gap: 8px !important;
-  margin-top: 12px !important;
+.price,
+.product-card__price {
+  font-family: var(--rapha-sans) !important;
+  font-size: 14px !important;           /* RAPHA EXACT */
+  font-weight: 400 !important;          /* RAPHA EXACT */
 }
 
+/* Color swatches - RAPHA EXACT 16x16 */
 .card__colors li,
 .product-card__colors li {
-  height: 16px !important;  /* Rapha exact */
-  width: 16px !important;  /* Rapha exact */
+  height: 16px !important;
+  width: 16px !important;
   border-radius: 50% !important;
 }
 
 /* ==========================================================================
-   COLLECTION CARDS — Rapha Style
-   Source: 2:3 or 16:9 aspect, dark overlay, white text
+   TRUST BAR — RAPHA EXACT VALUES
+   Source: RAPHA-SOURCE-ANALYSIS.md Section 12
    ========================================================================== */
 
-.collection-card,
-.featured-collections__card {
-  position: relative;
-  overflow: hidden;
+.trust-bar {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 24px !important;                 /* RAPHA EXACT */
+  padding: 32px 0 !important;           /* RAPHA EXACT */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;  /* RAPHA EXACT */
 }
 
-.collection-card__media,
-.featured-collections__image-wrapper {
-  aspect-ratio: 2 / 3 !important;  /* Rapha portrait style */
+.trust-item {
+  display: flex !important;
+  gap: 16px !important;                 /* RAPHA EXACT */
+  align-items: flex-start !important;
 }
 
-.collection-card__title,
-.featured-collections__title {
+.trust-item-icon {
+  width: 24px !important;               /* RAPHA EXACT */
+  height: 24px !important;              /* RAPHA EXACT */
+  flex-shrink: 0 !important;
+}
+
+.trust-item-title {
   font-family: var(--rapha-sans) !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.3px !important;
+  font-size: 14px !important;           /* RAPHA EXACT */
+  font-weight: 600 !important;          /* RAPHA EXACT */
   text-transform: uppercase !important;
+  letter-spacing: 0.3px !important;     /* RAPHA EXACT */
+  margin: 0 0 8px !important;           /* RAPHA EXACT */
+}
+
+.trust-item-description {
+  font-family: var(--rapha-sans) !important;
+  font-size: 12px !important;           /* RAPHA EXACT */
+  font-weight: 400 !important;          /* RAPHA EXACT */
+  line-height: 21px !important;         /* RAPHA EXACT */
+  margin: 0 !important;
 }
 
 /* ==========================================================================
-   CAROUSEL / SLIDER — Rapha Style
-   Source: Negative margins, scroll-snap, hidden scrollbar
+   CAROUSEL / SLIDER — RAPHA EXACT VALUES
+   Source: RAPHA-SOURCE-ANALYSIS.md Section 11
    ========================================================================== */
 
 .carousel,
 .slider-component {
-  margin: 0 -16px !important;  /* Rapha mobile */
+  margin: 0 -16px !important;           /* RAPHA mobile */
   overflow-x: hidden !important;
 }
 
 @media screen and (min-width: 768px) {
   .carousel,
   .slider-component {
-    margin: 0 -32px !important;  /* Rapha desktop */
+    margin: 0 -32px !important;         /* RAPHA desktop */
   }
 }
 
 .carousel__track,
 .slider {
   display: flex !important;
-  gap: 16px !important;  /* Rapha mobile */
-  padding: 0 16px !important;
+  flex-flow: row nowrap !important;
+  gap: 16px !important;                 /* RAPHA mobile */
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 16px !important;           /* RAPHA mobile */
   overflow-x: scroll !important;
+  scroll-padding: 16px !important;      /* RAPHA EXACT */
   scroll-snap-type: x mandatory !important;
   -webkit-overflow-scrolling: touch !important;
 }
@@ -633,8 +610,9 @@ p,
 @media screen and (min-width: 768px) {
   .carousel__track,
   .slider {
-    gap: 32px !important;  /* Rapha desktop */
-    padding: 0 32px !important;
+    gap: 32px !important;               /* RAPHA desktop */
+    padding: 0 32px !important;         /* RAPHA desktop */
+    scroll-padding: 32px !important;    /* RAPHA EXACT */
   }
 }
 
@@ -650,15 +628,16 @@ p,
   scroll-snap-align: start !important;
 }
 
-/* Carousel arrows - Rapha exact */
+/* Carousel arrows - RAPHA EXACT 16x16 */
 .carousel__arrow,
 .slider-button {
-  width: 16px !important;
-  height: 16px !important;
+  width: 16px !important;               /* RAPHA EXACT */
+  height: 16px !important;              /* RAPHA EXACT */
   background: transparent !important;
   border: none !important;
+  padding: 0 !important;
   cursor: pointer !important;
-  transition: opacity 0.25s ease-in-out !important;
+  transition: opacity 0.25s ease-in-out !important;  /* RAPHA EXACT */
 }
 
 .carousel__arrow:disabled,
@@ -668,18 +647,144 @@ p,
   pointer-events: none !important;
 }
 
-/* ==========================================================================
-   TRUST BAR — Rapha minimal style
-   ========================================================================== */
-
-.trust-bar-section {
-  background-color: #F5F5F5 !important;
-  border-top: 1px solid #E0E0E0 !important;
-  border-bottom: 1px solid #E0E0E0 !important;
-  padding: 16px 0 !important;
+/* Carousel nav container - RAPHA EXACT */
+.carousel-nav {
+  display: flex !important;
+  gap: 32px !important;                 /* RAPHA EXACT */
+  margin-top: 32px !important;          /* RAPHA EXACT */
+  user-select: none !important;
 }
 
-.trust-bar-section__label {
+/* ==========================================================================
+   FOOTER — RAPHA EXACT VALUES
+   Source: RAPHA-SOURCE-ANALYSIS.md Section 13
+   ========================================================================== */
+
+.footer {
+  padding: 32px 0 !important;           /* RAPHA EXACT */
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;  /* RAPHA EXACT */
+}
+
+.footer-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 32px !important;                 /* RAPHA EXACT */
+}
+
+.footer__title,
+.footer-column-heading {
+  font-family: var(--rapha-sans) !important;
+  font-size: 16px !important;           /* RAPHA EXACT */
+  font-weight: 600 !important;          /* RAPHA EXACT */
+  text-transform: uppercase !important;
+  letter-spacing: 0.3px !important;     /* RAPHA EXACT */
+  margin: 0 0 24px !important;          /* RAPHA EXACT */
+}
+
+.footer__list-item,
+.footer-column li {
+  margin-bottom: 12px !important;       /* RAPHA EXACT */
+}
+
+.footer__list-item a,
+.footer-column a {
+  font-family: var(--rapha-sans) !important;
+  font-size: 12px !important;           /* RAPHA EXACT */
+  font-weight: 600 !important;          /* RAPHA EXACT */
+  color: #000000 !important;            /* RAPHA EXACT */
+  text-decoration: none !important;
+}
+
+.footer__list-item a:hover,
+.footer-column a:hover {
+  color: var(--rapha-accent) !important;  /* Qor green (Rapha uses pink) */
+}
+
+.footer-copyright {
+  font-family: var(--rapha-sans) !important;
+  font-size: 12px !important;           /* RAPHA EXACT */
+  color: #000000 !important;
+}
+
+/* ==========================================================================
+   SECTION SPACING — RAPHA EXACT VALUES
+   Source: RAPHA-SOURCE-ANALYSIS.md Section 6
+   ========================================================================== */
+
+section,
+.shopify-section {
+  padding: 32px 0 !important;           /* RAPHA EXACT */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;  /* RAPHA EXACT */
+}
+
+.section-header {
+  margin-bottom: 24px !important;       /* RAPHA mobile */
+  text-align: center !important;
+}
+
+@media screen and (min-width: 992px) {
+  .section-header {
+    margin-bottom: 32px !important;     /* RAPHA desktop */
+  }
+}
+
+/* Container margins - RAPHA EXACT */
+main {
+  max-width: none !important;           /* RAPHA EXACT - full width */
+  padding: 0 !important;
+  margin: 0 16px !important;            /* RAPHA mobile */
+}
+
+@media screen and (min-width: 992px) {
+  main {
+    margin: 0 32px !important;          /* RAPHA desktop */
+  }
+}
+
+/* ==========================================================================
+   TRANSITIONS & ANIMATIONS — RAPHA EXACT VALUES
+   Source: RAPHA-SOURCE-ANALYSIS.md Section 9
+   ========================================================================== */
+
+/* Standard UI transitions */
+a, button, .button, .link {
+  transition: color 0.15s ease-out,
+              background-color 250ms ease-in-out,  /* RAPHA EXACT */
+              border-color 250ms ease-in-out !important;
+}
+
+/* Image hover transitions - RAPHA EXACT */
+img {
+  transition: filter 0.5s ease-out !important;     /* RAPHA EXACT */
+}
+
+/* Opacity transitions - RAPHA EXACT */
+.icon, svg {
+  transition: opacity 0.25s ease-in-out !important;  /* RAPHA EXACT */
+}
+
+/* Transform transitions - RAPHA EXACT */
+.slide, .transform-element {
+  transition: transform 0.3s ease-out !important;    /* RAPHA EXACT */
+}
+
+/* ==========================================================================
+   COLLECTION CARDS — Rapha Style
+   ========================================================================== */
+
+.collection-card,
+.featured-collections__card {
+  position: relative;
+  overflow: hidden;
+}
+
+.collection-card__media,
+.featured-collections__image-wrapper {
+  aspect-ratio: 2 / 3 !important;       /* Rapha portrait style */
+}
+
+.collection-card__title,
+.featured-collections__title {
   font-family: var(--rapha-sans) !important;
   font-size: 14px !important;
   font-weight: 600 !important;
@@ -687,57 +792,22 @@ p,
   text-transform: uppercase !important;
 }
 
-.trust-bar-section__description {
-  font-family: 'Instrument Serif', Georgia, serif !important;
-  font-size: 12px !important;
-  line-height: 21px !important;
-  color: #666666 !important;
-}
-
 /* ==========================================================================
-   FOOTER — Rapha Style
-   Source: border-top, serif links at 12px
+   PLACEHOLDER STYLING — Clean gray backgrounds
    ========================================================================== */
 
-.footer {
-  border-top: 1px solid #E0E0E0 !important;
-  padding: 32px 0 !important;
+.placeholder,
+[class*="placeholder"] {
+  background-color: #F5F5F5 !important;  /* RAPHA EXACT */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-.footer__title {
+.placeholder-text {
   font-family: var(--rapha-sans) !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.3px !important;
-  text-transform: uppercase !important;
-  margin: 0 0 24px !important;
-}
-
-.footer__list-item a {
-  font-family: 'Instrument Serif', Georgia, serif !important;
-  font-size: 12px !important;
-  line-height: 21px !important;
-  color: #000000 !important;
-  text-decoration: none !important;
-}
-
-.footer__list-item a:hover {
-  color: var(--rapha-accent) !important;
-}
-
-/* ==========================================================================
-   ANIMATIONS — Rapha Transitions
-   ========================================================================== */
-
-/* Standard UI transitions */
-a, button, .button, .link {
-  transition: color 0.15s ease-out,
-              background-color 0.25s ease-in-out,
-              border-color 0.25s ease-in-out !important;
-}
-
-/* Image hover transitions */
-img {
-  transition: filter 0.5s ease-out,
-              transform 0.3s ease-out !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #949494 !important;
+  text-align: center !important;
 }
