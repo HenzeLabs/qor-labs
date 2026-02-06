@@ -1,7 +1,7 @@
 {%- comment -%}
   SECTION: Newsletter
-  Rapha-inspired email signup. Clean and minimal.
-  Off-white or dark background options.
+  RAPHA-EXACT values from RAPHA-SOURCE-ANALYSIS.md
+  Clean email signup with light or dark background options.
 {%- endcomment -%}
 
 {%- liquid
@@ -10,7 +10,7 @@
 
 <section
   id="Newsletter-{{ section.id }}"
-  class="newsletter newsletter--{{ bg_style }} section-padding"
+  class="newsletter newsletter--{{ bg_style }}"
 >
   <div class="newsletter__container">
     <div class="newsletter__content">
@@ -61,22 +61,36 @@
 </section>
 
 <style>
+  /* =====================================
+     NEWSLETTER - RAPHA EXACT VALUES
+     Source: RAPHA-SOURCE-ANALYSIS.md
+     ===================================== */
+
   .newsletter {
     width: 100%;
+    padding: 32px 0;                          /* RAPHA EXACT */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);  /* RAPHA EXACT */
   }
 
   .newsletter--light {
-    background-color: var(--color-off-white, #F7F7F5);
+    background-color: #F5F5F5;                /* RAPHA EXACT */
   }
 
   .newsletter--dark {
-    background-color: var(--color-black, #0A0A0A);
+    background-color: #0A0A0A;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
   }
 
   .newsletter__container {
-    max-width: var(--container-max, 80rem);
+    max-width: none;
     margin: 0 auto;
-    padding: 0 var(--space-md, 1rem);
+    padding: 0 16px;                          /* RAPHA mobile */
+  }
+
+  @media (min-width: 768px) {
+    .newsletter__container {
+      padding: 0 32px;                        /* RAPHA desktop */
+    }
   }
 
   .newsletter__content {
@@ -85,49 +99,62 @@
     text-align: center;
   }
 
+  /* Overline - 14px/600/0.3px uppercase */
   .newsletter__overline {
     display: block;
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.6875rem;
-    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;                          /* RAPHA EXACT */
+    font-weight: 600;                         /* RAPHA EXACT */
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: var(--space-sm, 0.5rem);
+    letter-spacing: 0.3px;                    /* RAPHA EXACT */
+    margin-bottom: 16px;
   }
 
   .newsletter--light .newsletter__overline {
-    color: var(--color-text-secondary, #6B6B6B);
+    color: #6B6B6B;
   }
 
   .newsletter--dark .newsletter__overline {
     color: rgba(255, 255, 255, 0.6);
   }
 
+  /* RAPHA EXACT: H2 24px/32px, 600, uppercase */
   .newsletter__heading {
-    font-family: var(--font-display, 'Instrument Serif', serif);
-    font-size: clamp(1.75rem, 4vw, 2.25rem);
-    font-weight: 400;
-    line-height: 1.2;
-    margin: 0 0 var(--space-md, 1rem);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px;                          /* RAPHA mobile */
+    font-weight: 600;                         /* RAPHA EXACT */
+    line-height: 24px;
+    letter-spacing: 0.3px;                    /* RAPHA EXACT */
+    text-transform: uppercase;
+    margin: 0 0 16px;
+  }
+
+  @media (min-width: 992px) {
+    .newsletter__heading {
+      font-size: 32px;                        /* RAPHA desktop */
+      line-height: 32px;                      /* RAPHA EXACT */
+    }
   }
 
   .newsletter--light .newsletter__heading {
-    color: var(--color-text-primary, #1A1A1A);
+    color: #000000;
   }
 
   .newsletter--dark .newsletter__heading {
-    color: var(--color-white, #FFFFFF);
+    color: #FFFFFF;
   }
 
+  /* RAPHA EXACT: body 16px/400/28px */
   .newsletter__description {
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0 0 var(--space-xl, 2rem);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;                          /* RAPHA EXACT */
+    font-weight: 400;                         /* RAPHA EXACT */
+    line-height: 28px;                        /* RAPHA EXACT */
+    margin: 0 0 24px;
   }
 
   .newsletter--light .newsletter__description {
-    color: var(--color-text-secondary, #6B6B6B);
+    color: #6B6B6B;
   }
 
   .newsletter--dark .newsletter__description {
@@ -141,40 +168,52 @@
   .newsletter__form-row {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm, 0.5rem);
+    gap: 8px;                                 /* RAPHA mobile gap */
+  }
+
+  @media (min-width: 768px) {
+    .newsletter__form-row {
+      flex-direction: row;
+      gap: 0;
+    }
   }
 
   .newsletter__input-wrapper {
     flex: 1;
   }
 
+  /* Input - RAPHA style: 40px min-height, 16px font */
   .newsletter__input {
     width: 100%;
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 1rem;
-    padding: 1rem 1.25rem;
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;                          /* RAPHA EXACT */
+    font-weight: 400;
+    padding: 12px 16px;
+    min-height: 40px;                         /* RAPHA EXACT */
     border: 1px solid;
+    border-radius: 0;                         /* RAPHA EXACT */
     background-color: transparent;
-    transition: border-color 0.2s ease;
+    transition: border-color 250ms ease-in-out;
   }
 
   .newsletter--light .newsletter__input {
-    border-color: var(--color-border-dark, #C4C2BD);
-    color: var(--color-text-primary, #1A1A1A);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #000000;
   }
 
   .newsletter--light .newsletter__input::placeholder {
-    color: var(--color-text-tertiary, #9B9B9B);
+    color: #949494;
   }
 
   .newsletter--light .newsletter__input:focus {
     outline: none;
-    border-color: var(--color-black, #0A0A0A);
+    border-color: #000000;
   }
 
   .newsletter--dark .newsletter__input {
     border-color: rgba(255, 255, 255, 0.3);
-    color: var(--color-white, #FFFFFF);
+    color: #FFFFFF;
   }
 
   .newsletter--dark .newsletter__input::placeholder {
@@ -183,45 +222,63 @@
 
   .newsletter--dark .newsletter__input:focus {
     outline: none;
-    border-color: var(--color-white, #FFFFFF);
+    border-color: #FFFFFF;
   }
 
+  @media (min-width: 768px) {
+    .newsletter__input {
+      border-right: none;
+    }
+
+    .newsletter__input:focus {
+      border-right: none;
+    }
+  }
+
+  /* RAPHA EXACT: button 14px/600, 12px padding, 40px min-height */
   .newsletter__btn {
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.8125rem;
-    font-weight: 500;
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;                          /* RAPHA EXACT */
+    font-weight: 600;                         /* RAPHA EXACT */
+    line-height: 14px;
+    letter-spacing: normal;                   /* RAPHA EXACT */
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    padding: 1rem 2rem;
+    padding: 12px 24px;                       /* RAPHA EXACT */
+    min-height: 40px;                         /* RAPHA EXACT */
     border: none;
+    border-radius: 0;                         /* RAPHA EXACT */
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 250ms ease-in-out;
     white-space: nowrap;
   }
 
   .newsletter--light .newsletter__btn {
-    background-color: var(--color-black, #0A0A0A);
-    color: var(--color-white, #FFFFFF);
+    background-color: #000000;
+    color: #FFFFFF;
   }
 
   .newsletter--light .newsletter__btn:hover {
-    background-color: #333;
+    background-color: #2D5A3D;                /* Qor green */
   }
 
   .newsletter--dark .newsletter__btn {
-    background-color: var(--color-white, #FFFFFF);
-    color: var(--color-black, #0A0A0A);
+    background-color: #FFFFFF;
+    color: #000000;
   }
 
   .newsletter--dark .newsletter__btn:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #2D5A3D;
+    color: #FFFFFF;
   }
 
+  /* Feedback messages */
   .newsletter__success {
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.875rem;
-    color: var(--color-success, #2D5A3D);
-    margin-top: var(--space-md, 1rem);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #2D5A3D;                           /* Qor green */
+    margin-top: 16px;
   }
 
   .newsletter--dark .newsletter__success {
@@ -229,59 +286,28 @@
   }
 
   .newsletter__error {
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.875rem;
-    color: var(--color-error, #C23B22);
-    margin-top: var(--space-md, 1rem);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #C23B22;
+    margin-top: 16px;
   }
 
+  /* Disclaimer - 12px/21px */
   .newsletter__disclaimer {
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.75rem;
-    margin-top: var(--space-lg, 1.5rem);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;                          /* RAPHA EXACT */
+    font-weight: 400;
+    line-height: 21px;                        /* RAPHA EXACT */
+    margin-top: 24px;
   }
 
   .newsletter--light .newsletter__disclaimer {
-    color: var(--color-text-tertiary, #9B9B9B);
+    color: #949494;
   }
 
   .newsletter--dark .newsletter__disclaimer {
     color: rgba(255, 255, 255, 0.5);
-  }
-
-  /* Tablet and up: inline form */
-  @media (min-width: 768px) {
-    .newsletter__container {
-      padding: 0 var(--space-lg, 1.5rem);
-    }
-
-    .newsletter__form-row {
-      flex-direction: row;
-      gap: 0;
-    }
-
-    .newsletter__input {
-      border-right: none;
-    }
-
-    .newsletter--light .newsletter__input:focus {
-      border-right: none;
-    }
-
-    .newsletter--dark .newsletter__input:focus {
-      border-right: none;
-    }
-  }
-
-  /* Desktop */
-  @media (min-width: 1024px) {
-    .newsletter__container {
-      padding: 0 var(--space-xl, 2rem);
-    }
-
-    .newsletter__description {
-      font-size: 1.0625rem;
-    }
   }
 </style>
 
