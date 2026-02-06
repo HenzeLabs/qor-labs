@@ -658,52 +658,231 @@ h1.banner__heading {
 /* ==========================================================================
    FOOTER — RAPHA EXACT VALUES
    Source: RAPHA-SOURCE-ANALYSIS.md Section 13
+   Targets Dawn's actual footer class names
    ========================================================================== */
 
 .footer {
   padding: 32px 0 !important;           /* RAPHA EXACT */
   border-top: 1px solid rgba(0, 0, 0, 0.1) !important;  /* RAPHA EXACT */
+  background-color: #FFFFFF !important;
 }
 
-.footer-grid {
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
+/* Container padding - RAPHA EXACT */
+.footer .page-width {
+  padding: 0 16px !important;           /* RAPHA mobile */
+}
+
+@media screen and (min-width: 768px) {
+  .footer .page-width {
+    padding: 0 32px !important;         /* RAPHA desktop */
+  }
+}
+
+/* Footer top content blocks grid */
+.footer__content-top {
+  margin-bottom: 32px !important;       /* RAPHA EXACT */
+}
+
+.footer__blocks-wrapper {
   gap: 32px !important;                 /* RAPHA EXACT */
 }
 
+/* Block headings - RAPHA EXACT: 14px/600/uppercase/0.3px */
+.footer-block__heading,
 .footer__title,
 .footer-column-heading {
   font-family: var(--rapha-sans) !important;
-  font-size: 16px !important;           /* RAPHA EXACT */
+  font-size: 14px !important;           /* RAPHA EXACT */
   font-weight: 600 !important;          /* RAPHA EXACT */
   text-transform: uppercase !important;
   letter-spacing: 0.3px !important;     /* RAPHA EXACT */
-  margin: 0 0 24px !important;          /* RAPHA EXACT */
+  color: #000000 !important;
+  margin: 0 0 16px !important;          /* RAPHA EXACT */
+  line-height: 14px !important;
 }
 
+/* Footer links - RAPHA EXACT: 12px/600 */
+.footer-block__details-content li,
 .footer__list-item,
 .footer-column li {
   margin-bottom: 12px !important;       /* RAPHA EXACT */
 }
 
+.footer-block__details-content a,
+.footer-block__details-content .link,
+.list-menu__item--link,
 .footer__list-item a,
 .footer-column a {
   font-family: var(--rapha-sans) !important;
   font-size: 12px !important;           /* RAPHA EXACT */
   font-weight: 600 !important;          /* RAPHA EXACT */
+  line-height: 21px !important;         /* RAPHA EXACT */
   color: #000000 !important;            /* RAPHA EXACT */
   text-decoration: none !important;
+  background-image: none !important;
+  transition: color 250ms ease-in-out !important;
 }
 
+.footer-block__details-content a:hover,
+.list-menu__item--link:hover,
 .footer__list-item a:hover,
 .footer-column a:hover {
   color: var(--rapha-accent) !important;  /* Qor green (Rapha uses pink) */
+  text-decoration: none !important;
+  background-image: none !important;
 }
 
+/* Footer newsletter section */
+.footer-block--newsletter {
+  text-align: center !important;
+  max-width: 560px !important;
+  margin: 32px auto 0 !important;
+}
+
+.footer__newsletter .footer-block__heading {
+  margin-bottom: 24px !important;
+}
+
+/* Newsletter form - RAPHA style */
+.footer__newsletter .field {
+  display: flex !important;
+  gap: 0 !important;
+}
+
+.footer__newsletter .field__input {
+  font-family: var(--rapha-sans) !important;
+  font-size: 16px !important;
+  padding: 12px 16px !important;
+  min-height: 40px !important;          /* RAPHA EXACT */
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  border-right: none !important;
+  border-radius: 0 !important;          /* RAPHA EXACT */
+  background-color: transparent !important;
+}
+
+.footer__newsletter .field__button,
+.footer__newsletter .newsletter-form__button {
+  font-family: var(--rapha-sans) !important;
+  font-size: 14px !important;           /* RAPHA EXACT */
+  font-weight: 600 !important;          /* RAPHA EXACT */
+  padding: 12px 24px !important;
+  min-height: 40px !important;          /* RAPHA EXACT */
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 0 !important;          /* RAPHA EXACT */
+  cursor: pointer !important;
+  transition: background-color 250ms ease-in-out !important;
+}
+
+.footer__newsletter .field__button:hover,
+.footer__newsletter .newsletter-form__button:hover {
+  background-color: var(--rapha-accent) !important;  /* Qor green */
+}
+
+/* Social icons */
+.footer__list-social {
+  display: flex !important;
+  gap: 16px !important;
+  margin-top: 24px !important;
+  justify-content: center !important;
+}
+
+.footer__list-social .icon {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Info links row */
+.footer__info-links {
+  padding: 24px 0 !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.footer__info-links ul {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 8px 24px !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.footer__info-links a {
+  font-family: var(--rapha-sans) !important;
+  font-size: 12px !important;           /* RAPHA EXACT */
+  font-weight: 600 !important;
+  color: #000000 !important;
+  text-decoration: none !important;
+}
+
+.footer__info-links a:hover {
+  color: var(--rapha-accent) !important;
+}
+
+/* Bottom content (localization, payment, copyright) */
+.footer__content-bottom {
+  padding-top: 24px !important;
+}
+
+.footer__content-bottom-wrapper {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 16px !important;
+}
+
+/* Payment icons */
+.footer__payment {
+  display: flex !important;
+  gap: 8px !important;
+}
+
+.list-payment__item {
+  height: 24px !important;
+}
+
+.list-payment__item svg {
+  height: 24px !important;
+  width: auto !important;
+}
+
+/* Copyright - RAPHA EXACT: 12px */
+.footer__copyright,
+.copyright__content,
 .footer-copyright {
   font-family: var(--rapha-sans) !important;
   font-size: 12px !important;           /* RAPHA EXACT */
-  color: #000000 !important;
+  font-weight: 400 !important;
+  color: #6B6B6B !important;
+  text-align: center !important;
+}
+
+.footer__copyright a {
+  color: #6B6B6B !important;
+  text-decoration: none !important;
+}
+
+.footer__copyright a:hover {
+  color: var(--rapha-accent) !important;
+}
+
+/* Policies list */
+.policies {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px 16px !important;
+  list-style: none !important;
+  margin: 8px 0 0 !important;
+  padding: 0 !important;
+}
+
+/* Hide localization selectors in footer if shown */
+.footer__localization {
+  display: none !important;
 }
 
 /* ==========================================================================
