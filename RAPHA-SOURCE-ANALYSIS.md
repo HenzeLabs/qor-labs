@@ -1,383 +1,437 @@
-# RAPHA.CC Source Analysis
+# RAPHA.CC Source Analysis — Computed Styles
 
-> **Source of Truth** for rebuilding Qor Labs sections with Rapha's exact CSS values.
-> Extracted from https://www.rapha.cc/us/en on 2026-02-05
-
----
-
-## 1. TYPOGRAPHY SYSTEM
-
-### Font Families
-```css
-/* Display Headlines */
-font-family: "Rapha Serif Head", serif;
-/* Our equivalent: 'Instrument Serif', Georgia, serif */
-
-/* Body Text */
-font-family: "Rapha Serif Text", serif;
-font-size: 12px;
-line-height: 21px;
-font-weight: 400;
-/* Our equivalent: 'Instrument Serif' for body serif text */
-
-/* UI / Buttons / Labels */
-font-family: 'Rapha Sans Condensed', sans-serif;
-font-weight: 600;
-text-transform: uppercase;
-letter-spacing: 0.3px;
-/* Our equivalent: 'DM Sans', sans-serif */
-```
-
-### Typography Scale (Extracted)
-
-| Element | Font | Size (mobile) | Size (desktop) | Weight | Line-height | Letter-spacing | Transform |
-|---------|------|---------------|----------------|--------|-------------|----------------|-----------|
-| Section Heading | Rapha Sans Condensed | 24px | 32px | 600 | 24px/32px | 0.3px | uppercase |
-| Button Text | Rapha Sans Condensed | 14px | 14px | 600 | 14px | 0.3px | uppercase |
-| Body Small | Rapha Serif Text | 12px | 12px | 400 | 21px | normal | none |
-| Link Underline | Rapha Serif Text | 12px | 12px | 600 | 21px | normal | none |
-| Nav Labels | Rapha Sans Condensed | 16px | 16px | 600 | 16px | 0.3px | uppercase |
+> **Extracted from live site on 2026-02-05 using Playwright getComputedStyle()**
+> This is the source of truth for rebuilding Qor Labs sections.
 
 ---
 
-## 2. COLOR PALETTE
+## 1. FONT FAMILIES
 
-### Core Colors
-```css
-/* Primary */
---black: #000000;
---white: #FFFFFF;
+Rapha uses 4 custom font families:
 
-/* Accent */
---rapha-pink: #FA3C6E;  /* Used for hover states */
+| Font | Usage | Our Equivalent |
+|------|-------|----------------|
+| `"Rapha Sans Condensed"` | Headings, buttons, nav labels, section titles | `'DM Sans', sans-serif` |
+| `"Rapha Serif Head"` | Hero subheadings, editorial body | `'Instrument Serif', serif` |
+| `"Rapha Serif Text"` | Body text, footer links, descriptions | `'DM Sans', sans-serif` |
+| `"Rapha Sans Numerals"` | Prices | `'DM Sans', sans-serif` |
 
-/* Grays */
---disabled: #949494;
---border-light: (use rgba or subtle gray)
-
-/* For Qor Labs - translate to: */
---color-black: #0A0A0A;
---color-white: #FFFFFF;
---color-accent: #2D5A3D;  /* Lab green instead of pink */
---color-hover: #1E4530;   /* Darker green for hover */
-```
-
-### Overlay Gradients
-```css
-/* No heavy gradients on hero - Rapha uses minimal or no overlay */
-/* If overlay needed, very subtle: */
-background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 50%);
-```
+**Font weights available:**
+- Rapha Sans Condensed: 400, 600, 700
+- Rapha Serif Text: 400, 600
+- Rapha Serif Head: 400
 
 ---
 
-## 3. BUTTONS
+## 2. ANNOUNCEMENT BAR
 
-### Primary Button (Filled)
+**Computed styles:**
 ```css
-.button-primary {
-  box-sizing: border-box;
-  border: 1px solid #000000;
-  border-radius: 0;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  /* Typography */
-  font-family: 'Rapha Sans Condensed', sans-serif;  /* Use: 'DM Sans' */
+.announcement-bar {
+  height: 40px;
+  min-height: 40px;
+  padding: 12px;
+  background-color: rgb(0, 0, 0);       /* #000000 */
+  color: rgb(255, 255, 255);            /* #FFFFFF */
+  font-family: "Rapha Sans Condensed", sans-serif;
   font-size: 14px;
-  font-weight: 600;  /* Use: 500 */
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: uppercase;
   line-height: 14px;
+  text-align: center;
+  z-index: 6;
+}
+```
+
+**Qor Labs translation:**
+```css
+.announcement-bar {
+  height: 40px;
+  min-height: 40px;
+  padding: 12px;
+  background-color: #000000;
+  color: #FFFFFF;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  line-height: 14px;
+  text-align: center;
+}
+```
+
+---
+
+## 3. HEADER
+
+**Computed styles:**
+```css
+header {
+  height: 104px;  /* includes announcement bar */
+  padding: 0px;
+  background-color: transparent;
+}
+
+/* Main header row (without announcement) */
+.header-main {
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+```
+
+### Navigation Links
+
+**Computed styles (desktop nav):**
+```css
+.nav-link {
+  font-family: "Rapha Serif Text", serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;  /* NOT uppercase! */
+  color: rgb(0, 0, 0);
+  line-height: normal;
+  text-decoration: none;
+}
+```
+
+**Note:** Rapha's main nav uses **serif text, sentence case, 16px** — NOT uppercase sans-serif. This is different from what I assumed earlier.
+
+**Qor Labs translation:**
+```css
+.header__menu-item {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #000000;
+  text-decoration: none;
+}
+```
+
+### Logo
+```css
+.logo img {
+  /* Rapha logo is roughly 100-120px wide, 30-40px tall */
+  max-height: 32px;
+  width: auto;
+}
+```
+
+---
+
+## 4. TYPOGRAPHY SCALE
+
+### Hero Heading (H1)
+```css
+h1 {
+  font-family: "Rapha Sans Condensed", sans-serif;
+  font-size: 64px;
+  font-weight: 700;
   letter-spacing: 0.3px;
   text-transform: uppercase;
-  text-decoration: none;
-  text-align: center;
-  white-space: normal;
-
-  /* Sizing */
-  padding: 8px 20px;
-  min-height: 44px;
-  min-width: 120px;
-
-  /* Colors */
-  color: #FFFFFF;
-  background-color: #000000;
-
-  /* Animation */
-  transition: background-color 250ms ease-in-out,
-              border-color 250ms ease-in-out,
-              color 250ms ease-in-out;
-}
-
-.button-primary:hover {
-  background-color: #FA3C6E;  /* Use: accent color */
-  border-color: #FA3C6E;
-  color: #FFFFFF;
+  line-height: 62px;
+  color: rgb(0, 0, 0);
 }
 ```
 
-### Secondary Button (Outline)
+### Section Heading (H2)
 ```css
-.button-secondary {
-  /* Same base styles as primary */
-  color: #000000;
-  background-color: transparent;
-  border: 1px solid #000000;
-}
-
-.button-secondary:hover {
-  border-color: #FA3C6E;  /* Use: accent color */
-  color: #FA3C6E;
-  background-color: transparent;
+h2 {
+  font-family: "Rapha Sans Condensed", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  line-height: 32px;
+  color: rgb(0, 0, 0);
 }
 ```
 
-### Text Link
+### Category/Card Heading (H3)
 ```css
-.text-link {
+h3 {
+  font-family: "Rapha Sans Condensed", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  line-height: 24px;
+}
+```
+
+### Body Text (Hero subtitle, descriptions)
+```css
+.body-text {
+  font-family: "Rapha Serif Head", serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 36px;  /* 1.5 ratio */
+  color: rgb(0, 0, 0);
+}
+```
+
+### Small Body Text (Trust bar descriptions, footer)
+```css
+.body-small {
+  font-family: "Rapha Serif Text", serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 21px;  /* 1.75 ratio */
+}
+```
+
+### Footer Heading
+```css
+.footer-heading {
+  font-family: "Rapha Sans Condensed", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+}
+```
+
+### Footer Link
+```css
+.footer-link {
   font-family: "Rapha Serif Text", serif;
   font-size: 12px;
   font-weight: 600;
-  line-height: 21px;
-  text-decoration: underline;
-  color: #000000;
-  cursor: pointer;
-}
-
-.text-link:hover {
-  color: #FA3C6E;  /* Use: accent color */
+  color: rgb(0, 0, 0);
 }
 ```
 
 ---
 
-## 4. HEADER
+## 5. BUTTONS
 
-### Structure
-```html
-<header>
-  <!-- Announcement bar - 40px height -->
-  <div class="announcement-bar">...</div>
-
-  <!-- Main header - 64px mobile -->
-  <div class="header-main">
-    <button class="hamburger">...</button>  <!-- Mobile only -->
-    <a class="logo">...</a>                 <!-- Center -->
-    <nav class="desktop-nav">...</nav>      <!-- Desktop only -->
-    <div class="header-icons">...</div>     <!-- Search, Account, Cart -->
-  </div>
-</header>
-```
-
-### CSS Values
+### Primary Button (CTA)
 ```css
-/* Announcement Bar */
-.announcement-bar {
-  background-color: #000000;
-  min-height: 40px;
-  padding: 12px;
-  text-align: center;
-  color: #FFFFFF;
-  text-transform: uppercase;
-  z-index: 6;
-}
-
-/* Main Header */
-.header-main {
-  display: flex;
-  align-items: center;
-  height: 64px;
-  position: relative;
-  z-index: 5;
-}
-
-/* Mobile Hamburger */
-.hamburger-box {
-  width: 17px;
-  height: 17px;
-}
-
-.hamburger-inner {
-  width: 17px;
-  height: 2px;
-  background-color: #000000;
-  border-radius: 0;
-}
-
-/* Desktop Nav - hidden on mobile */
-@media (min-width: 992px) {
-  .desktop-nav { display: flex; }
-  .hamburger { display: none; }
-}
-```
-
----
-
-## 5. IMAGE CONTAINERS
-
-### Aspect Ratios Used
-```css
-/* Square - Product cards, thumbnails */
-.aspect-square {
-  aspect-ratio: 1 / 1;
-}
-
-/* Landscape - Hero, editorial */
-.aspect-landscape {
-  aspect-ratio: 16 / 9;
-}
-
-/* Portrait - Collection cards, features */
-.aspect-portrait {
-  aspect-ratio: 2 / 3;
-}
-
-/* Common image styles */
-.image-container {
-  container-type: inline-size;
-  display: block;
-  height: auto;
-  max-width: 100%;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  transform: translate3d(0, 0, 0);  /* GPU acceleration */
-  backface-visibility: hidden;
-}
-
-.image {
-  background-repeat: no-repeat;
-  background-size: cover;
-  object-fit: cover;
-  width: 100%;
-}
-```
-
----
-
-## 6. HERO SECTION
-
-### Structure
-```html
-<section class="hero">
-  <div class="hero-media">
-    <picture>
-      <source media="(min-width: 768px)" srcset="desktop-16x9.jpg">
-      <img src="mobile-1x1.jpg" alt="">
-    </picture>
-  </div>
-  <div class="hero-content">
-    <h1 class="hero-title">...</h1>
-    <p class="hero-subtitle">...</p>
-    <div class="hero-buttons">
-      <a class="button-primary">Shop Now</a>
-      <a class="button-secondary">Learn More</a>
-    </div>
-  </div>
-</section>
-```
-
-### CSS Values
-```css
-.hero {
-  position: relative;
-  width: 100%;
-  /* Height determined by image aspect ratio */
-}
-
-.hero-media {
-  width: 100%;
-}
-
-.hero-media img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-/* Content positioning - Rapha often uses BELOW image, not overlay */
-.hero-content {
-  padding: 32px 16px;
-  text-align: center;
-}
-
-@media (min-width: 768px) {
-  .hero-content {
-    padding: 40px 32px;
-  }
-}
-
-.hero-title {
-  font-family: 'Rapha Sans Condensed', sans-serif;
-  font-size: 24px;
+.button-primary {
+  font-family: "Rapha Sans Condensed", sans-serif;
+  font-size: 14px;
   font-weight: 600;
-  line-height: 24px;
-  letter-spacing: 0.3px;
+  letter-spacing: normal;
   text-transform: uppercase;
-  margin: 0 0 16px;
+
+  padding: 12px;
+  min-height: 40px;
+  min-width: 0px;  /* No minimum */
+
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  border: 0px none;
+  border-radius: 0px;
+
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (min-width: 992px) {
-  .hero-title {
-    font-size: 32px;
-    line-height: 32px;
-  }
+.button-primary:hover {
+  background-color: #FA3C6E;  /* Rapha pink accent */
+}
+```
+
+**Qor Labs translation:**
+```css
+.button-primary {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: uppercase;
+
+  padding: 12px 20px;
+  min-height: 40px;
+
+  background-color: #000000;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0;
+
+  cursor: pointer;
+  text-decoration: none;
 }
 
-.hero-buttons {
+.button-primary:hover {
+  background-color: #2D5A3D;  /* Lab green accent */
+}
+```
+
+---
+
+## 6. SPACING & LAYOUT
+
+### Container/Main
+```css
+main {
+  max-width: none;  /* Full width */
+  padding: 0;
+  margin: 0 32px;   /* 32px side margins */
+}
+```
+
+### Trust Bar Section
+```css
+.trust-bar {
+  display: grid;
+  gap: 24px;
+  padding: 0;
+}
+
+.trust-bar-item {
+  display: flex;
+  gap: 16px;
+}
+```
+
+### Product Grid
+```css
+.product-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+```
+
+### Section Spacing
+```css
+/* Typical section padding */
+section {
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Section header margin */
+.section-header {
+  margin-bottom: 24px;  /* mobile */
+  margin-bottom: 32px;  /* desktop */
+  text-align: center;
 }
 ```
 
 ---
 
-## 7. PRODUCT CARDS
+## 7. COLORS
 
-### Structure
-```html
-<article class="product-card">
-  <a class="product-card-link">
-    <div class="product-card-image">
-      <img src="..." alt="">
-    </div>
-    <div class="product-card-info">
-      <h3 class="product-card-title">Product Name</h3>
-      <p class="product-card-price">$150.00</p>
-      <div class="product-card-colors">...</div>
-    </div>
-  </a>
-</article>
+### Core Palette
+```css
+:root {
+  /* Primary */
+  --rapha-black: #000000;       /* rgb(0, 0, 0) */
+  --rapha-white: #FFFFFF;       /* rgb(255, 255, 255) */
+
+  /* Accent */
+  --rapha-pink: #FA3C6E;        /* Hover states */
+
+  /* Grays */
+  --rapha-gray-light: #F5F5F5;  /* Placeholder backgrounds */
+  --rapha-gray-border: rgba(0, 0, 0, 0.1);
+
+  /* Text */
+  --rapha-text: #000000;
+  --rapha-text-inverse: #FFFFFF;
+}
 ```
 
-### CSS Values
+### Qor Labs Color Translation
 ```css
-.product-card {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
+:root {
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-accent: #2D5A3D;       /* Lab green (replaces pink) */
+  --color-accent-hover: #1E4530;
+  --color-gray-light: #F5F5F5;
+  --color-border: rgba(0, 0, 0, 0.1);
 }
+```
 
-.product-card-image {
-  aspect-ratio: 1 / 1;
-  background-color: #F5F5F5;  /* Light gray placeholder */
-  position: relative;
-  width: 100%;
-  margin-bottom: 24px;
-}
+---
 
-.product-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+## 8. RESPONSIVE BREAKPOINTS
+
+From CSS analysis:
+```css
+/* Mobile first - default */
+/* No media query */
+
+/* Tablet */
+@media screen and (min-width: 768px) { }
+
+/* Desktop */
+@media screen and (min-width: 992px) { }
+
+/* Large desktop */
+@media screen and (min-width: 1200px) { }
+```
+
+### Key responsive changes:
+- **Mobile (< 768px):**
+  - Side margins: 16px
+  - Gap in grids: 16px
+  - H2: 24px
+
+- **Desktop (≥ 992px):**
+  - Side margins: 32px
+  - Gap in grids: 32px
+  - H2: 32px
+
+---
+
+## 9. TRANSITIONS & ANIMATIONS
+
+```css
+/* Standard transition for hover states */
+transition: filter 0.5s ease-out;       /* Images */
+transition: opacity 0.25s ease-in-out;  /* Icons, buttons */
+transition: transform 0.3s ease-out;    /* Slide animations */
+transition: background-color 250ms ease-in-out; /* Button backgrounds */
+```
+
+### Image Hover Effect
+```css
+.card-image {
   transition: filter 0.5s ease-out;
 }
 
-.product-card-link:hover .product-card-image img {
-  filter: brightness(0.95);  /* Subtle darken on hover */
+.card:hover .card-image {
+  filter: brightness(0.95);  /* Subtle darken */
+}
+```
+
+---
+
+## 10. PRODUCT CARD (from collection page)
+
+**Computed styles:**
+```css
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: ~348px;  /* Flexible based on grid */
+}
+
+.product-card-image {
+  aspect-ratio: 1 / 1;  /* Square */
+  background-color: #F5F5F5;
+  width: 100%;
+  margin-bottom: 24px;
+  position: relative;
 }
 
 .product-card-info {
@@ -387,34 +441,26 @@ background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 50%);
 }
 
 .product-card-title {
-  font-family: 'Rapha Sans Condensed', sans-serif;
+  font-family: "Rapha Sans Condensed", sans-serif;
   font-size: 16px;
   font-weight: 600;
-  line-height: 16px;
-  letter-spacing: 0.3px;
   text-transform: uppercase;
+  letter-spacing: 0.3px;
+  line-height: 16px;
   margin: 0 0 12px;
 }
 
-/* Color swatches */
-.product-card-colors {
-  display: inline-flex;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.product-card-colors li {
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
+.product-card-price {
+  font-family: "Rapha Sans Numerals", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
 }
 ```
 
 ---
 
-## 8. CAROUSEL / SLIDER
+## 11. CAROUSEL/SLIDER
 
-### CSS Values
 ```css
 .carousel-container {
   margin: 0 -16px;  /* Negative margin for edge-to-edge */
@@ -456,19 +502,20 @@ background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 50%);
 .carousel-slide {
   flex-shrink: 0;
   scroll-snap-align: start;
-  width: 100%;  /* Mobile: full width */
+  width: 100%;  /* Full width mobile */
 }
 
 @media (min-width: 768px) {
   .carousel-slide {
-    width: calc(((100% - 32px) / 6) * 4);  /* Desktop: ~66% */
+    width: calc(((100% - 64px) / 12) * 4);  /* 4/12 columns */
   }
 }
 
 /* Navigation arrows */
 .carousel-nav {
   display: flex;
-  gap: 24px;
+  gap: 32px;
+  margin-top: 32px;
   user-select: none;
 }
 
@@ -491,124 +538,65 @@ background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 50%);
 
 ---
 
-## 9. SPACING SYSTEM
-
-### Extracted Values
-```css
-/* Margins & Padding */
---space-xs: 4px;
---space-sm: 8px;
---space-md: 12px;
---space-lg: 16px;
---space-xl: 24px;
---space-2xl: 32px;
---space-3xl: 40px;
---space-4xl: 64px;
-
-/* Common patterns */
-padding: 8px 20px;      /* Button padding */
-padding: 0 16px;        /* Mobile container */
-padding: 0 32px;        /* Desktop container */
-gap: 16px;              /* Mobile grid gap */
-gap: 32px;              /* Desktop grid gap */
-margin-bottom: 24px;    /* Section spacing */
-margin-bottom: 32px;    /* Heading to content */
-```
-
----
-
-## 10. BREAKPOINTS
+## 12. TRUST BAR / BENEFITS SECTION
 
 ```css
-/* Mobile first */
-/* Default: < 768px */
-
-@media (min-width: 768px) {
-  /* Tablet */
-}
-
-@media (min-width: 992px) {
-  /* Desktop */
-}
-
-@media (min-width: 1200px) {
-  /* Large desktop */
-}
-```
-
----
-
-## 11. ANIMATIONS
-
-### Transitions
-```css
-/* Standard UI transitions */
-transition: opacity 0.25s ease-in-out;
-transition: color 0.15s ease-out;
-transition: background-color 0.25s ease-in-out;
-transition: transform 0.3s ease-out;
-transition: filter 0.5s ease-out;
-
-/* Button transitions */
-transition: background-color 250ms ease-in-out,
-            border-color 250ms ease-in-out,
-            color 250ms ease-in-out;
-```
-
-### Hover Effects
-```css
-/* Image hover - subtle brightness */
-.card:hover img {
-  filter: brightness(0.95);
-}
-
-/* Link hover - color change */
-.link:hover {
-  color: #FA3C6E;  /* Accent color */
-}
-
-/* Button hover - background/border change */
-.button:hover {
-  background-color: var(--accent);
-  border-color: var(--accent);
-}
-```
-
----
-
-## 12. FOOTER
-
-### Structure
-```html
-<footer>
-  <div class="footer-grid">
-    <div class="footer-column">
-      <h4>Shop</h4>
-      <ul>...</ul>
-    </div>
-    <div class="footer-column">
-      <h4>Support</h4>
-      <ul>...</ul>
-    </div>
-    <!-- etc -->
-  </div>
-  <div class="footer-bottom">
-    <p class="copyright">...</p>
-    <div class="social-icons">...</div>
-    <div class="payment-icons">...</div>
-  </div>
-</footer>
-```
-
-### CSS Values
-```css
-.footer {
-  border-top: 1px solid #E0E0E0;
+.trust-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
   padding: 32px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.footer-column h4 {
-  font-family: 'Rapha Sans Condensed', sans-serif;
+.trust-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.trust-item-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.trust-item-title {
+  font-family: "Rapha Sans Condensed", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin: 0 0 8px;
+}
+
+.trust-item-description {
+  font-family: "Rapha Serif Text", serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 21px;
+  margin: 0;
+}
+```
+
+---
+
+## 13. FOOTER
+
+```css
+footer {
+  padding: 32px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.footer-column-heading {
+  font-family: "Rapha Sans Condensed", sans-serif;
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
@@ -629,40 +617,46 @@ transition: background-color 250ms ease-in-out,
 .footer-column a {
   font-family: "Rapha Serif Text", serif;
   font-size: 12px;
-  line-height: 21px;
+  font-weight: 600;
   color: #000000;
   text-decoration: none;
 }
 
 .footer-column a:hover {
-  color: #FA3C6E;
+  color: #FA3C6E;  /* Use #2D5A3D for Qor Labs */
+}
+
+.footer-copyright {
+  font-family: "Rapha Serif Text", serif;
+  font-size: 12px;
+  color: #000000;
 }
 ```
 
 ---
 
-## TRANSLATION GUIDE: Rapha → Qor Labs
+## SUMMARY: Key Differences from Previous Assumptions
 
-| Rapha | Qor Labs |
-|-------|----------|
-| 'Rapha Sans Condensed' | 'DM Sans', sans-serif |
-| 'Rapha Serif Head' | 'Instrument Serif', Georgia, serif |
-| 'Rapha Serif Text' | 'DM Sans' or 'Instrument Serif' |
-| #FA3C6E (pink accent) | #2D5A3D (lab green) |
-| font-weight: 600 | font-weight: 500 |
-| Cycling imagery | Lab/science imagery |
-| "RCC Club" features | "Warranty" / "Support" features |
+| Element | I Assumed | Actual Rapha Value |
+|---------|-----------|-------------------|
+| Nav links | 12px, 500, uppercase, sans | 16px, 400, normal case, **serif** |
+| Announcement bar | 40px, 600, 0.3px spacing | 40px, 600, **normal** spacing |
+| Section H2 | varies | 32px, 600, 0.3px spacing, uppercase |
+| Body text | 14-16px | 24px serif for hero, 12px for small |
+| Buttons | 14px, 8px 20px padding | 14px, **12px** padding |
+| Grid gap | 16px/32px | 16px mobile, 32px desktop |
 
 ---
 
 ## FILES TO UPDATE
 
-Based on this analysis, rebuild these sections:
+Based on this analysis, rebuild these with exact values:
 
-1. `sections/section-hero-editorial.liquid` - Match hero structure
-2. `sections/section-featured-collections.liquid` - Match card styles
-3. `sections/section-category-grid.liquid` - Match grid layout
-4. `sections/section-product-spotlight.liquid` - Match split layout
-5. `assets/rapha-overrides.css` - Global styles to match Rapha
-6. `sections/announcement-bar.liquid` - Match bar styling
-
+1. `assets/rapha-overrides.css` — Global CSS matching these exact values
+2. `sections/header.liquid` — Nav should be 16px serif, not uppercase
+3. `sections/section-hero-editorial.liquid` — 64px/700 H1, 24px serif body
+4. `sections/section-trust-bar.liquid` — Grid layout, 12px/21px descriptions
+5. `sections/section-featured-collections.liquid` — Card styles
+6. `sections/section-category-grid.liquid` — 24px H3, proper spacing
+7. `snippets/product-card.liquid` — 16px/600 title, square aspect ratio
+8. `sections/footer.liquid` — 16px/600 headings, 12px/600 links
