@@ -1,100 +1,179 @@
 /**
- * RAPHA-STYLE OVERRIDES
- * Transforms Dawn theme into Rapha-inspired premium editorial design
+ * RAPHA-STYLE OVERRIDES — Exact Values from rapha.cc
+ * Source: https://www.rapha.cc/us/en (extracted 2026-02-05)
+ * Reference: /RAPHA-SOURCE-ANALYSIS.md
  *
- * Rapha key traits:
- * - Single-row header: Nav LEFT | Logo CENTER | Icons RIGHT
- * - Thin announcement bar with subtle background
- * - No underlines on nav links
- * - Uppercase, tracked, light-weight navigation
- * - Full-bleed hero imagery
- * - Extreme restraint and whitespace
+ * KEY RAPHA VALUES:
+ * - Font: 'Rapha Sans Condensed' → 'DM Sans'
+ * - Font-size: 14px (buttons/nav), 12px (body)
+ * - Font-weight: 600 → 500 (our equivalent)
+ * - Letter-spacing: 0.3px
+ * - Accent color: #FA3C6E → #2D5A3D (lab green)
+ * - Header height: 64px
+ * - Announcement: 40px
+ * - Buttons: min-height 44px, min-width 120px, padding 8px 20px
  */
 
 /* ==========================================================================
-   ANNOUNCEMENT BAR — Rapha Style
-   Dark background (#0A0A0A), small uppercase text
-   Must override Shopify's color scheme system
+   CSS CUSTOM PROPERTIES — Rapha Equivalents
+   ========================================================================== */
+:root {
+  /* Rapha-equivalent colors */
+  --rapha-black: #000000;
+  --rapha-white: #FFFFFF;
+  --rapha-accent: #2D5A3D;  /* Lab green (Rapha uses #FA3C6E pink) */
+  --rapha-accent-hover: #1E4530;
+  --rapha-disabled: #949494;
+  --rapha-border: #E0E0E0;
+
+  /* Rapha typography */
+  --rapha-sans: 'DM Sans', sans-serif;  /* Rapha uses 'Rapha Sans Condensed' */
+  --rapha-serif: 'Instrument Serif', Georgia, serif;  /* Rapha uses 'Rapha Serif Head' */
+
+  /* Rapha spacing */
+  --rapha-container-mobile: 16px;
+  --rapha-container-desktop: 32px;
+  --rapha-gap-mobile: 16px;
+  --rapha-gap-desktop: 32px;
+}
+
+/* ==========================================================================
+   ANNOUNCEMENT BAR — Exact Rapha: 40px, black bg, 14px uppercase
+   Source: .announcement-bar from Rapha CSS
    ========================================================================== */
 
-/* Override Shopify color scheme CSS variables for announcement bar */
 .announcement-bar-section,
 .announcement-bar-section [class*="color-"],
 .utility-bar,
 .utility-bar[class*="color-"] {
-  --color-background: 10 10 10 !important;
+  --color-background: 0 0 0 !important;
   --color-foreground: 255 255 255 !important;
-  --gradient-background: #0A0A0A !important;
-  background: #0A0A0A !important;
-  background-color: #0A0A0A !important;
+  --gradient-background: #000000 !important;
+  background: #000000 !important;
+  background-color: #000000 !important;
 }
 
 .utility-bar,
 .announcement-bar {
-  background: #0A0A0A !important;
-  background-color: #0A0A0A !important;
-  padding: 10px 0 !important;
-  min-height: 36px !important;
-  max-height: 36px !important;
-}
-
-/* Make the announcement bar wrapper thinner */
-.shopify-section-group-header-group .shopify-section:first-child {
-  max-height: 36px !important;
+  background: #000000 !important;
+  background-color: #000000 !important;
+  min-height: 40px !important;  /* Rapha exact */
+  padding: 12px !important;  /* Rapha exact */
+  text-align: center !important;
 }
 
 .announcement-bar__message,
 .announcement-bar__message span,
-.announcement-bar__link,
-.utility-bar * {
-  font-family: var(--font-body, 'DM Sans', sans-serif) !important;
-  font-size: 11px !important;
-  font-weight: 400 !important;
+.announcement-bar__link {
+  font-family: var(--rapha-sans) !important;
+  font-size: 14px !important;  /* Rapha exact */
+  font-weight: 600 !important;  /* Rapha exact */
+  line-height: 14px !important;  /* Rapha exact */
+  letter-spacing: 0.3px !important;  /* Rapha exact */
   text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
 }
 
-/* Remove any arrows/icons from announcement */
+/* Remove arrows from announcement */
 .announcement-bar__message svg,
 .announcement-bar__link svg,
 .announcement-bar .icon-arrow {
   display: none !important;
 }
 
-.announcement-bar__link {
-  text-decoration: none !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-}
-
 /* ==========================================================================
-   HEADER — Rapha Style (middle-center layout)
-   Nav on LEFT, Logo CENTER, Icons RIGHT — all on ONE row
-   Ultra-compact like Rapha (~50px total height)
+   HEADER — Exact Rapha: 64px height, nav styling
+   Source: Mobile header height 64px, hamburger 17x17px
    ========================================================================== */
 
-/* Remove header border */
 .header-wrapper {
   border-bottom: none !important;
 }
 
-/* Make header ultra-compact */
+/* Header container - Rapha exact 64px */
 .header {
-  padding: 8px 16px !important;
-  gap: 12px !important;
-  min-height: 50px !important;
+  height: 64px !important;  /* Rapha exact */
+  min-height: 64px !important;
+  padding: 0 16px !important;  /* Rapha mobile */
+  display: flex !important;
+  align-items: center !important;
 }
 
 @media screen and (min-width: 990px) {
   .header {
-    padding: 10px 24px !important;
-    min-height: 54px !important;
+    padding: 0 32px !important;  /* Rapha desktop */
   }
 }
 
-/* Hide dropdown caret arrows on nav items */
+/* Logo - small and elegant */
+.header__heading-logo-wrapper {
+  max-width: 100px !important;
+}
+
+.header__heading-logo {
+  max-height: 28px !important;
+  width: auto !important;
+}
+
+@media screen and (min-width: 990px) {
+  .header__heading-logo-wrapper {
+    max-width: 120px !important;
+  }
+  .header__heading-logo {
+    max-height: 32px !important;
+  }
+}
+
+/* Navigation — Rapha exact: 14px, weight 600, spacing 0.3px, uppercase */
+.header__inline-menu .list-menu--inline {
+  gap: 32px !important;  /* Rapha uses generous spacing */
+}
+
+.header__menu-item,
+.list-menu__item--link,
+.header__inline-menu .list-menu__item--link {
+  font-family: var(--rapha-sans) !important;
+  font-size: 14px !important;  /* Rapha exact */
+  font-weight: 600 !important;  /* Rapha exact */
+  line-height: 14px !important;  /* Rapha exact */
+  letter-spacing: 0.3px !important;  /* Rapha exact */
+  text-transform: uppercase !important;
+  color: #000000 !important;
+  text-decoration: none !important;
+  padding: 8px 0 !important;
+  background-image: none !important;
+  border: none !important;
+}
+
+/* Nav hover - Rapha uses accent color */
+.header__menu-item:hover,
+.list-menu__item--link:hover {
+  color: var(--rapha-accent) !important;
+  text-decoration: none !important;
+  background-image: none !important;
+}
+
+/* Remove ALL underlines from nav */
+.header__menu-item::after,
+.list-menu__item--link::after,
+.header__inline-menu a::after,
+.header .link::after,
+.header .link--text::after {
+  display: none !important;
+  content: none !important;
+}
+
+.list-menu__item--link,
+.header .link--text,
+.header__inline-menu a {
+  background-image: none !important;
+  background-size: 0 !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+/* Hide dropdown carets - Rapha doesn't show them */
 .header__menu-item .icon-caret,
 .header__menu-item svg.icon-caret,
 .list-menu__item .icon-caret,
@@ -105,331 +184,517 @@ details[id^="Details-HeaderMenu"] summary svg,
   display: none !important;
 }
 
-/* Logo sizing - keep it small and elegant */
-.header__heading-logo-wrapper {
-  max-width: 90px !important;
-}
-
-.header__heading-logo {
-  max-height: 24px !important;
-  width: auto !important;
-}
-
-@media screen and (min-width: 990px) {
-  .header__heading-logo-wrapper {
-    max-width: 110px !important;
-  }
-
-  .header__heading-logo {
-    max-height: 28px !important;
-  }
-}
-
-/* Navigation — uppercase, tracked, NO UNDERLINES, generous spacing like Rapha */
-.header__inline-menu .list-menu--inline {
-  gap: 40px !important;
-}
-
-.header__menu-item,
-.list-menu__item--link,
-.header__inline-menu .list-menu__item--link,
-.header .link,
-.header .link--text,
-.header a {
-  font-family: var(--font-body, 'DM Sans', sans-serif) !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  color: var(--color-text-primary, #0A0A0A) !important;
-  text-decoration: none !important;
-  padding: 4px 0 !important;
-  border: none !important;
-  background-image: none !important;
-}
-
-/* REMOVE UNDERLINES from ALL header nav items */
-.header__menu-item::after,
-.list-menu__item--link::after,
-.header__inline-menu .list-menu__item--link::after,
-.header__menu-item span::after,
-.header .link::after,
-.header .link--text::after,
-.header__inline-menu a::after {
-  display: none !important;
-  content: none !important;
-  border: none !important;
-  text-decoration: none !important;
-}
-
-/* Remove underline styling - aggressive targeting */
-.list-menu__item--link,
-.header .link--text,
-.header__inline-menu .link,
-.header__inline-menu a {
-  background-image: none !important;
-  background-size: 0 !important;
-  text-decoration: none !important;
-  border-bottom: none !important;
-}
-
-.header__menu-item:hover,
-.list-menu__item--link:hover,
-.header .link:hover,
-.header .link--text:hover {
-  color: var(--color-text-secondary, #6B6B6B) !important;
-  opacity: 1 !important;
-  text-decoration: none !important;
-  background-image: none !important;
-}
-
-/* Dropdown arrows - make subtle */
-.header__menu-item .icon-caret,
-summary.list-menu__item svg {
-  width: 8px !important;
-  height: 8px !important;
-  margin-left: 4px !important;
-}
-
-/* Icons — smaller, cleaner, Rapha-minimal */
+/* Header icons — Rapha minimal style */
 .header__icon {
-  width: 32px !important;
-  height: 32px !important;
-  padding: 6px !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .header__icon svg {
-  width: 18px !important;
-  height: 18px !important;
+  width: 20px !important;
+  height: 20px !important;
   stroke-width: 1.5 !important;
 }
 
-/* Cart count bubble — smaller */
+/* Cart count bubble */
 .cart-count-bubble {
-  width: 16px !important;
-  height: 16px !important;
-  font-size: 10px !important;
-  top: 4px !important;
-  right: 4px !important;
-  background-color: #1a1a1a !important;
+  width: 18px !important;
+  height: 18px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  top: 2px !important;
+  right: 2px !important;
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
 }
 
-/* Hide search icon text labels */
-.header__icon .visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  border: 0 !important;
-}
-
-/* Hide country/currency selector */
+/* Hide country/language selectors */
 .desktop-localization-wrapper,
 .header-localization,
 .localization-form {
   display: none !important;
 }
 
-/* Hide the secondary collection nav bar completely */
+/* Hide secondary collection nav bar */
 .header-collections {
   display: none !important;
 }
 
 /* ==========================================================================
-   MEGA MENU — Clean styling
+   MOBILE MENU — Rapha style
+   Source: Hamburger 17x17px, transitions
+   ========================================================================== */
+
+header-drawer {
+  margin-left: 0 !important;
+}
+
+/* Hamburger icon - Rapha exact 17x17 */
+.header__icon--menu svg {
+  width: 17px !important;
+  height: 17px !important;
+}
+
+.menu-drawer__navigation .menu-drawer__menu-item {
+  font-family: var(--rapha-sans) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase !important;
+}
+
+/* ==========================================================================
+   MEGA MENU — Clean Rapha styling
    ========================================================================== */
 
 .mega-menu__content,
 .header__submenu {
-  font-size: 13px !important;
-  text-transform: none !important;
+  font-family: var(--rapha-sans) !important;
+  font-size: 14px !important;
 }
 
 .mega-menu__link {
+  font-family: var(--rapha-sans) !important;
+  font-size: 14px !important;
   text-decoration: none !important;
-  font-size: 13px !important;
+  letter-spacing: 0.3px !important;
+}
+
+.mega-menu__link:hover {
+  color: var(--rapha-accent) !important;
 }
 
 /* ==========================================================================
-   HERO — Rapha Style
-   Proper typography: Instrument Serif for headlines, DM Sans for body
-   More subtle gradient (or none for pure image)
-   ========================================================================== */
-
-/* Hero overline — DM Sans, small, uppercase, tracked */
-.hero-editorial__overline,
-.banner__box .subtitle {
-  font-family: var(--font-body, 'DM Sans', sans-serif) !important;
-  font-size: 11px !important;
-  font-weight: 500 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.12em !important;
-  color: rgba(255, 255, 255, 0.7) !important;
-  margin-bottom: 12px !important;
-}
-
-/* Hero heading — Instrument Serif, elegant */
-.hero-editorial__heading,
-.banner__heading,
-h1.banner__heading {
-  font-family: var(--font-display, 'Instrument Serif', Georgia, serif) !important;
-  font-size: clamp(2.5rem, 6vw, 4rem) !important;
-  font-weight: 400 !important;
-  line-height: 1.08 !important;
-  letter-spacing: -0.02em !important;
-  color: var(--color-white, #FFFFFF) !important;
-  margin: 0 0 16px !important;
-}
-
-@media screen and (min-width: 990px) {
-  .hero-editorial__heading,
-  .banner__heading,
-  h1.banner__heading {
-    font-size: clamp(3rem, 5vw, 4.5rem) !important;
-  }
-}
-
-/* Hero subheading — DM Sans, restrained */
-.hero-editorial__subheading,
-.banner__text {
-  font-family: var(--font-body, 'DM Sans', sans-serif) !important;
-  font-size: 15px !important;
-  font-weight: 400 !important;
-  line-height: 1.5 !important;
-  color: rgba(255, 255, 255, 0.8) !important;
-  max-width: 420px !important;
-  margin: 0 0 24px !important;
-}
-
-/* Hero gradient — very subtle */
-.hero-editorial__overlay,
-.banner__media::after {
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.25) 30%,
-    rgba(0, 0, 0, 0.05) 60%,
-    transparent 100%
-  ) !important;
-}
-
-/* Hero buttons — Rapha style */
-.hero-editorial__btn,
-.banner__buttons .button {
-  font-family: var(--font-body, 'DM Sans', sans-serif) !important;
-  font-size: 12px !important;
-  font-weight: 500 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
-  padding: 14px 28px !important;
-  min-width: auto !important;
-  border-radius: 0 !important;
-  transition: all 0.2s ease !important;
-}
-
-.hero-editorial__btn--primary,
-.banner__buttons .button--primary {
-  background-color: #FFFFFF !important;
-  color: #0A0A0A !important;
-  border: none !important;
-}
-
-.hero-editorial__btn--primary:hover,
-.banner__buttons .button--primary:hover {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-}
-
-.hero-editorial__btn--secondary,
-.banner__buttons .button--secondary {
-  background-color: transparent !important;
-  color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
-}
-
-.hero-editorial__btn--secondary:hover,
-.banner__buttons .button--secondary:hover {
-  border-color: rgba(255, 255, 255, 0.7) !important;
-  background-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-/* ==========================================================================
-   GLOBAL TYPOGRAPHY
-   ========================================================================== */
-
-/* Headings — Instrument Serif */
-h1, h2, h3, .h1, .h2, .h3 {
-  font-family: var(--font-display, 'Instrument Serif', Georgia, serif);
-  font-weight: 400;
-}
-
-/* Body text — DM Sans */
-body,
-p,
-.rte {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-}
-
-/* ==========================================================================
-   BUTTON REFINEMENTS
+   BUTTONS — Exact Rapha Values
+   Source: min-height 44px, min-width 120px, padding 8px 20px
    ========================================================================== */
 
 .button,
 .btn,
 .shopify-payment-button button,
 button[type="submit"] {
-  font-family: var(--font-body, 'DM Sans', sans-serif) !important;
-  font-size: 12px !important;
-  font-weight: 500 !important;
+  box-sizing: border-box !important;
+  font-family: var(--rapha-sans) !important;
+  font-size: 14px !important;  /* Rapha exact */
+  font-weight: 600 !important;  /* Rapha exact */
+  line-height: 14px !important;  /* Rapha exact */
+  letter-spacing: 0.3px !important;  /* Rapha exact */
   text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
+  text-decoration: none !important;
+  text-align: center !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 8px 20px !important;  /* Rapha exact */
+  min-height: 44px !important;  /* Rapha exact */
+  min-width: 120px !important;  /* Rapha exact */
+
+  border: 1px solid #000000 !important;
+  border-radius: 0 !important;  /* Rapha exact - no radius */
+
+  cursor: pointer !important;
+  transition: background-color 250ms ease-in-out,
+              border-color 250ms ease-in-out,
+              color 250ms ease-in-out !important;  /* Rapha exact */
+}
+
+/* Primary button (filled) */
+.button--primary,
+.button.button--primary {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border-color: #000000 !important;
+}
+
+.button--primary:hover {
+  background-color: var(--rapha-accent) !important;
+  border-color: var(--rapha-accent) !important;
+  color: #FFFFFF !important;
+}
+
+/* Secondary button (outline) */
+.button--secondary,
+.button.button--secondary {
+  background-color: transparent !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+.button--secondary:hover {
+  background-color: transparent !important;
+  border-color: var(--rapha-accent) !important;
+  color: var(--rapha-accent) !important;
+}
+
+/* Disabled state - Rapha exact */
+.button:disabled {
+  cursor: not-allowed !important;
+  background-color: transparent !important;
+  border-color: #949494 !important;
+  color: #949494 !important;
+}
+
+/* ==========================================================================
+   HERO SECTION — Rapha Style
+   Source: Section heading 24px→32px, content below or overlaid
+   ========================================================================== */
+
+.hero-editorial__overline,
+.banner__box .subtitle {
+  font-family: var(--rapha-sans) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  margin-bottom: 16px !important;
+}
+
+.hero-editorial__heading,
+.banner__heading,
+h1.banner__heading {
+  font-family: var(--rapha-sans) !important;  /* Rapha uses condensed sans for headlines */
+  font-size: 24px !important;  /* Rapha mobile */
+  font-weight: 600 !important;
+  line-height: 24px !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase !important;
+  color: #FFFFFF !important;
+  margin: 0 0 16px !important;
+}
+
+@media screen and (min-width: 992px) {
+  .hero-editorial__heading,
+  .banner__heading,
+  h1.banner__heading {
+    font-size: 32px !important;  /* Rapha desktop */
+    line-height: 32px !important;
+  }
+}
+
+.hero-editorial__subheading,
+.banner__text {
+  font-family: 'Instrument Serif', Georgia, serif !important;  /* Rapha Serif Text equiv */
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 21px !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  margin: 0 0 24px !important;
+}
+
+/* Hero overlay - Rapha uses minimal or no overlay */
+.hero-editorial__overlay,
+.banner__media::after {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.3) 0%,
+    transparent 50%
+  ) !important;
+}
+
+/* Hero buttons */
+.hero-editorial__btn,
+.banner__buttons .button {
+  font-family: var(--rapha-sans) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase !important;
+  padding: 8px 20px !important;
+  min-height: 44px !important;
+  min-width: 120px !important;
   border-radius: 0 !important;
 }
 
 /* ==========================================================================
-   TRUST BAR
+   GLOBAL TYPOGRAPHY — Rapha Scale
    ========================================================================== */
 
-.trust-bar-section {
-  background-color: var(--color-surface, #FAFAF8) !important;
-  border-top: 1px solid var(--color-border, #E0DED9) !important;
-  border-bottom: 1px solid var(--color-border, #E0DED9) !important;
+/* Headings - Rapha Sans Condensed equivalent */
+h1, h2, h3, .h1, .h2, .h3 {
+  font-family: var(--rapha-sans);
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
-.trust-bar-section__label {
-  font-size: 11px !important;
+/* Section headings */
+.section-header__title,
+.title {
+  font-family: var(--rapha-sans) !important;
+  font-size: 24px !important;
   font-weight: 600 !important;
+  line-height: 24px !important;
+  letter-spacing: 0.3px !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
 }
 
-.trust-bar-section__description {
-  font-size: 11px !important;
-  color: var(--color-text-secondary, #6B6B6B) !important;
+@media screen and (min-width: 992px) {
+  .section-header__title,
+  .title {
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+}
+
+/* Body text - Rapha Serif Text equivalent */
+body,
+p,
+.rte {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 12px;
+  line-height: 21px;
+  font-weight: 400;
+}
+
+/* Small text / captions */
+.caption,
+.product__text,
+.price {
+  font-family: var(--rapha-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
 /* ==========================================================================
-   LINK STYLES
+   TEXT LINKS — Rapha Style
+   Source: Serif, 12px, weight 600, underlined
    ========================================================================== */
 
 .link--text {
+  font-family: 'Instrument Serif', Georgia, serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  line-height: 21px !important;
   text-decoration: underline !important;
-  text-underline-offset: 3px !important;
-  text-decoration-thickness: 1px !important;
+  color: #000000 !important;
 }
 
 .link--text:hover {
-  opacity: 0.7 !important;
+  color: var(--rapha-accent) !important;
 }
 
 /* ==========================================================================
-   MOBILE MENU DRAWER
+   PRODUCT CARDS — Rapha Style
+   Source: 1:1 aspect, 24px margin-bottom for image, centered text
    ========================================================================== */
 
-.menu-drawer__navigation .menu-drawer__menu-item {
-  font-size: 14px !important;
+.card__media,
+.product-card__image {
+  aspect-ratio: 1 / 1 !important;  /* Rapha exact */
+  background-color: #F5F5F5 !important;
+  margin-bottom: 24px !important;  /* Rapha exact */
+}
+
+.card__media img,
+.product-card__image img {
+  transition: filter 0.5s ease-out !important;  /* Rapha exact */
+}
+
+.card:hover .card__media img,
+.product-card:hover .product-card__image img {
+  filter: brightness(0.95) !important;  /* Rapha exact - subtle darken */
+}
+
+.card__information,
+.product-card__info {
+  padding: 0 24px !important;  /* Rapha exact */
+  text-align: center !important;
+}
+
+.card__heading,
+.product-card__title {
+  font-family: var(--rapha-sans) !important;
+  font-size: 16px !important;  /* Rapha exact */
+  font-weight: 600 !important;
+  line-height: 16px !important;
+  letter-spacing: 0.3px !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
+  margin: 0 0 12px !important;
+}
+
+/* Color swatches - Rapha exact */
+.card__colors,
+.product-card__colors {
+  display: inline-flex !important;
+  gap: 8px !important;
+  margin-top: 12px !important;
+}
+
+.card__colors li,
+.product-card__colors li {
+  height: 16px !important;  /* Rapha exact */
+  width: 16px !important;  /* Rapha exact */
+  border-radius: 50% !important;
+}
+
+/* ==========================================================================
+   COLLECTION CARDS — Rapha Style
+   Source: 2:3 or 16:9 aspect, dark overlay, white text
+   ========================================================================== */
+
+.collection-card,
+.featured-collections__card {
+  position: relative;
+  overflow: hidden;
+}
+
+.collection-card__media,
+.featured-collections__image-wrapper {
+  aspect-ratio: 2 / 3 !important;  /* Rapha portrait style */
+}
+
+.collection-card__title,
+.featured-collections__title {
+  font-family: var(--rapha-sans) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase !important;
+}
+
+/* ==========================================================================
+   CAROUSEL / SLIDER — Rapha Style
+   Source: Negative margins, scroll-snap, hidden scrollbar
+   ========================================================================== */
+
+.carousel,
+.slider-component {
+  margin: 0 -16px !important;  /* Rapha mobile */
+  overflow-x: hidden !important;
+}
+
+@media screen and (min-width: 768px) {
+  .carousel,
+  .slider-component {
+    margin: 0 -32px !important;  /* Rapha desktop */
+  }
+}
+
+.carousel__track,
+.slider {
+  display: flex !important;
+  gap: 16px !important;  /* Rapha mobile */
+  padding: 0 16px !important;
+  overflow-x: scroll !important;
+  scroll-snap-type: x mandatory !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+@media screen and (min-width: 768px) {
+  .carousel__track,
+  .slider {
+    gap: 32px !important;  /* Rapha desktop */
+    padding: 0 32px !important;
+  }
+}
+
+.carousel__track::-webkit-scrollbar,
+.slider::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
+.carousel__slide,
+.slider__slide {
+  flex-shrink: 0 !important;
+  scroll-snap-align: start !important;
+}
+
+/* Carousel arrows - Rapha exact */
+.carousel__arrow,
+.slider-button {
+  width: 16px !important;
+  height: 16px !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: opacity 0.25s ease-in-out !important;
+}
+
+.carousel__arrow:disabled,
+.slider-button:disabled {
+  opacity: 0.5 !important;
+  cursor: default !important;
+  pointer-events: none !important;
+}
+
+/* ==========================================================================
+   TRUST BAR — Rapha minimal style
+   ========================================================================== */
+
+.trust-bar-section {
+  background-color: #F5F5F5 !important;
+  border-top: 1px solid #E0E0E0 !important;
+  border-bottom: 1px solid #E0E0E0 !important;
+  padding: 16px 0 !important;
+}
+
+.trust-bar-section__label {
+  font-family: var(--rapha-sans) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase !important;
+}
+
+.trust-bar-section__description {
+  font-family: 'Instrument Serif', Georgia, serif !important;
+  font-size: 12px !important;
+  line-height: 21px !important;
+  color: #666666 !important;
+}
+
+/* ==========================================================================
+   FOOTER — Rapha Style
+   Source: border-top, serif links at 12px
+   ========================================================================== */
+
+.footer {
+  border-top: 1px solid #E0E0E0 !important;
+  padding: 32px 0 !important;
+}
+
+.footer__title {
+  font-family: var(--rapha-sans) !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase !important;
+  margin: 0 0 24px !important;
+}
+
+.footer__list-item a {
+  font-family: 'Instrument Serif', Georgia, serif !important;
+  font-size: 12px !important;
+  line-height: 21px !important;
+  color: #000000 !important;
+  text-decoration: none !important;
+}
+
+.footer__list-item a:hover {
+  color: var(--rapha-accent) !important;
+}
+
+/* ==========================================================================
+   ANIMATIONS — Rapha Transitions
+   ========================================================================== */
+
+/* Standard UI transitions */
+a, button, .button, .link {
+  transition: color 0.15s ease-out,
+              background-color 0.25s ease-in-out,
+              border-color 0.25s ease-in-out !important;
+}
+
+/* Image hover transitions */
+img {
+  transition: filter 0.5s ease-out,
+              transform 0.3s ease-out !important;
 }
