@@ -1,10 +1,10 @@
 {%- comment -%}
   SECTION: Featured Collections
-  Rapha-inspired editorial collection grid.
-  2:3 aspect ratio images, uppercase tracked titles, subtle hover effects.
+  RAPHA-EXACT values from RAPHA-SOURCE-ANALYSIS.md
+  Editorial collection grid with 2:3 aspect ratio images.
 {%- endcomment -%}
 
-<section id="FeaturedCollections-{{ section.id }}" class="featured-collections section-padding">
+<section id="FeaturedCollections-{{ section.id }}" class="featured-collections">
   <div class="featured-collections__container">
     {%- if section.settings.heading != blank or section.settings.overline != blank -%}
       <div class="featured-collections__header">
@@ -70,6 +70,7 @@
                 class="featured-collections__image"
               >
             {%- else -%}
+              {%- comment -%} Clean placeholder - bg gray with centered text {%- endcomment -%}
               <div class="featured-collections__placeholder">
                 <span class="featured-collections__placeholder-text">{{ title }}</span>
               </div>
@@ -89,10 +90,6 @@
       <div class="featured-collections__footer">
         <a href="{{ section.settings.view_all_link }}" class="featured-collections__view-all">
           {{ section.settings.view_all_label | default: 'View All Collections' }}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
         </a>
       </div>
     {%- endif -%}
@@ -100,43 +97,82 @@
 </section>
 
 <style>
+  /* =====================================
+     FEATURED COLLECTIONS - RAPHA EXACT VALUES
+     Source: RAPHA-SOURCE-ANALYSIS.md
+     ===================================== */
+
   .featured-collections {
-    background-color: var(--color-white, #FFFFFF);
+    background-color: #FFFFFF;
+    padding: 32px 0;                          /* RAPHA EXACT */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);  /* RAPHA EXACT */
   }
 
   .featured-collections__container {
-    max-width: var(--container-max, 80rem);
+    max-width: none;
     margin: 0 auto;
-    padding: 0 var(--space-md, 1rem);
+    padding: 0 16px;                          /* RAPHA mobile */
   }
 
+  @media (min-width: 768px) {
+    .featured-collections__container {
+      padding: 0 32px;                        /* RAPHA desktop */
+    }
+  }
+
+  /* RAPHA: section header margin-bottom 24px/32px */
   .featured-collections__header {
     text-align: center;
-    margin-bottom: var(--space-2xl, 3rem);
+    margin-bottom: 24px;                      /* RAPHA mobile */
   }
 
+  @media (min-width: 992px) {
+    .featured-collections__header {
+      margin-bottom: 32px;                    /* RAPHA desktop */
+    }
+  }
+
+  /* Overline - matches trust item title style */
   .featured-collections__overline {
     display: block;
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.6875rem;
-    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--color-text-secondary, #6B6B6B);
-    margin-bottom: var(--space-sm, 0.5rem);
+    letter-spacing: 0.3px;
+    color: #6B6B6B;
+    margin-bottom: 8px;
   }
 
+  /* RAPHA EXACT: H2 24px/32px, 600, uppercase */
   .featured-collections__heading {
-    font-family: var(--font-display, 'Instrument Serif', serif);
-    font-size: clamp(1.75rem, 4vw, 2.25rem);
-    font-weight: 400;
-    color: var(--color-text-primary, #1A1A1A);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px;                          /* RAPHA mobile */
+    font-weight: 600;                         /* RAPHA EXACT */
+    letter-spacing: 0.3px;                    /* RAPHA EXACT */
+    text-transform: uppercase;
+    line-height: 24px;
+    color: #000000;
     margin: 0;
   }
 
+  @media (min-width: 992px) {
+    .featured-collections__heading {
+      font-size: 32px;                        /* RAPHA desktop */
+      line-height: 32px;                      /* RAPHA EXACT */
+    }
+  }
+
+  /* RAPHA EXACT: gap 16px mobile, 32px desktop */
   .featured-collections__grid {
     display: grid;
-    gap: var(--space-md, 1rem);
+    gap: 16px;                                /* RAPHA mobile */
+  }
+
+  @media (min-width: 768px) {
+    .featured-collections__grid {
+      gap: 32px;                              /* RAPHA desktop */
+    }
   }
 
   .featured-collections__grid--2 {
@@ -147,113 +183,7 @@
     grid-template-columns: 1fr;
   }
 
-  .featured-collections__card {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .featured-collections__image-wrapper {
-    position: relative;
-    aspect-ratio: 2 / 3;
-    overflow: hidden;
-    background-color: var(--color-off-white, #F7F7F5);
-  }
-
-  .featured-collections__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-  }
-
-  .featured-collections__card:hover .featured-collections__image {
-    transform: scale(1.02);
-    opacity: 0.95;
-  }
-
-  .featured-collections__placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F3F4F6;
-  }
-
-  .featured-collections__placeholder-text {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #9CA3AF;
-    text-align: center;
-    padding: 1rem;
-  }
-
-  .featured-collections__info {
-    padding-top: var(--space-md, 1rem);
-    text-align: center;
-  }
-
-  .featured-collections__title {
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.8125rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--color-text-primary, #1A1A1A);
-    margin: 0;
-  }
-
-  .featured-collections__count {
-    display: block;
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: var(--color-text-tertiary, #9B9B9B);
-    margin-top: var(--space-xs, 0.25rem);
-  }
-
-  .featured-collections__footer {
-    text-align: center;
-    margin-top: var(--space-2xl, 3rem);
-  }
-
-  .featured-collections__view-all {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-sm, 0.5rem);
-    font-family: var(--font-body, 'DM Sans', sans-serif);
-    font-size: 0.8125rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-text-primary, #1A1A1A);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    transition: opacity 0.2s ease;
-  }
-
-  .featured-collections__view-all:hover {
-    opacity: 0.7;
-  }
-
-  .featured-collections__view-all svg {
-    transition: transform 0.2s ease;
-  }
-
-  .featured-collections__view-all:hover svg {
-    transform: translateX(4px);
-  }
-
-  /* Tablet */
   @media (min-width: 768px) {
-    .featured-collections__container {
-      padding: 0 var(--space-lg, 1.5rem);
-    }
-
     .featured-collections__grid--2 {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -261,25 +191,114 @@
     .featured-collections__grid--3 {
       grid-template-columns: repeat(2, 1fr);
     }
-
-    .featured-collections__grid {
-      gap: var(--space-lg, 1.5rem);
-    }
   }
 
-  /* Desktop */
-  @media (min-width: 1024px) {
-    .featured-collections__container {
-      padding: 0 var(--space-xl, 2rem);
-    }
-
+  @media (min-width: 992px) {
     .featured-collections__grid--3 {
       grid-template-columns: repeat(3, 1fr);
     }
+  }
 
-    .featured-collections__grid {
-      gap: var(--space-xl, 2rem);
-    }
+  .featured-collections__card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* RAPHA: 2:3 aspect ratio, #F5F5F5 bg */
+  .featured-collections__image-wrapper {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    background-color: #F5F5F5;                /* RAPHA EXACT */
+  }
+
+  /* RAPHA EXACT: filter transition 0.5s ease-out */
+  .featured-collections__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.5s ease-out;         /* RAPHA EXACT */
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+  }
+
+  /* RAPHA EXACT: hover brightness(0.95) */
+  .featured-collections__card:hover .featured-collections__image {
+    filter: brightness(0.95);                 /* RAPHA EXACT */
+  }
+
+  /* Clean placeholder */
+  .featured-collections__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5F5F5;
+  }
+
+  .featured-collections__placeholder-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: #949494;
+    text-align: center;
+    padding: 16px;
+  }
+
+  /* RAPHA: info padding-top matches card margin-bottom */
+  .featured-collections__info {
+    padding-top: 24px;                        /* RAPHA EXACT */
+    text-align: center;
+  }
+
+  /* RAPHA EXACT: 14px/600/uppercase/0.3px */
+  .featured-collections__title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;                          /* RAPHA EXACT */
+    font-weight: 600;                         /* RAPHA EXACT */
+    text-transform: uppercase;
+    letter-spacing: 0.3px;                    /* RAPHA EXACT */
+    color: #000000;
+    margin: 0;
+  }
+
+  /* Product count - small body style */
+  .featured-collections__count {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 21px;
+    color: #6B6B6B;
+    margin-top: 8px;
+  }
+
+  /* Footer / View All */
+  .featured-collections__footer {
+    text-align: center;
+    margin-top: 32px;
+  }
+
+  /* RAPHA: text link style - 12px/600/underlined */
+  .featured-collections__view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;                          /* RAPHA EXACT */
+    font-weight: 600;                         /* RAPHA EXACT */
+    color: #000000;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.15s ease-out;
+  }
+
+  .featured-collections__view-all:hover {
+    color: #2D5A3D;                           /* Qor green */
   }
 </style>
 
