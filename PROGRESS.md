@@ -33,11 +33,11 @@
 - [x] Global typography: proper font-family cascade for headings/body
 - [x] Buttons: uppercase, tracked, no border-radius
 
-### Hero Section Redesign (2026-02-05)
-- [x] **CRITICAL FIX**: Changed from "text overlay on image" to "Rapha pattern" (pure image above, text section below)
-- [x] Hero is now: full-bleed image ONLY (no text overlay, no gradient)
-- [x] Content section BELOW image: white bg, centered headline, italic subhead, two buttons side-by-side
-- [x] This matches Rapha's actual hero pattern where text appears below the hero image, not on it
+### Hero Section Redesign (2026-02-05) — CORRECTED
+- [x] **FINAL DESIGN**: Text OVERLAID on hero image, positioned bottom-left
+- [x] Hero is now: full-bleed image with dark gradient overlay for text legibility
+- [x] White text (Instrument Serif for headline) positioned absolute bottom-left
+- [x] Single CTA button, clean minimal layout
 
 ### Deliverable
 A clean, styled blank page that loads with correct fonts, colors, and base layout. No content sections yet — just the foundation.
@@ -182,4 +182,5 @@ Live site, fully functional, zero regressions.
 | 2026-02-05 | Hide secondary collection nav via CSS | Collections should be in mega menu, not as toolbar. Used CSS `display:none` on `.header-collections` |
 | 2026-02-05 | Redesigned hero to Rapha pattern | **Critical insight**: Rapha's hero has NO text overlay on image — text appears in a separate white section BELOW the image. This is the key to their editorial magazine feel. Changed `section-hero-editorial.liquid` to match. |
 | 2026-02-05 | Hide dropdown carets on nav | Added CSS to hide `.icon-caret` SVGs in header for cleaner Rapha look |
+| 2026-02-05 | **Homepage Visual QA Fixes (6 items)** | Fixed: (1) Hero text now overlaid on image bottom-left, not below; (2) Headline uses Instrument Serif mixed case; (3) Featured collections use clean text placeholders, not SVG; (4) Product spotlight uses text placeholder, not SVG; (5) Category grid uses 16:9 aspect ratio with text placeholders; (6) Announcement bar forced to #0A0A0A via CSS variable overrides |
 
