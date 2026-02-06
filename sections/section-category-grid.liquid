@@ -1,10 +1,10 @@
 {%- comment -%}
   SECTION: Category Grid
-  Rapha-inspired grid with image overlays.
-  Square or 4:3 images with semi-transparent dark overlay and white text.
+  RAPHA-EXACT values from RAPHA-SOURCE-ANALYSIS.md
+  Grid with image overlays. 16:9 aspect ratio with dark gradient and white text.
 {%- endcomment -%}
 
-<section id="CategoryGrid-{{ section.id }}" class="category-grid section-padding">
+<section id="CategoryGrid-{{ section.id }}" class="category-grid">
   <div class="category-grid__container">
     {%- if section.settings.heading != blank or section.settings.overline != blank -%}
       <div class="category-grid__header">
@@ -92,28 +92,41 @@
 
 <style>
   /* =====================================
-     CATEGORY GRID - Rapha-exact values
+     CATEGORY GRID - RAPHA EXACT VALUES
      Source: RAPHA-SOURCE-ANALYSIS.md
      ===================================== */
 
   .category-grid {
     background-color: #FFFFFF;
+    padding: 32px 0;                          /* RAPHA EXACT */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);  /* RAPHA EXACT */
   }
 
-  /* Rapha: padding 0 16px mobile */
   .category-grid__container {
-    max-width: var(--container-max, 80rem);
+    max-width: none;
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 0 16px;                          /* RAPHA mobile */
   }
 
-  /* Rapha: margin-bottom 32px for section headers */
+  @media (min-width: 768px) {
+    .category-grid__container {
+      padding: 0 32px;                        /* RAPHA desktop */
+    }
+  }
+
+  /* RAPHA: section header margin-bottom 24px/32px */
   .category-grid__header {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 24px;                      /* RAPHA mobile */
   }
 
-  /* Rapha: overline 12px/600/0.3px uppercase */
+  @media (min-width: 992px) {
+    .category-grid__header {
+      margin-bottom: 32px;                    /* RAPHA desktop */
+    }
+  }
+
+  /* Overline - matches trust item title style */
   .category-grid__overline {
     display: block;
     font-family: 'DM Sans', sans-serif;
@@ -125,22 +138,35 @@
     margin-bottom: 8px;
   }
 
-  /* Section heading - Rapha uses 24px/32px uppercase sans for section titles */
+  /* RAPHA EXACT: H2 24px/32px, 600, uppercase */
   .category-grid__heading {
     font-family: 'DM Sans', sans-serif;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 24px;
-    letter-spacing: 0.3px;
+    font-size: 24px;                          /* RAPHA mobile */
+    font-weight: 600;                         /* RAPHA EXACT */
+    letter-spacing: 0.3px;                    /* RAPHA EXACT */
     text-transform: uppercase;
+    line-height: 24px;
     color: #000000;
     margin: 0;
   }
 
-  /* Rapha: gap 16px mobile */
+  @media (min-width: 992px) {
+    .category-grid__heading {
+      font-size: 32px;                        /* RAPHA desktop */
+      line-height: 32px;                      /* RAPHA EXACT */
+    }
+  }
+
+  /* RAPHA EXACT: gap 16px mobile, 32px desktop */
   .category-grid__grid {
     display: grid;
-    gap: 16px;
+    gap: 16px;                                /* RAPHA mobile */
+  }
+
+  @media (min-width: 768px) {
+    .category-grid__grid {
+      gap: 32px;                              /* RAPHA desktop */
+    }
   }
 
   .category-grid__grid--2 {
@@ -151,6 +177,22 @@
     grid-template-columns: 1fr;
   }
 
+  @media (min-width: 768px) {
+    .category-grid__grid--2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category-grid__grid--3 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .category-grid__grid--3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
   .category-grid__card {
     position: relative;
     display: block;
@@ -158,44 +200,43 @@
     overflow: hidden;
   }
 
-  /* Rapha: placeholder #F5F5F5 */
+  /* RAPHA: 16:9 aspect ratio, #F5F5F5 bg */
   .category-grid__image-wrapper {
     position: relative;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-    background-color: #F5F5F5;
+    background-color: #F5F5F5;                /* RAPHA EXACT */
   }
 
-  /* Rapha: image transition filter 0.5s ease-out */
+  /* RAPHA EXACT: filter transition 0.5s ease-out */
   .category-grid__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: filter 0.5s ease-out;
-    /* Rapha: GPU acceleration */
+    transition: filter 0.5s ease-out;         /* RAPHA EXACT */
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
   }
 
-  /* Rapha: hover brightness(0.95) */
+  /* RAPHA EXACT: hover brightness(0.95) */
   .category-grid__card:hover .category-grid__image {
-    filter: brightness(0.95);
+    filter: brightness(0.95);                 /* RAPHA EXACT */
   }
 
+  /* Clean placeholder */
   .category-grid__placeholder {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #F5F5F5;
+    background-color: #F5F5F5;                /* RAPHA EXACT */
   }
 
-  /* Rapha: 16px/600/0.3px uppercase */
   .category-grid__placeholder-text {
     font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.3px;
     color: #949494;
@@ -203,7 +244,7 @@
     padding: 16px;
   }
 
-  /* Rapha: subtle gradient overlay (0.3 max) */
+  /* RAPHA EXACT: gradient overlay 0.3 max, to top */
   .category-grid__overlay {
     position: absolute;
     inset: 0;
@@ -212,7 +253,8 @@
       rgba(0, 0, 0, 0.3) 0%,
       transparent 50%
     );
-    transition: background 0.25s ease-in-out;
+    pointer-events: none;
+    transition: background 250ms ease-in-out;
   }
 
   .category-grid__card:hover .category-grid__overlay {
@@ -223,76 +265,43 @@
     );
   }
 
-  /* Rapha: padding 24px */
+  /* RAPHA: content padding 24px/32px */
   .category-grid__content {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 24px;
+    padding: 24px;                            /* RAPHA mobile */
     text-align: center;
   }
 
-  /* Rapha: 16px/600/0.3px uppercase */
+  @media (min-width: 992px) {
+    .category-grid__content {
+      padding: 32px;                          /* RAPHA desktop */
+    }
+  }
+
+  /* RAPHA EXACT: 14px/600/uppercase/0.3px */
   .category-grid__title {
     font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 16px;
+    font-size: 14px;                          /* RAPHA EXACT */
+    font-weight: 600;                         /* RAPHA EXACT */
+    line-height: 14px;
     text-transform: uppercase;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.3px;                    /* RAPHA EXACT */
     color: #FFFFFF;
     margin: 0;
   }
 
-  /* Rapha: 12px/21px body text */
+  /* Small body text */
   .category-grid__subtitle {
     display: block;
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     font-weight: 400;
-    line-height: 21px;
+    line-height: 21px;                        /* RAPHA EXACT */
     color: rgba(255, 255, 255, 0.85);
     margin-top: 8px;
-  }
-
-  /* Tablet - Rapha: padding 0 32px, gap 32px */
-  @media (min-width: 768px) {
-    .category-grid__container {
-      padding: 0 32px;
-    }
-
-    .category-grid__grid {
-      gap: 32px;
-    }
-
-    .category-grid__grid--2 {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .category-grid__grid--3 {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .category-grid__image-wrapper {
-      aspect-ratio: 16 / 9;
-    }
-  }
-
-  /* Desktop - Rapha: 32px section heading */
-  @media (min-width: 992px) {
-    .category-grid__heading {
-      font-size: 32px;
-      line-height: 32px;
-    }
-
-    .category-grid__grid--3 {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .category-grid__content {
-      padding: 32px;
-    }
   }
 </style>
 
