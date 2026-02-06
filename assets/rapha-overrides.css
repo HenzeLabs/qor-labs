@@ -125,47 +125,90 @@
   }
 }
 
-/* Navigation — Rapha exact: 14px, weight 600, spacing 0.3px, uppercase */
+/* ==============================================
+   NAVIGATION — IDENTICAL STYLING FOR ALL NAV ITEMS
+
+   Target specification:
+   - Font: DM Sans
+   - Size: 12px (text-xs)
+   - Weight: 500 (font-medium)
+   - Transform: uppercase
+   - Letter-spacing: 0.15em (~1.8px)
+   - Color: #1A1A1A
+   ============================================== */
+
 .header__inline-menu .list-menu--inline {
-  gap: 32px !important;  /* Rapha uses generous spacing */
+  gap: 28px !important;
 }
 
-.header__menu-item,
-.list-menu__item--link,
-.header__inline-menu .list-menu__item--link {
-  font-family: var(--rapha-sans) !important;
-  font-size: 14px !important;  /* Rapha exact */
-  font-weight: 600 !important;  /* Rapha exact */
-  line-height: 14px !important;  /* Rapha exact */
-  letter-spacing: 0.3px !important;  /* Rapha exact */
+/* Master rule: ALL nav items — summary, a, span, everything */
+.header__inline-menu .header__menu-item,
+.header__inline-menu summary.header__menu-item,
+.header__inline-menu a.header__menu-item,
+.header__inline-menu .list-menu__item,
+.header__inline-menu summary.list-menu__item,
+.header__inline-menu a.list-menu__item,
+.header__inline-menu .link,
+.header__inline-menu .link--text,
+.header__inline-menu summary,
+.header__inline-menu a {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.15em !important;
   text-transform: uppercase !important;
-  color: #000000 !important;
+  color: #1A1A1A !important;
   text-decoration: none !important;
-  padding: 8px 0 !important;
   background-image: none !important;
+  background: transparent !important;
   border: none !important;
+  padding: 8px 0 !important;
+  cursor: pointer !important;
 }
 
-/* Nav hover - Rapha uses accent color */
-.header__menu-item:hover,
-.list-menu__item--link:hover {
-  color: var(--rapha-accent) !important;
+/* Inner spans (for active state spans) */
+.header__inline-menu .header__menu-item span,
+.header__inline-menu summary span,
+.header__inline-menu a span {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  color: inherit !important;
+}
+
+/* Hover state — all nav items */
+.header__inline-menu .header__menu-item:hover,
+.header__inline-menu summary:hover,
+.header__inline-menu a:hover,
+.header__inline-menu .link:hover,
+.header__inline-menu .link--text:hover {
+  color: var(--rapha-accent, #2D5A3D) !important;
   text-decoration: none !important;
   background-image: none !important;
 }
 
-/* Remove ALL underlines from nav */
-.header__menu-item::after,
-.list-menu__item--link::after,
+/* Remove ALL underlines, pseudo-elements, backgrounds */
+.header__inline-menu .header__menu-item::before,
+.header__inline-menu .header__menu-item::after,
+.header__inline-menu summary::before,
+.header__inline-menu summary::after,
+.header__inline-menu a::before,
 .header__inline-menu a::after,
-.header .link::after,
-.header .link--text::after {
+.header__inline-menu .link::before,
+.header__inline-menu .link::after,
+.header__inline-menu .link--text::before,
+.header__inline-menu .link--text::after {
   display: none !important;
   content: none !important;
+  background: none !important;
 }
 
-.list-menu__item--link,
-.header .link--text,
+/* Reset any Dawn .link background-image underline trick */
+.header__inline-menu .link,
+.header__inline-menu .link--text,
 .header__inline-menu a {
   background-image: none !important;
   background-size: 0 !important;
