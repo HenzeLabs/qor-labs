@@ -73,7 +73,7 @@
               >
             {%- else -%}
               <div class="category-grid__placeholder">
-                {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                <span class="category-grid__placeholder-text">{{ title }}</span>
               </div>
             {%- endif -%}
             <div class="category-grid__overlay"></div>
@@ -147,9 +147,9 @@
 
   .category-grid__image-wrapper {
     position: relative;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
-    background-color: var(--color-warm-gray, #E8E6E1);
+    background-color: var(--color-off-white, #F7F7F5);
   }
 
   .category-grid__image {
@@ -169,12 +169,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--color-off-white, #F7F7F5);
   }
 
-  .category-grid__placeholder svg {
-    width: 30%;
-    height: auto;
-    opacity: 0.3;
+  .category-grid__placeholder-text {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #9CA3AF;
+    text-align: center;
+    padding: 1rem;
   }
 
   .category-grid__overlay {
@@ -245,7 +251,7 @@
     }
 
     .category-grid__image-wrapper {
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 16 / 9;
     }
 
     .category-grid__title {
