@@ -144,8 +144,11 @@
     "brand_story": {
       "type": "brand-story",
       "settings": {
+        "layout": "image_first",
+        "background_style": "white",
         "overline": "About Qor Labs",
         "heading": "Reliable Instruments, Honest Support",
+        "body_text": "<p>Qor Labs supplies reliable lab instruments for clinical, academic, and research teams. We focus on straightforward, durable equipment that fits real-world budgets — backed by responsive support when you need it.</p><p>Every instrument we sell is tested, warrantied, and supported by lab specialists who understand your work.</p>",
         "button_text": "Learn More",
         "button_url": "shopify://pages/about-qor-labs"
       }

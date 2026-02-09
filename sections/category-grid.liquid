@@ -62,19 +62,19 @@
                 height="{{ block.settings.image.height }}"
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               >
-            {%- elsif has_collection and collection.image != blank -%}
+            {%- elsif has_collection and collection.featured_image -%}
               <img
-                src="{{ collection.image | image_url: width: 1200 }}"
+                src="{{ collection.featured_image | image_url: width: 1200 }}"
                 srcset="
-                  {{ collection.image | image_url: width: 400 }} 400w,
-                  {{ collection.image | image_url: width: 800 }} 800w,
-                  {{ collection.image | image_url: width: 1200 }} 1200w
+                  {{ collection.featured_image | image_url: width: 400 }} 400w,
+                  {{ collection.featured_image | image_url: width: 800 }} 800w,
+                  {{ collection.featured_image | image_url: width: 1200 }} 1200w
                 "
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                alt="{{ collection.image.alt | default: collection.title | escape }}"
+                alt="{{ collection.featured_image.alt | default: collection.title | escape }}"
                 loading="lazy"
-                width="{{ collection.image.width }}"
-                height="{{ collection.image.height }}"
+                width="{{ collection.featured_image.width }}"
+                height="{{ collection.featured_image.height }}"
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               >
             {%- else -%}
